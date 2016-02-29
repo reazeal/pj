@@ -377,7 +377,7 @@
         eachSeries(scripts, getScript, initTable);
 		
 		$('#formTambahLayanan').validationEngine();
-    	formVallayanan_idation();
+    	formValidation();
 		formInit(); 
 
 		$('form').submit(function(event) { //Trigger on form submit
