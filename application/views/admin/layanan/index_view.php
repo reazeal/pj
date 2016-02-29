@@ -376,7 +376,7 @@
 
         eachSeries(scripts, getScript, initTable);
 		
-		$('#formTambahLayanan').vallayanan_idationEngine();
+		$('#formTambahLayanan').validationEngine();
     	formVallayanan_idation();
 		formInit(); 
 
