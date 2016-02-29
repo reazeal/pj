@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Gps extends Admin_Controller
+class Layanan extends Admin_Controller
 {
 
 	function __construct()
@@ -15,7 +15,7 @@ class Gps extends Admin_Controller
             
         }
 
-		$this->load->model('gps_model');
+		$this->load->model('layanan_model');
         $this->load->library('form_validation');
         $this->load->helper('text');
         $this->load->helper('url');
@@ -23,10 +23,10 @@ class Gps extends Admin_Controller
 
 	public function index()
 	{
-        $this->render('admin/gps/index_view');
+        $this->render('admin/layanan/index_view');
 	}
 
-	public function get_data_gps(){
+	public function get_data_layanan(){
 
 		 $search = $this->input->get('search');
 		 $sort = $this->input->get('sort');
@@ -34,7 +34,7 @@ class Gps extends Admin_Controller
 		 $limit = $this->input->get('limit');
 		 $offset = $this->input->get('offset');
 
-		 $datanya = $this->gps_model->get_data_gps($search, $sort, $order, $limit, $offset);
+		 $datanya = $this->layanan_model->get_data_layanan($search, $sort, $order, $limit, $offset);
 		 echo json_encode($datanya,JSON_PRETTY_PRINT);
 	}
 
@@ -42,18 +42,17 @@ class Gps extends Admin_Controller
     {
 		$message = array();
 
-		$nomer_seri = $this->input->post('nomer_seri');
-		$id = md5('gps_'.date('Y-m-d H:i:s'));
-		$tanggal_pembelian = $this->tanggaldb($this->input->post('tanggal_pembelian'));
-		
-		if(!empty($nomer_seri)){
+		$nama_layanan = $this->input->post('nama_layanan');
+		$harga = $this->input->post('harga');
+		$layanan_id = md5('layanan_'.date('Y-m-d H:i:s'));
+			
+		if(!empty($nama_layanan)){
 			$insert_content = array(
-				'id' => $id,
-				'nomer_seri' => $nomer_seri,
-				'tanggal_pembelian'=> $tanggal_pembelian
+				'layanan_id' => $layanan_id,
+				'nama_layanan' => $nama_layanan
 			);
 
-			$this->gps_model->insert($insert_content);
+			$this->layanan_model->insert($insert_content);
 			
 			$message = array(
 			   'success' => true,
@@ -80,7 +79,7 @@ class Gps extends Admin_Controller
 		$json = json_decode($datanya);
 		
 		foreach ($json as $ax) :
-			$deleted_pages = $this->gps_model->where(array('id'=>$ax))->delete();
+			$deleted_pages = $this->layanan_model->where(array('layanan_id'=>$ax))->delete();
 		endforeach;
 		
 		
@@ -95,7 +94,7 @@ class Gps extends Admin_Controller
     {
 
 		$datanya = $this->input->post('datanya');
-		$deleted_pages = $this->gps_model->where(array('id'=>$datanya))->delete();
+		$deleted_pages = $this->layanan_model->where(array('layanan_id'=>$datanya))->delete();
 		
 		$message = array(
 			   'success' => true,
@@ -108,18 +107,17 @@ class Gps extends Admin_Controller
 	public function update()
     {
 		
-		$nomer_seri = $this->input->post('nomer_seri');
-		$id = $this->input->post('id');
-		$tanggal_pembelian = $this->tanggaldb($this->input->post('tanggal_pembelian'));
+		$nama_layanan = $this->input->post('nama_layanan');
+		$harga = $this->input->post('harga');
+		$layanan_id = $this->input->post('layanan_id');
 		
-
 		$message = array();
 
 		
 		
 		if(!empty($no_pendaftaran)){
-			$update_content = array('nomer_seri' => $nomer_seri, 'tanggal_pembelian' => $tanggal_pembelian);
-			$this->gps_model->update($update_content, array('id'=>$id));
+			$update_content = array('nama_layanan' => $nama_layanan, 'harga' => $harga);
+			$this->layanan_model->update($update_content, array('layanan_id'=>$layanan_id));
 			//$this->pendaftaran_model->update($update_content, $no_pendaftaran);
 			//$this->pendaftaran_model->where(array('no_pendaftaran'=>$no_pendaftaran))->update($update_content,'no_pendaftaran');
 			$message = array(
