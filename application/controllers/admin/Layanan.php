@@ -49,6 +49,7 @@ class Layanan extends Admin_Controller
 		if(!empty($nama_layanan)){
 			$insert_content = array(
 				'layanan_id' => $layanan_id,
+				'harga' => $harga,
 				'nama_layanan' => $nama_layanan
 			);
 
