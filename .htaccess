@@ -1,0 +1,19 @@
+Options -Indexes
+RewriteEngine On
+SetEnvIf Host www.behaestex.co.id$ CI_ENV=production
+SetEnvIf Host test.behaestex.co.id$ CI_ENV=testing
+SetEnvIf Host localhost$ CI_ENV=development
+
+RewriteCond $1 !^(index\\.php|resources|robots\\.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
+
+<IfModule mod_php5.c>
+php_value post_max_size 5M
+php_value upload_max_filesize 5M
+php_value memory_limit -1
+php_value max_execution_time 1800
+php_value max_input_time 1800
+php_value session.gc_maxlifetime 1200
+</IfModule>

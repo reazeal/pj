@@ -1,0 +1,7 @@
+a.underline:link, a.underline:visited, a.underline:active {text-decoration:underline}
+a.underline:hover {text-decoration:none}
+a.noneunderline:link, a.noneunderline:visited, a.noneunderline:active {text-decoration:none}
+a.noneunderline:hover {text-decoration:underline}
+a.link1 {background:no-repeat left center;padding:0 0 0 10px}
+.b {display:block}
+.hb1 .fr a {color:#8D8D8D}
