@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-$config['cms_title'] = 'Truck Route';
-$config['cms_dev'] = 'info@aa.cc';
+$config['site_title'] = 'Truck Route';
+$config['site_dev'] = 'info@aa.cc';
+$config['site_description'] = 'Truck Route';
 
-$config['cms_featured_image'] = '400x350';
+$config['site_featured_image'] = '400x350';

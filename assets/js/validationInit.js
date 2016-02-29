@@ -1,7 +1,7 @@
 ﻿function formValidation() {
     "use strict";
     /*----------- BEGIN validationEngine CODE -------------------------*/
-    $('#popup-validation').validationEngine();
+    /* $('#popup-validation').validationEngine(); */
     /*----------- END validationEngine CODE -------------------------*/
 
     /*----------- BEGIN validate CODE -------------------------*/

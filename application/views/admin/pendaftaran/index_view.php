@@ -54,7 +54,7 @@
 
 					<div class="col-lg-4">
 						<div class="input-group input-append date" id="dp3" data-date="<?php echo date('d-m-Y'); ?>" data-date-format="dd-mm-yyyy">
-							<input id="tanggal" class="validate[required] form-control" value="<?php echo date('d-m-Y'); ?>" readonly="" type="text" name='tanggal'>
+							<input id="tanggal" class="validate[required] form-control" value="<?php echo date('d-m-Y'); ?>" readonly="readonly" type="text" name='tanggal'>
 							<span class="input-group-addon add-on"><i class="icon-calendar"></i></span>
 						</div>
 					</div>
@@ -63,7 +63,7 @@
 				<div class="form-group">
 					<label class="control-label col-lg-4">No. Pendaftaran</label>
 					<div class="col-lg-6">
-							<input class="validate[required] form-control"  type="text" name='no_pendaftaran' id='no_pendaftaran'> 
+							<input class="form-control"  type="text" name='no_pendaftaran' id='no_pendaftaran' readonly="readonly"> 
 					</div>
 				</div>
 
@@ -399,7 +399,7 @@
         return undefined;
     }
 
-	
+	$('#formTambahPendaftaran').validationEngine();
 	formValidation();
 	formInit(); 
 

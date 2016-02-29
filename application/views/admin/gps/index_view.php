@@ -60,14 +60,12 @@
 					<label class="control-label col-lg-4">Tanggal Pembelian</label>
 
 					<div class="col-lg-4">
-						<div class="input-group input-append date" id="dp3" data-date="<?php echo date('d-m-Y'); ?>" data-date-format="dd-mm-yyyy">
-							<input id="tanggal" class="validate[required] form-control" value="<?php echo date('d-m-Y'); ?>"  type="text" name='tanggal_pembelian'>
-							<span class="input-group-addon add-on"><i class="icon-calendar"></i></span>
+						<div readonly="readonly" class="input-group input-append date" id="tanggal" data-date="<?php echo date('d-m-Y'); ?>" data-date-format="dd-mm-yyyy">
+							<input id="tanggal" class="validate[required] form-control clsDatePicker" value="<?php echo date('d-m-Y'); ?>"  type="text" name='tanggal_pembelian'>
+							<span class="input-group-addon"><i class="icon-calendar"></i></span>
 						</div>
 					</div>
 				</div>
-
-				
 
 				<div class="form-group">
 					<label class="control-label col-lg-4">Nomer Seri</label>
@@ -307,6 +305,14 @@
         return $(window).height() - $('h1').outerHeight(true);
     }
 
+	function checkHELLO(field, rules, i, options){
+		if (field.val() != "HELLO") {
+			// this allows to use i18 for the error msgs
+			return options.allrules.validate2fields.alertText;
+		}
+	}
+
+
 	
 	function getScript(url, callback) {
         var head = document.getElementsByTagName('head')[0];
@@ -334,10 +340,7 @@
     }
 
 	
-	formValidation();
-	formInit(); 
-
-
+	
 	$(document).ready(function() {
 	
 		var scripts = [
@@ -375,32 +378,37 @@
             };
 
         eachSeries(scripts, getScript, initTable);
+		
+		$('#formTambahGps').validationEngine();
+    	formValidation();
+		formInit(); 
 
-    $('form').submit(function(event) { //Trigger on form submit
-      
-		 var $table = $('#table').bootstrapTable({url: '<?php echo site_url('admin/gps/get_data_gps');?>' });
-		 var values = $(this).serialize();
+		$('form').submit(function(event) { //Trigger on form submit
+		  
+		   
+			 var $table = $('#table').bootstrapTable({url: '<?php echo site_url('admin/gps/get_data_gps');?>' });
+			 var values = $(this).serialize();
 
-        $.ajax({ //Process the form using $.ajax()
-            type      : 'POST', //Method type
-            url       : $modal.data('id') ? '<?php echo site_url('admin/gps/update');?>' : '<?php echo site_url('admin/gps/create');?>' , 
-            data      : values, //Forms name
-            dataType  : 'json',
-            success   : function(data) {
-						if (!data.success) { //If fails
-							$modal.modal('hide');
-							showAlert(($modal.data('id') ? 'Update' : 'Create') + ' Gagal tambah data!', 'danger');
-						}
-						else {
-								$modal.modal('hide');
-								$table.bootstrapTable('refresh');
-								$("form").trigger("reset");
-								showAlert(($modal.data('id') ? 'Update Data' : 'Tambah Data') + ' berhasil!', 'success');
+			 $.ajax({ //Process the form using $.ajax()
+				type      : 'POST', //Method type
+				url       : $modal.data('id') ? '<?php echo site_url('admin/gps/update');?>' : '<?php echo site_url('admin/gps/create');?>' , 
+				data      : values, //Forms name
+				dataType  : 'json',
+				success   : function(data) {
+							if (!data.success) { //If fails
+								//$modal.modal('hide');
+								showAlert(($modal.data('id') ? 'Update' : 'Create') + ' Gagal tambah data!', 'danger');
 							}
-						}
-        });
-        event.preventDefault(); //Prevent the default submit
-    });
+							else {
+									$modal.modal('hide');
+									$table.bootstrapTable('refresh');
+									$("form").trigger("reset");
+									showAlert(($modal.data('id') ? 'Update Data' : 'Tambah Data') + ' berhasil!', 'success');
+								}
+							}
+			});
+			event.preventDefault(); //Prevent the default submit
+		});
 });
 
     function rowStyle(row, index) {
@@ -413,6 +421,14 @@
         }
         return {};
     }
+
+	$('#tanggal').datepicker({
+		 dateFormat: 'dd-mm-yy',
+		 minDate: '+5d',
+		 changeMonth: true,
+		 changeYear: true
+	 });
+
 </script>
 
 </div>

@@ -43,10 +43,12 @@ class Gps extends Admin_Controller
 		$message = array();
 
 		$nomer_seri = $this->input->post('nomer_seri');
+		$id = md5('gps_'.date('Y-m-d H:i:s'));
 		$tanggal_pembelian = $this->tanggaldb($this->input->post('tanggal_pembelian'));
 		
 		if(!empty($nomer_seri)){
 			$insert_content = array(
+				'id' => $id,
 				'nomer_seri' => $nomer_seri,
 				'tanggal_pembelian'=> $tanggal_pembelian
 			);

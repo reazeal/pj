@@ -73,8 +73,8 @@ class MY_Controller extends CI_Controller
         $this->load->model('website_model');
         $this->website = $this->website_model->get();
         $this->data['website'] = $this->website;
-        $this->data['page_title'] = 'PT. BEHAESTEX - CORPORATE';
-        $this->data['page_description'] = 'PT. BEHAESTEX - CORPORATE';
+        $this->data['page_title'] = $this->config->item("site_title");
+        $this->data['page_description'] = $this->config->item("site_description");
 		$this->data['before_head'] = '';
 		$this->data['before_body'] = '';
 	}
@@ -121,7 +121,7 @@ class Admin_Controller extends MY_Controller
 			$this->data['current_user_menu'] = $this->load->view('templates/_parts/user_menu_admin_view.php', NULL, TRUE);
 		}
 
-		$this->data['page_title'] = 'PT. BEHAESTEX - Dashboard';
+		$this->data['page_title'] = $this->config->item("site_title");
 	}
 	protected function render($the_view = NULL, $template = 'admin_master')
 	{
