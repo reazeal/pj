@@ -191,7 +191,7 @@
 
     function getIdSelections() {
         return $.map($table.bootstrapTable('getSelections'), function (row) {
-            return row.id
+            return row.layanan_id
         });
     }
 
@@ -210,7 +210,7 @@
             description: ''
         }; // default row value
 
-        $modal.data('id', row.id);
+        $modal.data('layanan_id', row.layanan_id);
         $modal.find('.modal-title').text(title);
         for (var name in row) {
             $modal.find('input[name="' + name + '"], textarea[name="' + name + '"], select[name="' + name + '"]').val(row[name]);
@@ -393,11 +393,11 @@
 				dataType  : 'json',
 				success   : function(data) {
 							if (!data.success) { //If fails
-								//$modal.modal('hlayanan_ide');
+								//$modal.modal('hide');
 								showAlert(($modal.data('layanan_id') ? 'Update' : 'Create') + ' Gagal tambah data!', 'danger');
 							}
 							else {
-									$modal.modal('hlayanan_ide');
+									$modal.modal('hide');
 									$table.bootstrapTable('refresh');
 									$("form").trigger("reset");
 									showAlert(($modal.data('layanan_id') ? 'Update Data' : 'Tambah Data') + ' berhasil!', 'success');
