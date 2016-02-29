@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Layanan extends Admin_Controller
+class Paket extends Admin_Controller
 {
 
 	function __construct()
@@ -15,6 +15,7 @@ class Layanan extends Admin_Controller
             
         }
 
+		$this->load->model('paket_model');
 		$this->load->model('layanan_model');
         $this->load->library('form_validation');
         $this->load->helper('text');
@@ -23,18 +24,18 @@ class Layanan extends Admin_Controller
 
 	public function index()
 	{
-        $this->render('admin/layanan/index_view');
+		  $this->data['pilihan_layanan'] = $this->layanan_model->get_layanan_list();
+		  $this->render('admin/paket/index_view');
 	}
 
-	public function get_data_layanan(){
-
+	public function get_data_paket(){
 		 $search = $this->input->get('search');
 		 $sort = $this->input->get('sort');
 		 $order = $this->input->get('order');
 		 $limit = $this->input->get('limit');
 		 $offset = $this->input->get('offset');
 
-		 $datanya = $this->layanan_model->get_data_layanan($search, $sort, $order, $limit, $offset);
+		 $datanya = $this->paket_model->get_data_paket($search, $sort, $order, $limit, $offset);
 		 echo json_encode($datanya,JSON_PRETTY_PRINT);
 	}
 
@@ -42,18 +43,25 @@ class Layanan extends Admin_Controller
     {
 		$message = array();
 
-		$nama_layanan = $this->input->post('nama_layanan');
-		$harga = $this->input->post('harga');
-		$layanan_id = md5('layanan_'.date('Y-m-d H:i:s'));
+		$nama_paket = $this->input->post('nama_paket');
+		$layanan_id = $this->input->post('layanan_id');
+
+		
+		$dt_layanan = $this->layanan_model->where(array('layanan_id'=>$layanan_id))->get();
+		$nama_layanan = $dt_layanan->nama_layanan;
+		$harga = $dt_layanan->harga;
+		$paket_id = md5('paket_'.date('Y-m-d H:i:s'));
 			
-		if(!empty($nama_layanan)){
+		if(!empty($layanan_id) && !empty($nama_paket)){
+
 			$insert_content = array(
-				'layanan_id' => $layanan_id,
-				'harga' => $harga,
-				'nama_layanan' => $nama_layanan
+				'paket_id' => $paket_id,
+				'nama_paket' => $nama_paket,
+				'nama_layanan' => $nama_layanan,
+				'harga' => $harga
 			);
 
-			$this->layanan_model->insert($insert_content);
+			$this->paket_model->insert($insert_content);
 			
 			$message = array(
 			   'success' => true,
@@ -80,7 +88,7 @@ class Layanan extends Admin_Controller
 		$json = json_decode($datanya);
 		
 		foreach ($json as $ax) :
-			$deleted_pages = $this->layanan_model->where(array('layanan_id'=>$ax))->delete();
+			$deleted_pages = $this->paket_model->where(array('paket_id'=>$ax))->delete();
 		endforeach;
 		
 		
@@ -95,7 +103,7 @@ class Layanan extends Admin_Controller
     {
 
 		$datanya = $this->input->post('datanya');
-		$deleted_pages = $this->layanan_model->where(array('layanan_id'=>$datanya))->delete();
+		$deleted_pages = $this->paket_model->where(array('paket_id'=>$datanya))->delete();
 		
 		$message = array(
 			   'success' => true,
@@ -108,17 +116,19 @@ class Layanan extends Admin_Controller
 	public function update()
     {
 		
-		$nama_layanan = $this->input->post('nama_layanan');
-		$harga = $this->input->post('harga');
+		$nama_paket = $this->input->post('nama_paket');
 		$layanan_id = $this->input->post('layanan_id');
-		
+		$dt_layanan = $this->layanan_model->where(array('layanan_id'=>$layanan_id))->get();
+		$nama_layanan = $dt_layanan->nama_layanan;
+		$harga = $dt_layanan->harga;
+
 		$message = array();
 
 		
 		
 		if(!empty($layanan_id)){
 			$update_content = array('nama_layanan' => $nama_layanan, 'harga' => $harga);
-			$this->layanan_model->update($update_content, array('layanan_id'=>$layanan_id));
+			$this->paket_model->update($update_content, array('layanan_id'=>$layanan_id));
 			//$this->pendaftaran_model->update($update_content, $no_pendaftaran);
 			//$this->pendaftaran_model->where(array('no_pendaftaran'=>$no_pendaftaran))->update($update_content,'no_pendaftaran');
 			$message = array(

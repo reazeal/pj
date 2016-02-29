@@ -25,7 +25,7 @@
 			   data-detail-formatter="detailFormatter"
 			   data-detail-view="true"
 			   data-pagination="true"
-			   data-id-field="id"
+			   data-id-field="paket_id"
 			   data-page-list="[10, 25, 50, 100, ALL]"
 			   data-show-footer="false"
 			   data-side-pagination="server"
@@ -47,7 +47,7 @@
       </div>
       <div class="modal-body">
         <div id="collapse2" class="body collapse in">
-			<form class="form-horizontal" id="popup-validation">
+			<form class="form-horizontal" id="formTambahPaketX">
 
 			<div class="form-group">
 					<label class="control-label col-lg-4">Id</label>
@@ -65,9 +65,11 @@
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-4">Nama Paket</label>
+					<label class="control-label col-lg-4">Layanan</label>
 					<div class="col-lg-6">
-							<input class="validate[required] form-control"  type="text" name='nama_paket' id='nama_paket'> 
+				<?php
+                echo form_dropdown('layanan_id',$pilihan_layanan,set_value('layanan_id',(isset($content->layanan_id) ? $content->layanan_id : '')),'class="form-control validate[required]"');
+                ?>
 					</div>
 				</div>
 
@@ -107,7 +109,7 @@
                         align: 'center'
                     },
 					{
-                        field: 'id',
+                        field: 'paket_id',
                         title: 'Id',
                         sortable: true,
 						width: 120,
@@ -115,20 +117,27 @@
                         align: 'center'
                     },
                     {
-                        field: 'tanggal_pembelian',
-                        title: 'Tanggal Pembelian',
+                        field: 'nama_paket',
+                        title: 'Nama Paket',
 						width: 100,
                         sortable: true,
                         footerFormatter: totalNameFormatter,
                         align: 'center'
                     },
 						{
-                        field: 'nomer_seri',
-                        title: 'No. Seri',
-						width: 200,
+                        field: 'nama_layanan',
+                        title: 'Nama Layanan',
+						width: 130,
                         sortable: true,
                         footerFormatter: totalNameFormatter,
                         align: 'left'
+                    },{
+                        field: 'harga',
+                        title: 'Harga',
+						width: 100,
+                        sortable: true,
+                        footerFormatter: totalNameFormatter,
+                        align: 'right'
                     },{
                         field: 'aksi',
 						title: 'Aksi',
@@ -191,13 +200,13 @@
 
     function getIdSelections() {
         return $.map($table.bootstrapTable('getSelections'), function (row) {
-            return row.id
+            return row.paket_id
         });
     }
 
     function responseHandler(res) {
         $.each(res.rows, function (i, row) {
-            row.state = $.inArray(row.id, selections) !== -1;
+            row.state = $.inArray(row.paket_id, selections) !== -1;
         });
         return res;
     }
@@ -210,7 +219,7 @@
             description: ''
         }; // default row value
 
-        $modal.data('id', row.id);
+        $modal.data('paket_id', row.paket_id);
         $modal.find('.modal-title').text(title);
         for (var name in row) {
             $modal.find('input[name="' + name + '"], textarea[name="' + name + '"], select[name="' + name + '"]').val(row[name]);
@@ -268,7 +277,7 @@
 		    if (confirm('Anda yakin untuk menghapus data ini ?')) {
                 $.ajax({
                     url: '<?php echo site_url('admin/paket/delete_id/');?>/',
-					data :  { datanya : row.id },
+					data :  { datanya : row.paket_id },
                     type: 'POST',
                     success: function () {
                         $table.bootstrapTable('refresh');
@@ -376,7 +385,7 @@
 
         eachSeries(scripts, getScript, initTable);
 		
-		$('#formTambahPaket').validationEngine();
+		$('#formTambahPaketX').validationEngine();
     	formValidation();
 		formInit(); 
 
@@ -388,19 +397,19 @@
 
 			 $.ajax({ //Process the form using $.ajax()
 				type      : 'POST', //Method type
-				url       : $modal.data('id') ? '<?php echo site_url('admin/paket/update');?>' : '<?php echo site_url('admin/paket/create');?>' , 
+				url       : $modal.data('paket_id') ? '<?php echo site_url('admin/paket/update');?>' : '<?php echo site_url('admin/paket/create');?>' , 
 				data      : values, //Forms name
 				dataType  : 'json',
 				success   : function(data) {
 							if (!data.success) { //If fails
 								//$modal.modal('hide');
-								showAlert(($modal.data('id') ? 'Update' : 'Create') + ' Gagal tambah data!', 'danger');
+								showAlert(($modal.data('paket_id') ? 'Update' : 'Create') + ' Gagal tambah data!', 'danger');
 							}
 							else {
 									$modal.modal('hide');
 									$table.bootstrapTable('refresh');
 									$("form").trigger("reset");
-									showAlert(($modal.data('id') ? 'Update Data' : 'Tambah Data') + ' berhasil!', 'success');
+									showAlert(($modal.data('paket_id') ? 'Update Data' : 'Tambah Data') + ' berhasil!', 'success');
 								}
 							}
 			});

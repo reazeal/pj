@@ -2,44 +2,46 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Gps_model extends MY_Model
+class Paket_model extends MY_Model
 {
-    public $table = 'gps';
-    public $primary_key = 'id';    
+    public $table = 'paket';
+    public $primary_key = 'paket_id';    
     public function __construct()
     {
         parent::__construct();
         
     }
-    
-    
-    public function get_data_gps($search, $sort, $order, $limit, $offset)
+
+	public function get_data_paket($search, $sort, $order, $limit, $offset)
     {
     				$data = array();
     				$this->db->start_cache();
     				
     				$this->db->select("
-	       				id,
-						nomer_seri,
-	       				DATE_FORMAT(tanggal_pembelian,'%d-%m-%Y') as tanggal_pembelian
+	       				paket_id,
+						nama_paket,
+	       				nama_layanan,
+						harga
        				");
        				
        				if(!empty($search)){
-						$this->db->like('nomer_seri',$search,'both');
-						$this->db->or_like("DATE_FORMAT(tanggal_pembelian,'%d-%m-%Y')", $search,'both');
+						$this->db->like('nama_paket',$search,'both');
+						$this->db->or_like("nama_layanan", $search,'both');
+						$this->db->or_like("harga", $search,'both');
 					}
 					
 					if(!empty($sort)){$this->db->order_by($sort, $order);}else{$this->db->order_by('created_at', 'DESC');}
-					$query = $this->db->get('gps', $limit, $offset);
-		        	if(!empty($search)){ $totaly2 = $query->num_rows();}else{ $totaly2 = $this->db->count_all('gps'); }
+					$query = $this->db->get('paket', $limit, $offset);
+		        	if(!empty($search)){ $totaly2 = $query->num_rows();}else{ $totaly2 = $this->db->count_all('paket'); }
 			
 					if ($totaly2 > 0) {
 						foreach ($query->result() as $atributy) {
 							
 							$data[] = array(
-										'nomer_seri' => $atributy->nomer_seri,
-										'tanggal_pembelian' => $atributy->tanggal_pembelian,
-										'id' => $atributy->id
+										'nama_paket' => $atributy->nama_paket,
+										'nama_layanan' => $atributy->nama_layanan,
+										'harga' => $atributy->harga,
+										'paket_id' => $atributy->paket_id
 									);
 						}
 						

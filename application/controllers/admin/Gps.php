@@ -46,7 +46,7 @@ class Gps extends Admin_Controller
 		$id = md5('gps_'.date('Y-m-d H:i:s'));
 		$tanggal_pembelian = $this->tanggaldb($this->input->post('tanggal_pembelian'));
 		
-		if(!empty($nomer_seri)){
+		if(!empty($nomer_seri) && !empty($tanggal_pembelian)){
 			$insert_content = array(
 				'id' => $id,
 				'nomer_seri' => $nomer_seri,
@@ -117,7 +117,7 @@ class Gps extends Admin_Controller
 
 		
 		
-		if(!empty($no_pendaftaran)){
+		if(!empty($id)){
 			$update_content = array('nomer_seri' => $nomer_seri, 'tanggal_pembelian' => $tanggal_pembelian);
 			$this->gps_model->update($update_content, array('id'=>$id));
 			//$this->pendaftaran_model->update($update_content, $no_pendaftaran);

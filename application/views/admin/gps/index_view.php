@@ -47,8 +47,8 @@
       </div>
       <div class="modal-body">
         <div id="collapse2" class="body collapse in">
-			<form class="form-horizontal" id="popup-validation">
-
+			<form class="form-horizontal" id="formTambahGpsX">
+			
 			<div class="form-group">
 					<label class="control-label col-lg-4">Id</label>
 					<div class="col-lg-6">
@@ -60,8 +60,8 @@
 					<label class="control-label col-lg-4">Tanggal Pembelian</label>
 
 					<div class="col-lg-4">
-						<div readonly="readonly" class="input-group input-append date" id="tanggal" data-date="<?php echo date('d-m-Y'); ?>" data-date-format="dd-mm-yyyy">
-							<input id="tanggal" class="validate[required] form-control clsDatePicker" value="<?php echo date('d-m-Y'); ?>"  type="text" name='tanggal_pembelian'>
+						<div readonly="readonly" class="input-group input-append date" id="tanggal_pembelian" data-date="<?php echo date('d-m-Y'); ?>" data-date-format="dd-mm-yyyy">
+							<input id="tanggal_pembelian" class="validate[required] form-control clsDatePicker" value="<?php echo date('d-m-Y'); ?>"  type="text" name='tanggal_pembelian'>
 							<span class="input-group-addon"><i class="icon-calendar"></i></span>
 						</div>
 					</div>
@@ -379,7 +379,7 @@
 
         eachSeries(scripts, getScript, initTable);
 		
-		$('#formTambahGps').validationEngine();
+		$('#formTambahGpsX').validationEngine();
     	formValidation();
 		formInit(); 
 
@@ -422,7 +422,7 @@
         return {};
     }
 
-	$('#tanggal').datepicker({
+	$('#tanggal_pembelian').datepicker({
 		 dateFormat: 'dd-mm-yy',
 		 minDate: '+5d',
 		 changeMonth: true,

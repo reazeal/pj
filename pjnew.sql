@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v12.09 (64 bit)
-MySQL - 10.1.9-MariaDB : Database - bhs_portal
+SQLyog Ultimate v11.5 (64 bit)
+MySQL - 5.6.20 : Database - bhs_portal
 *********************************************************************
 */
 
@@ -213,7 +213,7 @@ CREATE TABLE `gps` (
 
 /*Data for the table `gps` */
 
-insert  into `gps`(`id`,`nomer_seri`,`tanggal_pembelian`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('0561721ce4be3918e4c277a0c14ab88d','324fvdsfdsfsdf','2016-02-29','2016-02-29 11:23:56',NULL,NULL,NULL,NULL,NULL),('12221cba521fcdc9b3ca9f1f9f44ac54','FF-yy23213213','2016-02-29','2016-02-29 11:23:40',NULL,NULL,NULL,NULL,NULL),('7583452a5c40f61c8c96046e1d189af5','sdsd','2016-02-29','2016-02-29 14:18:53',NULL,NULL,NULL,NULL,NULL),('7b36764e74cc6b8bf496ce3423c6aec3','34dfgfdgdf','2016-02-29','2016-02-29 14:46:16',NULL,NULL,NULL,NULL,NULL),('7dcb3986f2a23f4d8ceb475bb20a828c','gfh65 6765 756','2016-02-29','2016-02-29 14:46:08',NULL,NULL,NULL,NULL,NULL);
+insert  into `gps`(`id`,`nomer_seri`,`tanggal_pembelian`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('0561721ce4be3918e4c277a0c14ab88d','AGU-GPS-7Y761','2016-02-29','2016-02-29 11:23:56','2016-02-29 19:20:51',NULL,NULL,NULL,NULL),('12221cba521fcdc9b3ca9f1f9f44ac54','AGU-GPS-A1209','2016-02-29','2016-02-29 11:23:40','2016-02-29 19:21:05',NULL,NULL,NULL,NULL),('40edec9edce62fb346f2f88b6c0baa44','AGU-GPS-4567X','2016-02-29','2016-02-29 20:03:43',NULL,NULL,NULL,NULL,NULL),('7583452a5c40f61c8c96046e1d189af5','AGU-GPS-10976','2016-02-29','2016-02-29 14:18:53','2016-02-29 19:20:36',NULL,NULL,NULL,NULL),('7b36764e74cc6b8bf496ce3423c6aec3','AGU-GPS-12345','2016-02-29','2016-02-29 14:46:16','2016-02-29 19:20:08',NULL,NULL,NULL,NULL),('7dcb3986f2a23f4d8ceb475bb20a828c','AGU-GPS-90871','2016-02-29','2016-02-29 14:46:08','2016-02-29 19:20:24',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `groups` */
 
@@ -351,6 +351,8 @@ CREATE TABLE `layanan` (
 
 /*Data for the table `layanan` */
 
+insert  into `layanan`(`layanan_id`,`nama_layanan`,`harga`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('382b4bb36c36052f0f7e6aefcd5a8272','Biasa',1400000,'2016-02-29 19:17:28','2016-02-29 19:21:57',NULL,NULL,NULL,NULL),('8dd5cf141ddaee9f8163a90175017bfb','Hemat',2000000,'2016-02-29 19:17:11',NULL,NULL,NULL,NULL,NULL),('b79f37a84988442647e5e8f878c2327f','Reguler',5000000,'2016-02-29 19:16:55',NULL,NULL,NULL,NULL,NULL);
+
 /*Table structure for table `login_attempts` */
 
 DROP TABLE IF EXISTS `login_attempts`;
@@ -453,6 +455,8 @@ CREATE TABLE `paket` (
 
 /*Data for the table `paket` */
 
+insert  into `paket`(`paket_id`,`nama_paket`,`nama_layanan`,`harga`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('231870064e7879f51770982aba46e002','PAKET-SATU','Hemat',2000000,'2016-02-29 21:03:26',NULL,NULL,NULL,NULL,NULL),('62e3a505a8cf1e1ed950e5c6d5b5159d','PAKET-DUA','Reguler',5000000,'2016-02-29 21:03:34',NULL,NULL,NULL,NULL,NULL);
+
 /*Table structure for table `phrases` */
 
 DROP TABLE IF EXISTS `phrases`;
@@ -553,7 +557,7 @@ CREATE TABLE `users` (
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`ip_address`,`username`,`password`,`salt`,`email`,`activation_code`,`forgotten_password_code`,`forgotten_password_time`,`remember_code`,`created_on`,`last_login`,`active`,`first_name`,`last_name`,`company`,`phone`) values (1,'127.0.0.1','administrator','$2y$08$G0h47xFzvBDD3DjwWD13XeCfwGuZgqtSodh5ARhDJLLWPRv0jSgfG','','info@behaestex.co.id','',NULL,NULL,NULL,1268889823,1452646591,1,'Admin','istrator','ADMIN','0'),(2,'::1','btx','$2y$08$YagivZvJ/rC/3iq5.B6Y1O1QyB7tw2TMxKvSAhUnTWY0xM9CS5xrK',NULL,'btx@behaestex.co.id',NULL,NULL,NULL,NULL,1448265757,1456728040,1,'BTX','','','');
+insert  into `users`(`id`,`ip_address`,`username`,`password`,`salt`,`email`,`activation_code`,`forgotten_password_code`,`forgotten_password_time`,`remember_code`,`created_on`,`last_login`,`active`,`first_name`,`last_name`,`company`,`phone`) values (1,'127.0.0.1','administrator','$2y$08$G0h47xFzvBDD3DjwWD13XeCfwGuZgqtSodh5ARhDJLLWPRv0jSgfG','','info@behaestex.co.id','',NULL,NULL,NULL,1268889823,1452646591,1,'Admin','istrator','ADMIN','0'),(2,'::1','btx','$2y$08$YagivZvJ/rC/3iq5.B6Y1O1QyB7tw2TMxKvSAhUnTWY0xM9CS5xrK',NULL,'btx@behaestex.co.id',NULL,NULL,NULL,NULL,1448265757,1456748012,1,'BTX','','','');
 
 /*Table structure for table `users_groups` */
 

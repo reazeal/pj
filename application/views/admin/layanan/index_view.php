@@ -128,7 +128,7 @@
 						width: 100,
                         sortable: true,
                         footerFormatter: totalNameFormatter,
-                        align: 'left'
+                        align: 'right'
                     },{
                         field: 'aksi',
 						title: 'Aksi',
@@ -197,7 +197,7 @@
 
     function responseHandler(res) {
         $.each(res.rows, function (i, row) {
-            row.state = $.inArray(row.id, selections) !== -1;
+            row.state = $.inArray(row.layanan_id, selections) !== -1;
         });
         return res;
     }

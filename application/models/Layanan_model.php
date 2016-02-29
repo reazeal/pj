@@ -11,6 +11,21 @@ class Layanan_model extends MY_Model
         parent::__construct();
         
     }
+
+	public function get_layanan_list()
+    {
+       
+        $query = $this->db->get('layanan');
+        $parents = array(''=>'Silahkan Pilih...');
+        if($query->num_rows()>0)
+        {
+            foreach($query->result() as $row)
+            {
+                $parents[$row->layanan_id] = $row->nama_layanan." , Harga : ".$row->harga;
+            }
+        }
+        return $parents;
+    }
     
     
     public function get_data_layanan($search, $sort, $order, $limit, $offset)
@@ -46,6 +61,7 @@ class Layanan_model extends MY_Model
 					} 
 					
 			return array('total'=>$totaly2,'rows' => $data);
+			$this->db->stop_cache();
     }
     
     
