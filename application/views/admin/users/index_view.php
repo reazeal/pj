@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
-<div class="container" style="margin-left:20px;">
+<div class="container" style="margin-top:20px;">
 		<div class="col-lg-10">
             <a href="<?php echo site_url('admin/users/create');?>" class="btn btn-primary">Create user</a>
             <a href="<?php echo site_url('admin/users');?>" class="btn btn-primary">See all users</a>

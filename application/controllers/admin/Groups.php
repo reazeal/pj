@@ -16,6 +16,8 @@ class Groups extends Admin_Controller
 
     public function index()
     {
+		 $this->data['menu_data'] = array('master'=>false,'transaksi'=>false,'class_master'=>'collapse','class_transaksi'=>'collapse');
+        
         $this->data['page_title'] = 'Groups';
         $this->data['groups'] = $this->ion_auth->groups()->result();
         $this->render('admin/groups/index_view');

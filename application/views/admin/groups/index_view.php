@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
-<div class="container">
-        <div class="col-lg-10">
+<div class="container" style="margin-top: 20px;">
+        <div class="col-lg-10" style="margin-top: 20px;">
             <a href="<?php echo site_url('admin/groups/create');?>" class="btn btn-primary">Create group</a>
         </div>    
         <div class="col-lg-10" style="margin-top: 10px;">

@@ -16,6 +16,7 @@ class Users extends Admin_Controller
 
     public function index($group_id = NULL)
     {
+		 $this->data['menu_data'] = array('master'=>false,'transaksi'=>false,'class_master'=>'collapse','class_transaksi'=>'collapse');
         $this->data['page_title'] = 'Users';
         //$this->data['users'] = $this->ion_auth->users($group_id)->result();
         $this->data['users'] = $this->ion_auth->users(array(1,'members'))->result();
@@ -24,6 +25,8 @@ class Users extends Admin_Controller
 
     public function create()
     {
+		 $this->data['menu_data'] = array('master'=>false,'transaksi'=>false,'class_master'=>'collapse','class_transaksi'=>'collapse');
+        
         $this->data['page_title'] = 'Create user';
         $this->load->library('form_validation');
         $this->form_validation->set_rules('first_name','First name','trim');
@@ -63,6 +66,8 @@ class Users extends Admin_Controller
 
     public function edit($user_id = NULL)
     {
+		 $this->data['menu_data'] = array('master'=>false,'transaksi'=>false,'class_master'=>'collapse','class_transaksi'=>'collapse');
+        
         $user_id = $this->input->post('user_id') ? $this->input->post('user_id') : $user_id;
         if($this->data['current_user']->id == $user_id)
         {

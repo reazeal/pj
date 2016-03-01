@@ -13,6 +13,8 @@ class User extends MY_Controller
 
     public function index()
     {
+		 $this->data['menu_data'] = array('master'=>false,'transaksi'=>false,'class_master'=>'collapse','class_transaksi'=>'collapse');
+        
     }
 
     public function login()
@@ -58,6 +60,8 @@ class User extends MY_Controller
 
     public function profile()
     {
+		 $this->data['menu_data'] = array('master'=>false,'transaksi'=>false,'class_master'=>'collapse','class_transaksi'=>'collapse');
+        
         $this->data['page_title'] = 'User Profile';
         $user = $this->ion_auth->user()->row();
         $this->data['user'] = $user;
