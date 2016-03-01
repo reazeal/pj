@@ -48,15 +48,9 @@
       <div class="modal-body">
         <div id="collapse2" class="body collapse in">
 			<form class="form-horizontal" id="popup-validation">
-
-			<div class="form-group">
-					<label class="control-label col-lg-4">Id</label>
-					<div class="col-lg-6">
-							<input class="form-control"  type="text" name='layanan_id' id='layanan_id' readonly=""> 
-					</div>
-				</div>
-
-			
+				
+				<input class="form-control"  type="hidden" name='layanan_id' id='layanan_id' readonly=""> 
+				
 				<div class="form-group">
 					<label class="control-label col-lg-4">Nama Layanan</label>
 					<div class="col-lg-6">
@@ -107,14 +101,6 @@
                         align: 'center'
                     },
 					{
-                        field: 'layanan_id',
-                        title: 'Id',
-                        sortable: true,
-						width: 120,
-                        footerFormatter: totalTextFormatter,
-                        align: 'center'
-                    },
-                    	{
                         field: 'nama_layanan',
                         title: 'Nama Layanan',
 						width: 200,

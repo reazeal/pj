@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v11.5 (64 bit)
-MySQL - 5.6.20 : Database - bhs_portal
+SQLyog Ultimate v12.09 (64 bit)
+MySQL - 10.1.9-MariaDB : Database - bhs_portal
 *********************************************************************
 */
 
@@ -76,7 +76,7 @@ CREATE TABLE `content_translations` (
   `content_type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `page_id` (`content_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 /*Data for the table `content_translations` */
 
@@ -102,7 +102,7 @@ CREATE TABLE `contents` (
   `deleted_by` int(11) NOT NULL,
   `share_fb` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 /*Data for the table `contents` */
 
@@ -213,7 +213,7 @@ CREATE TABLE `gps` (
 
 /*Data for the table `gps` */
 
-insert  into `gps`(`id`,`nomer_seri`,`tanggal_pembelian`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('0561721ce4be3918e4c277a0c14ab88d','AGU-GPS-7Y761','2016-02-29','2016-02-29 11:23:56','2016-02-29 19:20:51',NULL,NULL,NULL,NULL),('12221cba521fcdc9b3ca9f1f9f44ac54','AGU-GPS-A1209','2016-02-29','2016-02-29 11:23:40','2016-02-29 19:21:05',NULL,NULL,NULL,NULL),('40edec9edce62fb346f2f88b6c0baa44','AGU-GPS-4567X','2016-02-29','2016-02-29 20:03:43',NULL,NULL,NULL,NULL,NULL),('7583452a5c40f61c8c96046e1d189af5','AGU-GPS-10976','2016-02-29','2016-02-29 14:18:53','2016-02-29 19:20:36',NULL,NULL,NULL,NULL),('7b36764e74cc6b8bf496ce3423c6aec3','AGU-GPS-12345','2016-02-29','2016-02-29 14:46:16','2016-02-29 19:20:08',NULL,NULL,NULL,NULL),('7dcb3986f2a23f4d8ceb475bb20a828c','AGU-GPS-90871','2016-02-29','2016-02-29 14:46:08','2016-02-29 19:20:24',NULL,NULL,NULL,NULL);
+insert  into `gps`(`id`,`nomer_seri`,`tanggal_pembelian`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('0561721ce4be3918e4c277a0c14ab88d','AGU-GPS-7Y761','2016-02-29','2016-02-29 11:23:56','2016-02-29 19:20:51',NULL,NULL,NULL,NULL),('12221cba521fcdc9b3ca9f1f9f44ac54','AGU-GPS-A1209','2016-02-29','2016-02-29 11:23:40','2016-02-29 19:21:05',NULL,NULL,NULL,NULL),('40edec9edce62fb346f2f88b6c0baa44','AGU-GPS-4567Y','2016-02-29','2016-02-29 20:03:43','2016-03-01 10:01:05',NULL,NULL,NULL,NULL),('7583452a5c40f61c8c96046e1d189af5','AGU-GPS-10976','2016-02-29','2016-02-29 14:18:53','2016-02-29 19:20:36',NULL,NULL,NULL,NULL),('7b36764e74cc6b8bf496ce3423c6aec3','AGU-GPS-12345','2016-02-29','2016-02-29 14:46:16','2016-02-29 19:20:08',NULL,NULL,NULL,NULL),('7dcb3986f2a23f4d8ceb475bb20a828c','AGU-GPS-90871','2016-02-29','2016-02-29 14:46:08','2016-02-29 19:20:24',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `groups` */
 
@@ -455,7 +455,7 @@ CREATE TABLE `paket` (
 
 /*Data for the table `paket` */
 
-insert  into `paket`(`paket_id`,`nama_paket`,`nama_layanan`,`harga`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('231870064e7879f51770982aba46e002','PAKET-SATU','Hemat',2000000,'2016-02-29 21:03:26',NULL,NULL,NULL,NULL,NULL),('62e3a505a8cf1e1ed950e5c6d5b5159d','PAKET-DUA','Reguler',5000000,'2016-02-29 21:03:34',NULL,NULL,NULL,NULL,NULL);
+insert  into `paket`(`paket_id`,`nama_paket`,`nama_layanan`,`harga`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('231870064e7879f51770982aba46e002','PAKET-SATU','Hemat',2000000,'2016-02-29 21:03:26',NULL,NULL,NULL,NULL,NULL),('62e3a505a8cf1e1ed950e5c6d5b5159d','PAKET-DUA','Reguler',8400000,'2016-02-29 21:03:34','2016-03-01 09:58:30',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `phrases` */
 
@@ -507,7 +507,7 @@ CREATE TABLE `slugs` (
   `deleted_by` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `url` (`url`)
-) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
 
 /*Data for the table `slugs` */
 

@@ -49,12 +49,7 @@
         <div id="collapse2" class="body collapse in">
 			<form class="form-horizontal" id="formTambahGpsX">
 			
-			<div class="form-group">
-					<label class="control-label col-lg-4">Id</label>
-					<div class="col-lg-6">
-							<input class="form-control"  type="text" name='id' id='id' readonly=""> 
-					</div>
-				</div>
+				<input class="form-control"  type="hidden" name='id' id='id' readonly=""> 
 
 				<div class="form-group">
 					<label class="control-label col-lg-4">Tanggal Pembelian</label>
@@ -110,14 +105,6 @@
                         align: 'center'
                     },
 					{
-                        field: 'id',
-                        title: 'Id',
-                        sortable: true,
-						width: 120,
-                        footerFormatter: totalTextFormatter,
-                        align: 'center'
-                    },
-                    {
                         field: 'tanggal_pembelian',
                         title: 'Tanggal Pembelian',
 						width: 100,
@@ -128,7 +115,7 @@
 						{
                         field: 'nomer_seri',
                         title: 'No. Seri',
-						width: 200,
+						width: 400,
                         sortable: true,
                         footerFormatter: totalNameFormatter,
                         align: 'left'

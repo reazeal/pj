@@ -117,18 +117,18 @@ class Paket extends Admin_Controller
     {
 		
 		$nama_paket = $this->input->post('nama_paket');
-		$layanan_id = $this->input->post('layanan_id');
-		$dt_layanan = $this->layanan_model->where(array('layanan_id'=>$layanan_id))->get();
+		$harga = $this->input->post('harga');
+		$paket_id = $this->input->post('paket_id');
+		
+		/*$dt_layanan = $this->layanan_model->where(array('layanan_id'=>$layanan_id))->get();
 		$nama_layanan = $dt_layanan->nama_layanan;
-		$harga = $dt_layanan->harga;
+		$harga = $dt_layanan->harga;*/
 
 		$message = array();
 
-		
-		
-		if(!empty($layanan_id)){
-			$update_content = array('nama_layanan' => $nama_layanan, 'harga' => $harga);
-			$this->paket_model->update($update_content, array('layanan_id'=>$layanan_id));
+		if(!empty($paket_id)){
+			$update_content = array('nama_paket' => $nama_paket, 'harga' => $harga);
+			$this->paket_model->update($update_content, array('paket_id'=>$paket_id));
 			//$this->pendaftaran_model->update($update_content, $no_pendaftaran);
 			//$this->pendaftaran_model->where(array('no_pendaftaran'=>$no_pendaftaran))->update($update_content,'no_pendaftaran');
 			$message = array(

@@ -60,12 +60,7 @@
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label class="control-label col-lg-4">No. Pendaftaran</label>
-					<div class="col-lg-6">
-							<input class="form-control"  type="text" name='no_pendaftaran' id='no_pendaftaran' readonly="readonly"> 
-					</div>
-				</div>
+				<input class="form-control"  type="hidden" name='no_pendaftaran' id='no_pendaftaran' readonly=""> 
 
 				<div class="form-group">
 					<label class="control-label col-lg-4">Nama</label>
@@ -156,14 +151,7 @@
                         align: 'center',
                         align: 'center'
                     },
-					{
-                        field: 'no_pendaftaran',
-                        title: 'No. Pendaftaran',
-                        sortable: true,
-						width: 120,
-                        footerFormatter: totalTextFormatter,
-                        align: 'center'
-                    },
+					
                     {
                         field: 'tanggal',
                         title: 'Tanggal',

@@ -48,14 +48,8 @@
       <div class="modal-body">
         <div id="collapse2" class="body collapse in">
 			<form class="form-horizontal" id="formTambahPaketX">
-
-			<div class="form-group">
-					<label class="control-label col-lg-4">Id</label>
-					<div class="col-lg-6">
-							<input class="form-control"  type="text" name='paket_id' id='paket_id' readonly=""> 
-					</div>
-				</div>
-
+				
+				<input class="form-control"  type="hidden" name='paket_id' id='paket_id' readonly=""> 
 				
 				<div class="form-group">
 					<label class="control-label col-lg-4">Nama Paket</label>
@@ -65,6 +59,39 @@
 				</div>
 
 				<div class="form-group">
+					<label class="control-label col-lg-4">Harga</label>
+					<div class="col-lg-6">
+							<input class="validate[required] form-control"  type="text" name='harga' id='harga' readonly="readonly"> 
+					</div>
+				</div>
+				
+				<div class="form-group">
+				<label class="control-label col-lg-4">Layanan</label>
+				<div class="col-lg-6">
+				 <table id="table_layanan"
+					   data-toggle="table"
+					   data-search="true"
+					   data-show-columns="true"
+					   data-pagination="true"
+					   data-id-field="layanan_id"
+					   data-side-pagination="server"
+					   data-page-list="[10, 25, 50, 100, ALL]"
+					   data-height="299"
+					   data-url="<?php echo site_url('admin/layanan/get_data_layanan');?>">
+					<thead>
+					<tr>
+					
+						<th data-field="state"  data-checkbox="true" ></th>
+						<th data-field="nama_layanan">Nama Layanan</th>
+						<th data-field="harga">Harga</th>
+					</tr>
+					</thead>
+				</table>
+				</div>
+				</div>
+
+				<!--
+				<div class="form-group">
 					<label class="control-label col-lg-4">Layanan</label>
 					<div class="col-lg-6">
 				<?php
@@ -72,6 +99,7 @@
                 ?>
 					</div>
 				</div>
+				-->
 
 
                                         <div style="text-align:center" class="form-actions no-margin-bottom">
@@ -89,14 +117,46 @@
 </div>
 
 <script>
-        var $modal = $('#formTambahPaket').modal({show: false});
+
+	    var $modal = $('#formTambahPaket').modal({show: false});
         var $alert = $('.alert').hide();
 
-    var $table = $('#table'),
+		var $table = $('#table'),
         $remove = $('#remove'),
         selections = [];
-		$alert = $('.alert').hide();
+		
 
+		var $table_layanan = $('#table_layanan');
+		selections_layanan = [];
+	
+    $(function () {
+        $('#formTambahPaket').on('shown.bs.modal', function () {
+            $table_layanan.bootstrapTable('resetView');
+        });
+
+		$table_layanan.on('check.bs.table uncheck.bs.table ' +
+                'check-all.bs.table uncheck-all.bs.table', function () {
+		
+			if(!$table_layanan.bootstrapTable('getSelections').length){
+				var z = 0;
+			}
+			selections_layanan = getIdSelections_layanan();
+        });
+
+		function getIdSelections_layanan() {
+			var z = 0;
+			
+			$.map($table_layanan.bootstrapTable('getSelections'), function (row) {
+				 z += parseInt(row.harga);
+			});
+			
+			return $modal.find('input[name="harga"]').val(z);
+
+		}
+    });
+
+
+    
     function initTable() {
         $table.bootstrapTable({
             height: 527,
@@ -106,14 +166,6 @@
                         field: 'state',
                         checkbox: true,
                         align: 'center',
-                        align: 'center'
-                    },
-					{
-                        field: 'paket_id',
-                        title: 'Id',
-                        sortable: true,
-						width: 120,
-                        footerFormatter: totalTextFormatter,
                         align: 'center'
                     },
                     {
