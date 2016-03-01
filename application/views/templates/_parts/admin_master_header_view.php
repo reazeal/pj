@@ -61,8 +61,8 @@
                 <!-- LOGO SECTION -->
                 <header class="navbar-header">
 
-                    <a href="index.html" class="navbar-brand">
-                    <img src="<?php echo site_url('assets/img/logo.png');?>" alt="" />
+                    <a href="<?php echo site_url('admin');?>" class="navbar-brand">
+                    <img src="<?php echo site_url('assets/img/logo.jpg');?>" alt="" />
                         
                         </a>
                 </header>
@@ -92,7 +92,7 @@ if($this->ion_auth->logged_in()) {
                 <!-- LOGO SECTION -->
                 <header class="navbar-header">
 
-                    <a href="index.html" class="navbar-brand">
+                    <a href="<?php echo site_url('admin');?>" class="navbar-brand">
                     <img src="<?php echo site_url('assets/img/logo.png');?>" alt="" />
                         
                         </a>
@@ -135,7 +135,7 @@ if($this->ion_auth->logged_in()) {
         <!-- MENU SECTION -->
        <div id="left" style="margin-top: 10px;">
             <ul id="menu" class="collapse">   
-                <li class="panel ">
+                <li class="panel <?php echo (($menu_data['master']=='true')? 'active':'') ?>">
                     <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
                         <i class="icon-tasks"> </i> Master     
 	   
@@ -144,7 +144,7 @@ if($this->ion_auth->logged_in()) {
                         </span>
                        &nbsp; <!-- <span class="label label-default">10</span>--> &nbsp;
                     </a>
-                    <ul class="collapse" id="component-nav">
+                    <ul class="<?php echo (($menu_data['class_master']=='in')? 'in':'collapse') ?>" id="component-nav">
                        
                         <li class=""><a href="<?php echo site_url('admin/pendaftaran');?>"><i class="icon-double-angle-right "></i> Pendaftaran</a></li>
 						<li class=""><a href="<?php echo site_url('admin/gps');?>"><i class="icon-double-angle-right "></i> Gps Device</a></li>
@@ -153,7 +153,7 @@ if($this->ion_auth->logged_in()) {
                     </ul>
                 </li>
 
-                <li class="panel">
+                <li class="panel <?php echo (($menu_data['transaksi']=='true')? 'active':'') ?>">
                     <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#pagesr-nav">
                         <i class="icon-table"></i> Transaksi
 	   
@@ -162,7 +162,7 @@ if($this->ion_auth->logged_in()) {
                         </span>
                           &nbsp; <!-- <span class="label label-info">6</span> --> &nbsp;
                     </a>
-                    <ul class="collapse" id="pagesr-nav">
+                    <ul class="<?php echo (($menu_data['class_transaksi']=='in')? 'in':'collapse') ?>" id="pagesr-nav">
                        
                     </ul>
                 </li>

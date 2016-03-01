@@ -171,19 +171,12 @@
                     {
                         field: 'nama_paket',
                         title: 'Nama Paket',
-						width: 100,
+						width: 400,
                         sortable: true,
                         footerFormatter: totalNameFormatter,
                         align: 'center'
                     },
-						{
-                        field: 'nama_layanan',
-                        title: 'Nama Layanan',
-						width: 130,
-                        sortable: true,
-                        footerFormatter: totalNameFormatter,
-                        align: 'left'
-                    },{
+					{
                         field: 'harga',
                         title: 'Harga',
 						width: 100,

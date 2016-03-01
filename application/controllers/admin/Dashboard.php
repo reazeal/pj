@@ -12,6 +12,7 @@ class Dashboard extends Admin_Controller
 
     public function index()
     {
+		 $this->data['menu_data'] = array('master'=>false,'transaksi'=>false,'class_master'=>'collapse','class_transaksi'=>'collapse');
         $this->render('admin/dashboard_view');
 
     }

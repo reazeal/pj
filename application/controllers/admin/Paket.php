@@ -25,6 +25,7 @@ class Paket extends Admin_Controller
 	public function index()
 	{
 		  $this->data['pilihan_layanan'] = $this->layanan_model->get_layanan_list();
+		  $this->data['menu_data'] = array('master'=>true,'transaksi'=>false,'class_master'=>'in','class_transaksi'=>'collapse');
 		  $this->render('admin/paket/index_view');
 	}
 
@@ -44,20 +45,14 @@ class Paket extends Admin_Controller
 		$message = array();
 
 		$nama_paket = $this->input->post('nama_paket');
-		$layanan_id = $this->input->post('layanan_id');
-
-		
-		$dt_layanan = $this->layanan_model->where(array('layanan_id'=>$layanan_id))->get();
-		$nama_layanan = $dt_layanan->nama_layanan;
-		$harga = $dt_layanan->harga;
+		$harga = $this->input->post('harga');
 		$paket_id = md5('paket_'.date('Y-m-d H:i:s'));
 			
-		if(!empty($layanan_id) && !empty($nama_paket)){
+		if(!empty($nama_paket) && !empty($harga)){
 
 			$insert_content = array(
 				'paket_id' => $paket_id,
 				'nama_paket' => $nama_paket,
-				'nama_layanan' => $nama_layanan,
 				'harga' => $harga
 			);
 

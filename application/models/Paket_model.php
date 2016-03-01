@@ -20,13 +20,11 @@ class Paket_model extends MY_Model
     				$this->db->select("
 	       				paket_id,
 						nama_paket,
-	       				nama_layanan,
 						harga
        				");
        				
        				if(!empty($search)){
 						$this->db->like('nama_paket',$search,'both');
-						$this->db->or_like("nama_layanan", $search,'both');
 						$this->db->or_like("harga", $search,'both');
 					}
 					
@@ -39,7 +37,6 @@ class Paket_model extends MY_Model
 							
 							$data[] = array(
 										'nama_paket' => $atributy->nama_paket,
-										'nama_layanan' => $atributy->nama_layanan,
 										'harga' => $atributy->harga,
 										'paket_id' => $atributy->paket_id
 									);

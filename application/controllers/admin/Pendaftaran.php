@@ -23,6 +23,7 @@ class Pendaftaran extends Admin_Controller
 
 	public function index()
 	{
+		$this->data['menu_data'] = array('master'=>true,'transaksi'=>false,'class_master'=>'in','class_transaksi'=>'collapse');
         $this->render('admin/pendaftaran/index_view');
 	}
 
