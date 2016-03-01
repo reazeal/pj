@@ -156,7 +156,7 @@
                         field: 'tanggal',
                         title: 'Tanggal',
 						width: 100,
-                        sortable: true,
+						sortable: true,
                         footerFormatter: totalNameFormatter,
                         align: 'center'
                     },
