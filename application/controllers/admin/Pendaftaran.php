@@ -54,7 +54,7 @@ class Pendaftaran extends Admin_Controller
 		//$no_pendaftaran = $this->input->post('no_pendaftaran');
 		$no_pendaftaran = md5('pendaftaran_'.date('Y-m-d H:i:s'));
 		
-		if(!empty($no_pendaftaran)){
+		if(!empty($nama) && !empty($tanggal) && !empty($jenis) && !empty($no_siup)){
 			$insert_content = array(
 				'no_pendaftaran' => $no_pendaftaran,
 				'email'=>$email,
