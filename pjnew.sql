@@ -441,8 +441,7 @@ DROP TABLE IF EXISTS `paket`;
 
 CREATE TABLE `paket` (
   `paket_id` varchar(255) NOT NULL,
-  `nama_paket` varchar(255) DEFAULT NULL,
-  `nama_layanan` text,
+  `nama_paket` text,
   `harga` float DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -455,7 +454,7 @@ CREATE TABLE `paket` (
 
 /*Data for the table `paket` */
 
-insert  into `paket`(`paket_id`,`nama_paket`,`nama_layanan`,`harga`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('231870064e7879f51770982aba46e002','PAKET-SATU','Hemat',2000000,'2016-02-29 21:03:26',NULL,NULL,NULL,NULL,NULL),('62e3a505a8cf1e1ed950e5c6d5b5159d','PAKET-DUA','Reguler',8400000,'2016-02-29 21:03:34','2016-03-01 09:58:30',NULL,NULL,NULL,NULL);
+insert  into `paket`(`paket_id`,`nama_paket`,`harga`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('5407d4b5a3f532c5515f26203fd58f2e','PAKETAN-DATA',1400000,'2016-03-01 11:11:40',NULL,NULL,NULL,NULL,NULL),('54f19041d4b75372c90c8468da70d5ee','PAKET-DUA',8400000,'2016-03-01 11:11:48',NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `phrases` */
 
@@ -557,7 +556,7 @@ CREATE TABLE `users` (
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`ip_address`,`username`,`password`,`salt`,`email`,`activation_code`,`forgotten_password_code`,`forgotten_password_time`,`remember_code`,`created_on`,`last_login`,`active`,`first_name`,`last_name`,`company`,`phone`) values (1,'127.0.0.1','administrator','$2y$08$G0h47xFzvBDD3DjwWD13XeCfwGuZgqtSodh5ARhDJLLWPRv0jSgfG','','info@behaestex.co.id','',NULL,NULL,NULL,1268889823,1452646591,1,'Admin','istrator','ADMIN','0'),(2,'::1','btx','$2y$08$YagivZvJ/rC/3iq5.B6Y1O1QyB7tw2TMxKvSAhUnTWY0xM9CS5xrK',NULL,'btx@behaestex.co.id',NULL,NULL,NULL,NULL,1448265757,1456748012,1,'BTX','','','');
+insert  into `users`(`id`,`ip_address`,`username`,`password`,`salt`,`email`,`activation_code`,`forgotten_password_code`,`forgotten_password_time`,`remember_code`,`created_on`,`last_login`,`active`,`first_name`,`last_name`,`company`,`phone`) values (1,'127.0.0.1','administrator','$2y$08$G0h47xFzvBDD3DjwWD13XeCfwGuZgqtSodh5ARhDJLLWPRv0jSgfG','','info@behaestex.co.id','',NULL,NULL,NULL,1268889823,1452646591,1,'Admin','istrator','ADMIN','0'),(2,'::1','btx','$2y$08$YagivZvJ/rC/3iq5.B6Y1O1QyB7tw2TMxKvSAhUnTWY0xM9CS5xrK',NULL,'btx@behaestex.co.id',NULL,NULL,NULL,NULL,1448265757,1456802484,1,'BTX','','','');
 
 /*Table structure for table `users_groups` */
 
