@@ -3,7 +3,7 @@
 		
 		
 		<div class="col-lg-12">
-					<div class="panel panel-primary">
+					<div class="panel panel-info">
                         <div class="panel-heading">
                             <h5><b>Data Pendaftaran</b></h5>
                         </div>

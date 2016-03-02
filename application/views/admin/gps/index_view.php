@@ -2,7 +2,7 @@
 <div class="container" style="margin-top:20px;margin-left:210px;">
 
 		<div class="col-lg-12">
-					<div class="panel panel-primary">
+					<div class="panel panel-info">
                         <div class="panel-heading">
                             <h5><b>Data Gps Device</b></h5>
                         </div>
