@@ -5,7 +5,7 @@
 		    
 			
 		 <div id="toolbar">
-			<button class="btn btn-primary" data-toggle="modal" data-target="#formTambahGps">
+			<button class="btn btn-primary" data-toggle="modal"  onclick="TambahData();">
 				<i class="icon-plus"></i> Tambah
 			</button>
 			<button id="remove" class="btn btn-danger" disabled>
@@ -180,6 +180,12 @@
             });
         });
     }
+
+	function TambahData() {
+		$("form").trigger("reset");
+        $modal.modal('show');
+    }
+
 
     function getIdSelections() {
         return $.map($table.bootstrapTable('getSelections'), function (row) {

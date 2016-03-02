@@ -5,7 +5,7 @@
 		    
 			
 		 <div id="toolbar">
-			<button class="btn btn-primary" data-toggle="modal" data-target="#formTambahLayanan">
+			<button class="btn btn-primary" data-toggle="modal" onclick="TambahData();">
 				<i class="icon-plus"></i> Tambah
 			</button>
 			<button id="remove" class="btn btn-danger" disabled>
@@ -175,6 +175,11 @@
                 height: getHeight()
             });
         });
+    }
+
+	function TambahData() {
+		$("form").trigger("reset");
+        $modal.modal('show');
     }
 
     function getIdSelections() {
