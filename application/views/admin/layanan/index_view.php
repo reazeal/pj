@@ -155,11 +155,13 @@
 					success   : function(data) {
 								if (!data.success) { //If fails
 									$modal.modal('hide');
+									MsgBox.show('Hapus tidak berhasil');
 								}
 								else {
 										$modal.modal('hide');
 										$table.bootstrapTable('refresh');
 										$("form").trigger("reset");
+										MsgBox.show('Hapus berhasil!');
 									}
 								}
 				});
@@ -258,10 +260,10 @@
                     type: 'POST',
                     success: function () {
                         $table.bootstrapTable('refresh');
-                        showAlert('Delete item successful!', 'success');
+                        MsgBox.show('Hapus Berhasil!');
                     },
                     error: function () {
-                        showAlert('Delete item error!', 'danger');
+                        MsgBox.show('Hapus tidak berhasil!');
                     }
                 })
             }
@@ -380,13 +382,13 @@
 				success   : function(data) {
 							if (!data.success) { //If fails
 								//$modal.modal('hide');
-								showAlert(($modal.data('layanan_id') ? 'Update' : 'Create') + ' Gagal tambah data!', 'danger');
+								MsgBox.show(($modal.data('layanan_id') ? 'Update Data' : 'Tambah Data') + ' Gagal disimpan, cek kembali data yang akan dientrykan!');
 							}
 							else {
-									$modal.modal('hide');
-									$table.bootstrapTable('refresh');
-									$("form").trigger("reset");
-									showAlert(($modal.data('layanan_id') ? 'Update Data' : 'Tambah Data') + ' berhasil!', 'success');
+								MsgBox.show(($modal.data('layanan_id') ? 'Update Data' : 'Tambah Data') + ' Berhasil disimpan!');									
+								$modal.modal('hide');
+								$table.bootstrapTable('refresh');
+								$("form").trigger("reset");
 								}
 							}
 			});

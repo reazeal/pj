@@ -47,10 +47,40 @@
 		<script src="<?php echo site_url('assets/plugins/autosize/jquery.autosize.min.js');?>"></script>
 		<script src="<?php echo site_url('assets/plugins/tagsinput/jquery.tagsinput.min.js');?>"></script>
 		<script src="<?php echo site_url('assets/js/formsInit.js');?>"></script>
+		<script>
+
+				var MsgBox = (function() {
+					"use strict";
+
+					var elem,
+						hideHandler,
+						that = {};
+
+					that.init = function(options) {
+						elem = $(options.selector);
+					};
+
+					that.show = function(text) {
+						clearTimeout(hideHandler);
+
+						elem.find("span").html(text);
+						elem.delay(200).fadeIn().delay(4000).fadeOut();
+					};
+
+					return that;
+				}());
+
+				 $(function () {
+					MsgBox.init({
+						"selector": ".bb-alert"
+					});
+				});
+		</script>
 
 		</head>
 	
 <body class="padTop53 " >
+		
 <!-- HEADER SECTION -->
         <div id="top">
 
