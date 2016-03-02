@@ -2,6 +2,7 @@
 
  <!--END PAGE CONTENT -->
 </div>
+</div>
 
 <div class="bb-alert alert alert-danger " style="display:none;">
 	<span class="label label-warning"></span>

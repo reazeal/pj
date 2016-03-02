@@ -79,7 +79,7 @@
 
 		</head>
 	
-<body class="padTop53 " >
+<body class="padTop53" >
 		
 <!-- HEADER SECTION -->
         <div id="top">
@@ -176,11 +176,11 @@ if($this->ion_auth->logged_in()) {
                     </a>
                     <ul class="<?php echo (($menu_data['class_master']=='in')? 'in':'collapse') ?>" id="component-nav">
                        
-                        <li class=""><a href="<?php echo site_url('admin/pendaftaran');?>"><i class="icon-double-angle-right "></i> Pendaftaran</a></li>
-						<li class=""><a href="<?php echo site_url('admin/gps');?>"><i class="icon-double-angle-right "></i> Gps Device</a></li>
+                        <li class=""><a href="<?php echo site_url('admin/gps');?>"><i class="icon-double-angle-right "></i> Gps Device</a></li>
 						<li class=""><a href="<?php echo site_url('admin/layanan');?>"><i class="icon-double-angle-right "></i> Layanan</a></li>
 						<li class=""><a href="<?php echo site_url('admin/paket');?>"><i class="icon-double-angle-right "></i> Paket </a></li>
-                    </ul>
+						<li class=""><a href="<?php echo site_url('admin/pendaftaran');?>"><i class="icon-double-angle-right "></i> Pendaftaran</a></li>
+					</ul>
                 </li>
 
                 <li class="panel <?php echo (($menu_data['transaksi']=='true')? 'active':'') ?>">

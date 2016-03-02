@@ -1,7 +1,8 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
-<div class="container" style="margin-top:20px;">
+<div class="container" style="margin-top:20px;margin-left:210px;">
 
-		<div class="col-lg-10">
+		<div class="col-lg-12">
+		<div class="row">
 					<div class="panel panel-primary">
                         <div class="panel-heading">
                             <h5><b>Data Paket</b></h5>
@@ -10,7 +11,7 @@
 
 								
 
-							<div class="col-lg-10">
+							<div class="col-lg-12">
 							 <div id="toolbar">
 								<button class="btn btn-primary" data-toggle="modal" onclick="TambahData();">
 									<i class="icon-plus"></i> Tambah
@@ -20,7 +21,7 @@
 								</button>
 							 </div>
 							 </div>
-							 <div class="col-lg-10" style="margin-top: 20px;width:100%;">
+							 <div class="col-lg-12" style="margin-top: 20px;width:100%;">
 								 <table id="table"
 								   data-toolbar="#toolbar"
 								   data-search="true"
@@ -49,7 +50,7 @@
 					   </div>
 					</div>
 		</div>
-
+		</div>
 
 <!-- Form Tambah Data -->
 <div id="formTambahPaket" class="modal fade" role="dialog">
@@ -503,5 +504,3 @@
 	 });
 
 </script>
-
-</div>
