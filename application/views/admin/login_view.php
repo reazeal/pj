@@ -1,8 +1,14 @@
+<div id="wrap" >
+<div class="container">
+<div id="login" class="tab-pane active">
 <div class="row">
     <div class="col-lg-4 col-lg-offset-4">
-        <h1>Login</h1>
+		<h1></h1>
+       <p class="text-muted text-center btn-block btn btn-primary btn-rect">
+         Memasukkan username dan password anda!
+        </p>
         <?php echo $this->session->flashdata('message');?>
-        <?php echo form_open('',array('class'=>'form-horizontal'));?>
+        <?php echo form_open('',array('class'=>'form-signin'));?>
         <div class="form-group">
             <?php echo form_label('Username','identity');?>
             <?php echo form_error('identity');?>
@@ -19,8 +25,9 @@
             </label>
         </div>
         <?php echo form_hidden('redirect_to',$redirect_to);?>
-        <?php echo form_submit('submit', 'Log in', 'class="btn btn-primary btn-lg btn-block"');?>
+        <?php echo form_submit('submit', 'Log in', 'class="btn text-muted text-center btn-danger"');?>
         <?php echo form_close();?>
+	</div>
     </div>
 </div>
 
