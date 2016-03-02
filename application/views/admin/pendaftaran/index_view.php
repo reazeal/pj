@@ -1,39 +1,55 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 <div class="container" style="margin-top:20px;">
+		
+		
 		<div class="col-lg-10">
-		 <h3>Data Pendaftaran</h3>
-		    
-			
-		 <div id="toolbar">
-			<button class="btn btn-primary" data-toggle="modal" onclick="TambahData();">
-				<i class="icon-plus"></i> Tambah
-			</button>
-			<button id="remove" class="btn btn-danger" disabled>
-				<i class="glyphicon glyphicon-remove"></i> Hapus
-			</button>
-		 </div>
-		 </div>
-		 <div class="col-lg-10" style="margin-top: 20px;width:89%;">
-			 <table id="table"
-			   data-toolbar="#toolbar"
-			   data-search="true"
-			   data-show-refresh="true"
-			   data-show-toggle="true"
-			   data-show-columns="true"
-			   data-show-export="true"
-			   data-detail-view="true"
-			   data-detail-formatter="detailFormatter"
-			   data-detail-view="true"
-			   data-pagination="true"
-			   data-id-field="no_pendaftaran"
-			   data-page-list="[10, 25, 50, 100, ALL]"
-			   data-show-footer="false"
-			   data-side-pagination="server"
-			   data-row-style="rowStyle"
-			   data-url="<?php echo site_url('admin/pendaftaran/get_data_pendaftaran');?>"
-			   >
-			 </table>
-		 </div>
+					<div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h5><b>Data Pendaftaran</b></h5>
+                        </div>
+                        <div class="panel-body">
+
+						    <div class="col-lg-10">
+							<div id="toolbar">
+								<button class="btn btn-primary" data-toggle="modal" onclick="TambahData();">
+									<i class="icon-plus"></i> Tambah
+								</button>
+								<button id="remove" class="btn btn-danger" disabled>
+									<i class="glyphicon glyphicon-remove"></i> Hapus
+								</button>
+							 </div>
+							 </div>
+							 <div class="col-lg-10" style="margin-top: 20px;width:100%;">
+								 <table id="table"
+								   data-toolbar="#toolbar"
+								   data-search="true"
+								   data-show-refresh="true"
+								   data-show-toggle="true"
+								   data-show-columns="true"
+								   data-show-export="true"
+								   data-detail-view="true"
+								   data-detail-formatter="detailFormatter"
+								   data-detail-view="true"
+								   data-pagination="true"
+								   data-id-field="no_pendaftaran"
+								   data-page-list="[10, 25, 50, 100, ALL]"
+								   data-show-footer="false"
+								   data-side-pagination="server"
+								   data-row-style="rowStyle"
+								   data-url="<?php echo site_url('admin/pendaftaran/get_data_pendaftaran');?>"
+								   >
+								 </table>
+							 </div>
+
+
+						</div>
+                        <div class="panel-footer">
+                       </div>
+                    </div>
+		</div>
+		
+		
+		
 
 <!-- Form Tambah Data -->
 <div id="formTambahPendaftaran" class="modal fade" role="dialog">
