@@ -100,6 +100,17 @@
 </div>
 
 <script>
+
+	function executeQuery() {
+	  $.ajax({
+		url: '<?php echo site_url('admin/gps/rangetime');?>',
+		success: function(data) {
+		  // do something with the return value here if you like
+		}
+	  });
+	  setTimeout(executeQuery, 5000); // you could choose not to continue on failure...
+	}
+
         var $modal = $('#formTambahGps').modal({show: false});
         var $alert = $('.alert').hide();
 
@@ -419,6 +430,9 @@
 			});
 			event.preventDefault(); //Prevent the default submit
 		});
+
+		//setTimeout(executeQuery, 5000);
+
 });
 
     function rowStyle(row, index) {

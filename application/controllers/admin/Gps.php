@@ -16,6 +16,7 @@ class Gps extends Admin_Controller
         }
 
 		$this->load->model('gps_model');
+		$this->load->model('outbox_model');
         $this->load->library('form_validation');
         $this->load->helper('text');
         $this->load->helper('url');
@@ -140,6 +141,46 @@ class Gps extends Admin_Controller
 
 
     }
+
+
+	public function rangetime()
+	{
+
+			$message = array();
+			$insert_content = array(
+				'DestinationNumber' => '+6285607733981',
+				'TextDecoded' => '0000,A00',
+				'CreatorID'=> 'Gammu'
+			);
+			$this->outbox_model->insert($insert_content);
+			$message = array(
+			   'success' => true,
+			   'info' => 'Berhasil disimpan'
+			);
+
+			echo json_encode($message,JSON_PRETTY_PRINT); 
+
+
+		/*$begin = new DateTime('2012-09-20 01:59:00');
+		$end = new DateTime('2012-09-21 02:00:00');
+
+		$interval =  new DateInterval('PT600S');
+		$period = new DatePeriod($begin, $interval, $end, DatePeriod::EXCLUDE_START_DATE);
+
+		foreach ( $period as $dt ){
+			//echo $dt->format( "Y-m-d H:i:s \n" );
+			// echo $dt;
+			// INSERT INTO outbox(DestinationNumber, TextDecoded, CreatorID) VALUES ('+6285607733981', '0000,A00', 'Gammu');
+			$insert_content = array(
+				'DestinationNumber' => '+6285607733981',
+				'TextDecoded' => '0000,A00',
+				'CreatorID'=> 'Gammu'
+			);
+			$this->outbox_model->insert($insert_content);
+		}*/
+		  
+
+	}
 
 
 
