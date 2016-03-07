@@ -77,7 +77,7 @@
 	}
 
 	function initialize(){
-		var myLatLng = new google.maps.LatLng(-1.48518, 102.43806);
+		var myLatLng = new google.maps.LatLng(-6.965364, 109.9128218);
 		var myOptions = {
 			zoom: 5,
 			center:myLatLng,
@@ -119,15 +119,17 @@
 		<?php		
 		}
 		?>
-	}
 
-		$('#cari').change(function(){
+				/*$('#cari').change(function(){
 					var i=$('#cari').val();
 					var koodinat=markers[i].getPosition();
 					map.panTo(koodinat);
 					updatedata();
-			});
+			});*/
+	}
+
 		
+
 		$(document).ready(function() {
 			initialize();
 			setTimeout(executeQuery, 5000);
@@ -146,7 +148,7 @@
 						  
 						  
 						
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label class="control-label col-lg-4">Cari</label>
 							<div class="col-lg-6">
 							<select name="cari" id="cari"  class="form-control validate[required]">
@@ -160,8 +162,19 @@
 							?>
 							</select>
 							</div>
+						</div> -->
+						
+						<div class="col-lg-12">	
+						<div class="row">
+							<div class="col-lg-12">
+							<div class="box">
+							<div class="body">
+								<div id="canvas" class="google-maps"></div>
+							</div>
+							</div>
+							</div>
 						</div>
-
+						</div>	
 						
 						
 						</div>
@@ -169,16 +182,6 @@
                        </div>
                     </div>
 		</div>
-						
-					<div class="row">
-						<div class="col-lg-11">
-						<div class="box">
-						<div class="body">
-							<div id="canvas" class="google-maps"></div>
-						</div>
-						</div>
-						</div>
-					</div>
-						
+					
 
 
