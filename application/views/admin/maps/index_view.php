@@ -120,12 +120,7 @@
 		}
 		?>
 
-				/*$('#cari').change(function(){
-					var i=$('#cari').val();
-					var koodinat=markers[i].getPosition();
-					map.panTo(koodinat);
-					updatedata();
-			});*/
+				
 	}
 
 		
@@ -133,6 +128,13 @@
 		$(document).ready(function() {
 			initialize();
 			setTimeout(executeQuery, 5000);
+			$('#cari').change(function(){
+					var i=$('#cari').val();
+					console.log(i);
+					var koodinat=markers[i-1].getPosition();
+					map.panTo(koodinat);
+					updatedata();
+			});
 		});
 
 </script>
@@ -148,7 +150,7 @@
 						  
 						  
 						
-						<!-- <div class="form-group">
+						 <div class="form-group">
 							<label class="control-label col-lg-4">Cari</label>
 							<div class="col-lg-6">
 							<select name="cari" id="cari"  class="form-control validate[required]">
@@ -162,7 +164,7 @@
 							?>
 							</select>
 							</div>
-						</div> -->
+						</div>
 						
 						<div class="col-lg-12">	
 						<div class="row">
