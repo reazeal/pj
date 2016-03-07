@@ -37,7 +37,7 @@
 	}*/
 
 
-	var refreshId = setInterval(function(){updatedata();}, 1000);
+	var refreshId = setInterval(function(){updatedata();},4000);
 	
 	function updatedata(){			
 		var lat=0;
