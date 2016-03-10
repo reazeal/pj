@@ -69,13 +69,14 @@
 				
 				<div class="form-group">
 					<label class="control-label col-lg-4">No. Pendaftaran</label>
-					<div class="col-lg-6">
+					<div class="col-lg-8">
 				<?php
-                echo form_dropdown('no_pendaftaran',$pilihan_pendaftaran,set_value('no_pendaftaran',(isset($content->no_pendaftaran) ? $content->no_pendaftaran: '')),'class="form-control validate[required]"');
+                echo form_dropdown('no_pendaftaran',$pilihan_pendaftaran,set_value('no_pendaftaran',(isset($content->no_pendaftaran) ? $content->no_pendaftaran: '')),'class="form-control selectpicker validate[required]" data-show-subtext="true" data-live-search="true" ');
                 ?>
 					</div>
 				</div>
 
+				
 				<div class="form-group">
 					<label class="control-label col-lg-4">Nama</label>
 					<div class="col-lg-6">
@@ -87,34 +88,20 @@
 					<label class="control-label col-lg-4">GPS</label>
 					<div class="col-lg-6">
 				<?php
-                echo form_dropdown('id',$pilihan_gps,set_value('nomor_seri',(isset($content->gps_id) ? $content->gps_id: '')),'class="form-control validate[required]"');
+                echo form_dropdown('id',$pilihan_gps,set_value('nomor_seri',(isset($content->gps_id) ? $content->gps_id: '')),'class="form-control selectpicker validate[required]" data-show-subtext="true" data-live-search="true" ');
                 ?>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-4">Tipe</label>
+					<label class="control-label col-lg-4">Petugas</label>
 					<div class="col-lg-6">
-							<input class="validate[required] form-control"  type="text" name='tipe' id='tipe'> 
-					</div>
-				</div>
-				
-				<div class="form-group">
-				<label class="control-label col-lg-4">Tgl. Pembelian</label>
-				<div class="col-lg-6">
-						<div class="input-group input-append date" id="dp3" data-date="<?php echo date('d-m-Y'); ?>" data-date-format="dd-mm-yyyy">
-							<input id="tgl_pembelian" class="validate[required] form-control" value="<?php echo date('d-m-Y'); ?>"  type="text" name='tgl_pembelian'>
-							<span class="input-group-addon add-on"><i class="icon-calendar"></i></span>
-						</div>
+				<?php
+                echo form_dropdown('petugas_id',$pilihan_petugas,set_value('nama_petugas',(isset($content->petugas_id) ? $content->petugas_id: '')),'class="form-control selectpicker validate[required]" data-show-subtext="true" data-live-search="true" ');
+                ?>
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label class="control-label col-lg-4">Harga</label>
-					<div class="col-lg-6">
-							<input class="validate[required,custom[number]] form-control"  type="text" name='harga' id='harga'> 
-					</div>
-				</div>
 
 
                                         <div style="text-align:center" class="form-actions no-margin-bottom">
