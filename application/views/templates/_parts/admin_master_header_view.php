@@ -25,6 +25,7 @@
 		<link rel="stylesheet" href="<?php echo site_url('assets/plugins/datepicker/css/datepicker.css');?>" />
 		<link rel="stylesheet" href="<?php echo site_url('assets/plugins/timepicker/css/bootstrap-timepicker.min.css');?>" />
 		<link rel="stylesheet" href="<?php echo site_url('assets/plugins/switch/static/stylesheets/bootstrap-switch.css');?>" />
+		<link rel="stylesheet" href="<?php echo site_url('assets/css/uploadfile.css');?>" />
 
 		<link href="<?php echo site_url('assets/css/layout2.css');?>" rel="stylesheet" />
         <link rel="stylesheet" href="<?php echo site_url('assets/plugins/timeline/timeline.css');?>" />
@@ -48,6 +49,8 @@
 		<script src="<?php echo site_url('assets/plugins/autosize/jquery.autosize.min.js');?>"></script>
 		<script src="<?php echo site_url('assets/plugins/tagsinput/jquery.tagsinput.min.js');?>"></script>
 		<script src="<?php echo site_url('assets/js/formsInit.js');?>"></script>
+		<script src="<?php echo site_url('assets/js/jquery.uploadfile.min.js');?>"></script>
+		<script src="<?php echo site_url('assets/js/jquery.form.js');?>"></script>
 		<script>
 
 				var MsgBox = (function() {
@@ -182,6 +185,7 @@ if($this->ion_auth->logged_in()) {
 						<li class=""><a href="<?php echo site_url('admin/paket');?>"><i class="icon-double-angle-right "></i> Paket </a></li>
 						<li class=""><a href="<?php echo site_url('admin/pendaftaran');?>"><i class="icon-double-angle-right "></i> Pendaftaran</a></li>
 						<li class=""><a href="<?php echo site_url('admin/alat');?>"><i class="icon-double-angle-right "></i> Alat</a></li>
+						<li class=""><a href="<?php echo site_url('admin/petugas');?>"><i class="icon-double-angle-right "></i> Petugas</a></li>
 						<li class=""><a href="<?php echo site_url('admin/maps');?>"><i class="icon-double-angle-right "></i> Maps</a></li>
 					</ul>
                 </li>
@@ -196,7 +200,7 @@ if($this->ion_auth->logged_in()) {
                           &nbsp; <!-- <span class="label label-info">6</span> --> &nbsp;
                     </a>
                     <ul class="<?php echo (($menu_data['class_transaksi']=='in')? 'in':'collapse') ?>" id="pagesr-nav">
-                       
+                       	<li class=""><a href="<?php echo site_url('admin/pemasangan');?>"><i class="icon-double-angle-right "></i> Pemasangan</a></li>
                     </ul>
                 </li>
             
