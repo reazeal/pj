@@ -1,17 +1,18 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 <div class="container" style="margin-top:20px;margin-left:210px;">
 		
-		
 		<div class="col-lg-12">
 					<div class="panel panel-info">
                         <div class="panel-heading">
-                            <h5><b>Data Pendaftaran</b></h5>
+                            <h5><b>Data Tracking</b></h5>
                         </div>
                         <div class="panel-body">
 
-						    <div class="col-lg-12">
-							<div id="toolbar">
-								<button class="btn btn-primary" data-toggle="modal" onclick="TambahData();">
+
+							<!--
+							<div class="col-lg-12">
+							 <div id="toolbar">
+								<button class="btn btn-primary" data-toggle="modal" disabled onclick="TambahData();">
 									<i class="icon-plus"></i> Tambah
 								</button>
 								<button id="remove" class="btn btn-danger" disabled>
@@ -19,6 +20,7 @@
 								</button>
 							 </div>
 							 </div>
+							 -->
 							 <div class="col-lg-12" style="margin-top: 20px;width:100%;">
 								 <table id="table"
 								   data-toolbar="#toolbar"
@@ -31,15 +33,16 @@
 								   data-detail-formatter="detailFormatter"
 								   data-detail-view="true"
 								   data-pagination="true"
-								   data-id-field="no_pendaftaran"
+								   data-id-field="layanan_id"
 								   data-page-list="[10, 25, 50, 100, ALL]"
 								   data-show-footer="false"
 								   data-side-pagination="server"
 								   data-row-style="rowStyle"
-								   data-url="<?php echo site_url('admin/pendaftaran/get_data_pendaftaran');?>"
+								   data-url="<?php echo site_url('admin/tracking/get_data_tracking');?>"
 								   >
 								 </table>
 							 </div>
+
 
 
 						</div>
@@ -49,10 +52,8 @@
 		</div>
 		
 		
-		
-
 <!-- Form Tambah Data -->
-<div id="formTambahPendaftaran" class="modal fade" role="dialog">
+<div id="formTambahLayanan" class="modal fade" role="dialog">
   <div class="modal-dialog modal-md">
 
     <!-- Modal content-->
@@ -64,81 +65,23 @@
       <div class="modal-body">
         <div id="collapse2" class="body collapse in">
 			<form class="form-horizontal" id="popup-validation">
-
+				
+				<input class="form-control"  type="hidden" name='layanan_id' id='layanan_id' readonly=""> 
+				
 				<div class="form-group">
-					<label class="control-label col-lg-4">Tanggal</label>
-
-					<div class="col-lg-4">
-						<div class="input-group input-append date" id="dp3" data-date="<?php echo date('d-m-Y'); ?>" data-date-format="dd-mm-yyyy">
-							<input id="tanggal" class="validate[required] form-control" value="<?php echo date('d-m-Y'); ?>" readonly="readonly" type="text" name='tanggal'>
-							<span class="input-group-addon add-on"><i class="icon-calendar"></i></span>
-						</div>
-					</div>
-				</div>
-
-				<!-- <input class="form-control"  type="hidden" name='no_pendaftaran' id='no_pendaftaran' readonly="readonly"> -->
-
-				<div class="form-group">
-					<label class="control-label col-lg-4">No. Pendaftaran</label>
+					<label class="control-label col-lg-4">Nama Layanan</label>
 					<div class="col-lg-6">
-							<input class="validate[required] form-control"  type="text" name='no_pendaftaran' id='no_pendaftaran' readonly="readonly"> 
+							<input class="validate[required] form-control"  type="text" name='nama_layanan' id='nama_layanan'> 
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-4">Nama</label>
+					<label class="control-label col-lg-4">Harga</label>
 					<div class="col-lg-6">
-							<input class="validate[required] form-control"  type="text" name='nama' id='nama'> 
+							<input class="validate[required,custom[number]] form-control"  type="text" name='harga' id='harga'> 
 					</div>
 				</div>
 
-
-				<div class="form-group">
-                    <label for="text4" class="control-label col-lg-4">Alamat</label>
-                    <div class="col-lg-6">
-                        <textarea id="alamat" name="alamat" class="validate[required] form-control"></textarea>
-                    </div>
-                </div>
-
-                <div class="form-group">
-					<label class="control-label col-lg-4">Telp. Rumah</label>
-					<div class="col-lg-4">
-							<input class="validate[required,custom[number]] form-control"  type="text" name='no_telp' id='no_telp'> 
-					</div>
-				</div>   
-
-				 <div class="form-group">
-					<label class="control-label col-lg-4">Telp. HP</label>
-					<div class="col-lg-4">
-							<input class="validate[required,custom[number]] form-control"  type="text" name='no_hp' id='no_hp'> 
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="control-label col-lg-4">E-mail</label>
-
-					<div class=" col-lg-4">
-						<input class="validate[required,custom[email]] form-control" name="email" id="email" type="text">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="control-label col-lg-4">Jenis</label>
-					<div class="col-lg-4">
-						<select name="jenis" id="jenis" class="validate[required] form-control">
-							<option value="">Pilih...</option>
-							<option value="Pribadi">Pribadi</option>
-							<option value="Perusahaan">Perusahaan</option>
-						</select>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="control-label col-lg-4">No. SIUP</label>
-					<div class="col-lg-6">
-							<input class="validate[required] form-control"  type="text" name='no_siup' id='no_siup'> 
-					</div>
-				</div>
 
                                         <div style="text-align:center" class="form-actions no-margin-bottom">
                                             <input value="Simpan" class="btn btn-primary btn-md " type="submit">
@@ -155,7 +98,7 @@
 </div>
 
 <script>
-        var $modal = $('#formTambahPendaftaran').modal({show: false});
+        var $modal = $('#formTambahLayanan').modal({show: false});
         var $alert = $('.alert').hide();
 
     var $table = $('#table'),
@@ -168,56 +111,28 @@
             height: 527,
 			 columns: [
                 
-                [	{
+                [	
+					/*{
                         field: 'state',
                         checkbox: true,
                         align: 'center',
                         align: 'center'
-                    },
-						{
-                        field: 'no_pendaftaran',
-                        title: 'No. Pendaftaran',
-						width: 200,
-                        sortable: true,
-						align: 'left'
-                    },
-					
-                    {
-                        field: 'tanggal',
-                        title: 'Tanggal',
-						width: 100,
-						sortable: true,
-                        footerFormatter: totalNameFormatter,
-                        align: 'center'
-                    },
-						{
+                    },*/
+					{
                         field: 'nama',
                         title: 'Nama',
 						width: 200,
                         sortable: true,
                         footerFormatter: totalNameFormatter,
                         align: 'left'
-                    },{
-                        field: 'no_telp',
-                        title: 'No. Telpon',
+                    },
+						{
+                        field: 'harga',
+                        title: 'Harga',
 						width: 100,
                         sortable: true,
                         footerFormatter: totalNameFormatter,
-                        align: 'center'
-                    },{
-                        field: 'no_hp',
-                        title: 'No. HP',
-						width: 100,
-                        sortable: true,
-                        footerFormatter: totalNameFormatter,
-                        align: 'center'
-                    },{
-                        field: 'jenis',
-                        title: 'Jenis',
-						width: 100,
-                        sortable: true,
-                        footerFormatter: totalNameFormatter,
-                        align: 'center'
+                        align: 'right'
                     },{
                         field: 'aksi',
 						title: 'Aksi',
@@ -245,14 +160,14 @@
             //console.log(name, args);
         });
         $remove.click(function () {
-          var $modal = $('#formTambahPendaftaran').modal({show: false});
+          var $modal = $('#formTambahLayanan').modal({show: false});
 		 
 			if (confirm('Anda yakin untuk menghapus data ini ?')) {
 				 var ids = getIdSelections();
 				
 				$.ajax({ 
 					type      : 'POST', 
-					url       : '<?php echo site_url('admin/pendaftaran/delete/');?>/',
+					url       : '<?php echo site_url('admin/layanan/delete/');?>/',
 					data      :  { datanya : JSON.stringify(ids) },
 					dataType  : 'json',
 					success   : function(data) {
@@ -282,31 +197,18 @@
 
 	function TambahData() {
 		$("form").trigger("reset");
-		var noPend;
-
-		$.ajax({
-			type: 'POST',
-			async: false,
-			dataType: "html",
-			url: "<?php echo site_url('admin/pendaftaran/get_gen_no_pendaftaran');?>",
-			success: function(data) {
-				noPend=data;
-			}
-		});
-		$modal.find('input[name="no_pendaftaran"]').val(noPend);
-
         $modal.modal('show');
     }
 
     function getIdSelections() {
         return $.map($table.bootstrapTable('getSelections'), function (row) {
-            return row.no_pendaftaran
+            return row.layanan_id
         });
     }
 
     function responseHandler(res) {
         $.each(res.rows, function (i, row) {
-            row.state = $.inArray(row.no_pendaftaran, selections) !== -1;
+            row.state = $.inArray(row.layanan_id, selections) !== -1;
         });
         return res;
     }
@@ -319,7 +221,7 @@
             description: ''
         }; // default row value
 
-        $modal.data('no_pendaftaran', row.no_pendaftaran);
+        $modal.data('layanan_id', row.layanan_id);
         $modal.find('.modal-title').text(title);
         for (var name in row) {
             $modal.find('input[name="' + name + '"], textarea[name="' + name + '"], select[name="' + name + '"]').val(row[name]);
@@ -369,15 +271,15 @@
     window.operateEvents = {
         'click .edit': function (e, value, row, index) {
            // alert('You click like action, row: ' + JSON.stringify(row));
-		    var $modal = $('#formTambahPendaftaran').modal({show: false});
+		    var $modal = $('#formTambahLayanan').modal({show: false});
 			showModal($(this).attr('title'), row);
         },
         'click .remove': function (e, value, row, index) {
-			var $modal = $('#formTambahPendaftaran').modal({show: false});
+			var $modal = $('#formTambahLayanan').modal({show: false});
 		    if (confirm('Anda yakin untuk menghapus data ini ?')) {
                 $.ajax({
-                    url: '<?php echo site_url('admin/pendaftaran/delete_id/');?>/',
-					data :  { datanya : row.no_pendaftaran },
+                    url: '<?php echo site_url('admin/layanan/delete_id/');?>/',
+					data :  { datanya : row.layanan_id },
                     type: 'POST',
                     success: function () {
                         $table.bootstrapTable('refresh');
@@ -411,6 +313,14 @@
         return $(window).height() - $('h1').outerHeight(true);
     }
 
+	function checkHELLO(field, rules, i, options){
+		if (field.val() != "HELLO") {
+			// this allows to use i18 for the error msgs
+			return options.allrules.vallayanan_idate2fields.alertText;
+		}
+	}
+
+
 	
 	function getScript(url, callback) {
         var head = document.getElementsByTagName('head')[0];
@@ -437,11 +347,8 @@
         return undefined;
     }
 
-	$('#formTambahPendaftaran').validationEngine();
-	formValidation();
-	formInit(); 
-
-
+	
+	
 	$(document).ready(function() {
 	
 		var scripts = [
@@ -479,31 +386,37 @@
             };
 
         eachSeries(scripts, getScript, initTable);
+		
+		$('#formTambahLayanan').validationEngine();
+    	formValidation();
+		formInit(); 
 
-    $('form').submit(function(event) { //Trigger on form submit
-      
-		 var $table = $('#table').bootstrapTable({url: '<?php echo site_url('admin/pendaftaran/get_data_pendaftaran');?>' });
-		 var values = $(this).serialize();
+		$('form').submit(function(event) { //Trigger on form submit
+		  
+		   
+			 var $table = $('#table').bootstrapTable({url: '<?php echo site_url('admin/layanan/get_data_layanan');?>' });
+			 var values = $(this).serialize();
 
-        $.ajax({ //Process the form using $.ajax()
-            type      : 'POST', //Method type
-            url       : $modal.data('no_pendaftaran') ? '<?php echo site_url('admin/pendaftaran/update');?>' : '<?php echo site_url('admin/pendaftaran/create');?>' , 
-            data      : values, //Forms name
-            dataType  : 'json',
-            success   : function(data) {
-						if (!data.success) { //If fails
-							MsgBox.show(($modal.data('no_pendaftaran') ? 'Update Data' : 'Tambah Data') + ' Gagal disimpan, cek kembali data yang akan dientrykan!');
-						}
-						else {
-								MsgBox.show(($modal.data('no_pendaftaran') ? 'Update Data' : 'Tambah Data') + ' Berhasil disimpan!');									
+			 $.ajax({ //Process the form using $.ajax()
+				type      : 'POST', //Method type
+				url       : $modal.data('layanan_id') ? '<?php echo site_url('admin/layanan/update');?>' : '<?php echo site_url('admin/layanan/create');?>' , 
+				data      : values, //Forms name
+				dataType  : 'json',
+				success   : function(data) {
+							if (!data.success) { //If fails
+								//$modal.modal('hide');
+								MsgBox.show(($modal.data('layanan_id') ? 'Update Data' : 'Tambah Data') + ' Gagal disimpan, cek kembali data yang akan dientrykan!');
+							}
+							else {
+								MsgBox.show(($modal.data('layanan_id') ? 'Update Data' : 'Tambah Data') + ' Berhasil disimpan!');									
 								$modal.modal('hide');
 								$table.bootstrapTable('refresh');
 								$("form").trigger("reset");
+								}
 							}
-						}
-        });
-        event.preventDefault(); //Prevent the default submit
-    });
+			});
+			event.preventDefault(); //Prevent the default submit
+		});
 });
 
     function rowStyle(row, index) {
@@ -516,4 +429,12 @@
         }
         return {};
     }
+
+	$('#tanggal').datepicker({
+		 dateFormat: 'dd-mm-yy',
+		 minDate: '+5d',
+		 changeMonth: true,
+		 changeYear: true
+	 });
+
 </script>

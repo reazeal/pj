@@ -2,78 +2,75 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pendaftaran_model extends MY_Model
+class Alat_model extends MY_Model
 {
-    public $table = 'klien';
-    public $primary_key = 'no_pendaftaran';    
+    public $table = 'alat';
+    public $primary_key = 'alat_id';    
     public function __construct()
     {
         parent::__construct();
         
     }
-    
-	public function get_nomor($nomor)
+
+	public function get_alat_list()
     {
-		$this->db->select("max(left(no_pendaftaran,6)) as urut");
-		$this->db->like("no_pendaftaran",$nomor,'before');
-		$query = $this->db->get('klien');
-		foreach ($query->result() as $atributy) {
-			$urut = $atributy->urut;
-		}
-		
-		return $urut;
-	}
+       
+        $query = $this->db->get('alat');
+        $parents = array(''=>'Silahkan Pilih...');
+        if($query->num_rows()>0)
+        {
+            foreach($query->result() as $row)
+            {
+                $parents[$row->alat_id] = $row->merk." , Seri : ".$row->no_seri;
+            }
+        }
+        return $parents;
+    }
     
-    public function get_data_pendaftaran($search, $sort, $order, $limit, $offset)
+    
+    public function get_data_alat($search, $sort, $order, $limit, $offset)
     {
     				$data = array();
     				$this->db->start_cache();
     				
     				$this->db->select("
-	       				no_pendaftaran,
-	       				DATE_FORMAT(tanggal,'%d-%m-%Y') as tanggal,
-	       				nama,
-	       				alamat,
-	       				no_telp,
-	       				no_hp,
-	       				email,
-	       				jenis,
-	       				no_siup
+	       				alat_id,
+						no_seri,
+						merk,
+						tipe,
+						DATE_FORMAT(tgl_pembelian,'%d-%m-%Y') as tgl_pembelian,
+	       				harga
        				");
        				
        				if(!empty($search)){
-						$this->db->like('no_pendaftaran',$search,'both');
-						$this->db->or_like("DATE_FORMAT(tanggal,'%d-%m-%Y')", $search,'both');
-						$this->db->or_like("nama", $search,'both');
-						$this->db->or_like("alamat", $search,'both');
-						$this->db->or_like("no_telp", $search,'both');
-						$this->db->or_like("no_hp", $search,'both');
-						$this->db->or_like("no_siup", $search,'both');
+						$this->db->like('no_seri',$search,'both');
+						$this->db->like('merk',$search,'both');
+						$this->db->like('tipe',$search,'both');
+						$this->db->like("DATE_FORMAT(tgl_pembelian,'%d-%m-%Y')",$search,'both');
+						$this->db->or_like("harga", $search,'both');
 					}
 					
 					if(!empty($sort)){$this->db->order_by($sort, $order);}else{$this->db->order_by('created_at', 'DESC');}
-					$query = $this->db->get('klien', $limit, $offset);
-		        	if(!empty($search)){ $totaly2 = $query->num_rows();}else{ $totaly2 = $this->db->count_all('klien'); }
+					$query = $this->db->get('alat', $limit, $offset);
+		        	if(!empty($search)){ $totaly2 = $query->num_rows();}else{ $totaly2 = $this->db->count_all('alat'); }
 			
 					if ($totaly2 > 0) {
 						foreach ($query->result() as $atributy) {
 							
 							$data[] = array(
-										'no_pendaftaran' => $atributy->no_pendaftaran,
-										'tanggal' => $atributy->tanggal,
-										'nama' => $atributy->nama,
-										'alamat' => $atributy->alamat,
-										'no_telp' => $atributy->no_telp,
-										'no_hp' => $atributy->no_hp,
-										'email' => $atributy->email,
-										'jenis' => $atributy->jenis,
-										'no_siup' => $atributy->no_siup
+										'no_seri' => $atributy->no_seri,
+										'merk' => $atributy->merk,
+										'tipe' => $atributy->tipe,
+										'tgl_pembelian' => $atributy->tgl_pembelian,
+										'harga' => $atributy->harga,
+										'alat_id' => $atributy->alat_id
 									);
 						}
 						
 					} 
 					
 			return array('total'=>$totaly2,'rows' => $data);
+			$this->db->stop_cache();
     }
     
     

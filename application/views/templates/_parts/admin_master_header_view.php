@@ -181,6 +181,7 @@ if($this->ion_auth->logged_in()) {
 						<li class=""><a href="<?php echo site_url('admin/layanan');?>"><i class="icon-double-angle-right "></i> Layanan</a></li>
 						<li class=""><a href="<?php echo site_url('admin/paket');?>"><i class="icon-double-angle-right "></i> Paket </a></li>
 						<li class=""><a href="<?php echo site_url('admin/pendaftaran');?>"><i class="icon-double-angle-right "></i> Pendaftaran</a></li>
+						<li class=""><a href="<?php echo site_url('admin/alat');?>"><i class="icon-double-angle-right "></i> Alat</a></li>
 						<li class=""><a href="<?php echo site_url('admin/maps');?>"><i class="icon-double-angle-right "></i> Maps</a></li>
 					</ul>
                 </li>

@@ -27,6 +27,33 @@ class Pendaftaran extends Admin_Controller
         $this->render('admin/pendaftaran/index_view');
 	}
 
+	public function get_gen_no_pendaftaran(){
+
+			$bulan=date('m');
+			$tahun=substr(date('Y'), -2);
+
+			if($bulan=='01'){$no_mut2="I";}
+		    if($bulan=='02'){$no_mut2="II";}
+		    if($bulan=='03'){$no_mut2="III";}
+		    if($bulan=='04'){$no_mut2="IV";}
+		    if($bulan=='05'){$no_mut2="V";}
+		    if($bulan=='06'){$no_mut2="VI";}
+		    if($bulan=='07'){$no_mut2="VII";}
+		    if($bulan=='08'){$no_mut2="VIII";}
+		    if($bulan=='09'){$no_mut2="IX";}
+		    if($bulan=='10'){$no_mut2="X";}
+		    if($bulan=='11'){$no_mut2="XI";}
+		    if($bulan=='12'){$no_mut2="XII";}
+
+
+			$nomor=$no_mut2."/".$tahun;
+			$datanya = $this->pendaftaran_model->get_nomor($nomor);
+			$no_urut = $datanya+1;
+		    $no_bukti=substr("000000",0,6-strlen($no_urut)).$no_urut."/DAFTAR/".$no_mut2."/".$tahun;
+			
+			echo $no_bukti;
+	}
+
 	public function get_data_pendaftaran(){
 
 		 $search = $this->input->get('search');
@@ -51,8 +78,8 @@ class Pendaftaran extends Admin_Controller
 		$tanggal = $this->tanggaldb($this->input->post('tanggal'));
 		$jenis = $this->input->post('jenis');
 		$alamat = $this->input->post('alamat');
-		//$no_pendaftaran = $this->input->post('no_pendaftaran');
-		$no_pendaftaran = md5('pendaftaran_'.date('Y-m-d H:i:s'));
+		$no_pendaftaran = $this->input->post('no_pendaftaran');
+		//$no_pendaftaran = md5('pendaftaran_'.date('Y-m-d H:i:s'));
 		
 		if(!empty($nama) && !empty($tanggal) && !empty($jenis) && !empty($no_siup)){
 			$insert_content = array(
