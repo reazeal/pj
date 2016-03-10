@@ -1,8 +1,20 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCeCAhmBV1aJRpEyTpQzwZV-NS_zIfGdSE&sensor=false&language=id"></script>
 <script type="text/javascript">
-	var markers=new Array();
-	var infowindows=new Array();
+	
+	<?php
+	$i=0;
+	foreach($truck_data as $data_content)
+	{
+		$id = $data_content['id'];
+	?>
+		var markers<?php echo $id; ?>=new Array();
+		var infowindows<?php echo $id; ?>=new Array();
+	<?php
+	$i++;
+	}
+		?>
+	
 	//var refreshId2 = setInterval(function(){navigator.geolocation.getCurrentPosition(foundLocation, noLocation);}, 10000);
 	
 	function executeQuery() {
@@ -39,41 +51,61 @@
 
 	var refreshId = setInterval(function(){updatedata();},4000);
 	
-	function updatedata(){			
-		var lat=0;
-		var long=0;
-					
-		for(var i=1;i<markers.length;i++){
-							
-			var uri = "<?php echo site_url('admin/maps/getLat');?>";		
-			$.ajax({
-				type: 'POST',
-				async: false,
-				dataType: "html",
-				url: uri,
-				data: "id="+i,
-				success: function(data) {
-					lat=data;
-				}
-			});
-			
-			var uri = "<?php echo site_url('admin/maps/getLon');?>";		
-			$.ajax({
-				type: 'POST',
-				async: false,
-				dataType: "html",
-				url: uri,
-				data: "id="+i,
-				success: function(data) {
-					long = data;		
-				}
-			});
-			
-			var myLatLng = new google.maps.LatLng(lat, long);				
-			markers[i].setPosition(myLatLng);	
-			infowindows[i].setPosition(myLatLng);	
-			
-		}	
+	function updatedata(){
+		
+			<?php
+			$i=0;
+			foreach($truck_data as $data_content)
+			{
+				$id = $data_content['id'];
+			?>
+			var lat<?php echo $id; ?>=0;
+			var long<?php echo $id; ?>=0;
+			<?php
+			 $i++;
+			}
+			?>
+		
+
+		<?php
+			$i=0;
+			foreach($truck_data as $data_content)
+			{
+				$id = $data_content['id'];
+			?>
+
+				$.ajax({
+					type: 'POST',
+					async: false,
+					dataType: "html",
+					url: "<?php echo site_url('admin/maps/getLat');?>",
+					data: "id=<?php echo $id; ?>",
+					success: function(data) {
+						lat<?php echo $id; ?>=data;
+					}
+				});
+
+				$.ajax({
+					type: 'POST',
+					async: false,
+					dataType: "html",
+					url: "<?php echo site_url('admin/maps/getLon');?>",
+					data: "id=<?php echo $id; ?>",
+					success: function(data) {
+						long<?php echo $id; ?> = data;		
+					}
+				});
+
+
+				var myLatLng<?php echo $id; ?> = new google.maps.LatLng(lat<?php echo $id; ?>, long<?php echo $id; ?>);				
+				markers<?php echo $id; ?>[0].setPosition(myLatLng<?php echo $id; ?>);	
+				infowindows<?php echo $id; ?>[0].setPosition(myLatLng<?php echo $id; ?>);
+
+			<?php
+			 $i++;
+			}
+
+		?>
 	}
 
 	function initialize(){
@@ -98,23 +130,23 @@
 			 	 $lon = $data_content['lon'];
 		   ?>
 			
-			var marker= new google.maps.Marker({
+			var marker<?php echo $id; ?> = new google.maps.Marker({
 				position:new google.maps.LatLng(<?php echo $lat; ?>, <?php echo $lon; ?>),
 				map:map,
 				title:"Saya disini"
 			});
 
-			marker.setIcon({ url: '<?php echo site_url('assets/img/taxi.png');?>', scaledSize: new google.maps.Size(30, 24) , anchor: new google.maps.Point(15, 12)});
-			markers.push(marker);
+			marker<?php echo $id; ?>.setIcon({ url: '<?php echo site_url('assets/img/taxi.png');?>', scaledSize: new google.maps.Size(30, 24) , anchor: new google.maps.Point(15, 12)});
+			markers<?php echo $id; ?>.push(marker<?php echo $id; ?>);
 
-			var infowindow= new google.maps.InfoWindow({
+			var infowindow<?php echo $id; ?>= new google.maps.InfoWindow({
 				content:"<img src='<?php echo site_url('assets/img/'.$foto);?>' width='100' align='left' /><?php echo $status; ?>",
 				size: new google.maps.Size(50,50),
 				position:new google.maps.LatLng(<?php echo $lat; ?>, <?php echo $lon; ?>)
 			});
-			infowindow.open(map);
+			infowindow<?php echo $id; ?>.open(map);
 			
-			infowindows.push(infowindow);
+			infowindows<?php echo $id; ?>.push(infowindow<?php echo $id; ?>);
 
 		<?php		
 		}
@@ -128,13 +160,13 @@
 		$(document).ready(function() {
 			initialize();
 			setTimeout(executeQuery, 5000);
-			$('#cari').change(function(){
+			/*$('#cari').change(function(){
 					var i=$('#cari').val();
 					console.log(i);
-					var koodinat=markers[i-1].getPosition();
+					var koodinat=markers.i[0].getPosition();
 					map.panTo(koodinat);
 					updatedata();
-			});
+			});*/
 		});
 
 </script>
@@ -150,7 +182,7 @@
 						  
 						  
 						
-						 <div class="form-group">
+						<!-- <div class="form-group">
 							<label class="control-label col-lg-4">Cari</label>
 							<div class="col-lg-6">
 							<select name="cari" id="cari"  class="form-control validate[required]">
@@ -165,6 +197,7 @@
 							</select>
 							</div>
 						</div>
+						-->
 						
 						<div class="col-lg-12">	
 						<div class="row">

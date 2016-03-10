@@ -45,6 +45,21 @@ class Maps extends Admin_Controller
 		echo $data_truck->lon;
 	}
 
+	public function getStatus()
+	{
+		$id = $this->input->post('id');
+		$data_truck = $this->truckgps_model->where(array('id'=>$id))->get();
+		echo $data_truck->status;
+	}
+
+	public function getFoto()
+	{
+		$id = $this->input->post('id');
+		$data_truck = $this->truckgps_model->where(array('id'=>$id))->get();
+		echo $data_truck->foto;
+	}
+
+
 	
 	public function rangetime()
 	{
