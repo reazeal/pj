@@ -16,7 +16,9 @@ class Pemasangan extends Admin_Controller
         }
 
 		$this->load->model('pemasangan_model');
+		$this->load->model('gps_model');
 		$this->load->model('petugas_model');
+		$this->load->model('penanggungjawab_model');
         $this->load->library('form_validation');
         $this->load->helper('text');
         $this->load->helper('url','html','form');
@@ -59,24 +61,69 @@ class Pemasangan extends Admin_Controller
     {
 		$message = array();
 
-		$alamat = $this->input->post('alamat');
-		$kode = $this->input->post('kode');
+		$gps_id = $this->input->post('id');
+		$merk_kendaraan = $this->input->post('merk_kendaraan');
 		$nama = $this->input->post('nama');
-		$tgl_lahir = $this->input->post('tgl_lahir');
-		$no_ktp = $this->input->post('no_ktp');
-		$petugas_id = md5('petugas_'.date('Y-m-d H:i:s'));
+		$no_mesin_kendaraan = $this->input->post('no_mesin_kendaraan');
+		$no_pendaftaran = $this->input->post('no_pendaftaran');
+		$no_rangka_kendaraan = $this->input->post('no_rangka_kendaraan');
+		$nopol = $this->input->post('nopol');
+		$petugas_id = $this->input->post('petugas_id');
+		$data_penanggung_jawab = $this->input->post('data_penanggung_jawab');
+		$pemasangan_id = md5('pemasangan_'.date('Y-m-d H:i:s'));
 			
-		if(!empty($alamat) && !empty($kode) && !empty($nama) && !empty($tgl_lahir) && !empty($no_ktp) ){
+		if(!empty($gps_id) && !empty($merk_kendaraan) && !empty($nama) && !empty($no_mesin_kendaraan) && !empty($no_pendaftaran) && !empty($no_rangka_kendaraan)  && !empty($nopol) && !empty($petugas_id)){
+
+
+			$gps_content = $this->gps_model->where(array('id'=>$gps_id))->get();
+			$nomer_seri = $gps_content->nomer_seri;
+			$petugas_content = $this->petugas_model->where(array('petugas_id'=>$petugas_id))->get();
+			$nama_petugas = $petugas_content->nama;
+
+
+
+
 			$insert_content = array(
-				'petugas_id' => $petugas_id,
-				'kode' => $kode,
+				'pemasangan_id' => $pemasangan_id,
+				'no_pendaftaran' => $no_pendaftaran,
 				'nama' => $nama,
-				'no_ktp' => $no_ktp,
-				'tgl_lahir' => $this->tanggaldb($tgl_lahir),
-				'alamat' => $alamat
+				'gps_id' => $gps_id,
+				'nomor_seri' => $nomer_seri,
+				'petugas_id' => $petugas_id,
+				'nama_petugas' => $nama_petugas,
+				'nopol' => $nopol,
+				'merk_kendaraan' => $merk_kendaraan,
+				'no_rangka_kendaraan' => $no_rangka_kendaraan,
+				'no_mesin_kendaraan' => $no_mesin_kendaraan
+
 			);
 
 			$this->pemasangan_model->insert($insert_content);
+
+			$json_tanggung = json_decode($data_penanggung_jawab);
+
+			foreach ($json_tanggung as $ax) :
+				$id= $ax->id;
+				$ktp= $ax->ktp;
+				$nama= $ax->nama;
+				$alamat= $ax->alamat;
+				$telp= $ax->telp;
+				
+				if(!empty($ktp) && !empty($nama) && !empty($alamat) && !empty($telp)){
+					
+					$insert_data = array(
+						'penanggung_jawab_id' => $id,
+						'pemasangan_id' => $pemasangan_id,
+						'ktp' => $ktp,
+						'nama' => $nama,
+						'telp' => $telp,
+						'alamat' => $alamat
+					);
+					$this->penanggungjawab_model->insert($insert_data);
+
+				}
+				
+			endforeach;
 			
 			$message = array(
 			   'success' => true,

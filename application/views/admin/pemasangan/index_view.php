@@ -30,7 +30,6 @@
 								   data-show-export="true"
 								   data-detail-view="true"
 								   data-detail-formatter="detailFormatter"
-								   data-detail-view="true"
 								   data-pagination="true"
 								   data-id-field="pemasangan_id"
 								   data-page-list="[10, 25, 50, 100, ALL]"
@@ -53,7 +52,7 @@
 		
 <!-- Form Tambah Data -->
 <div id="formTambahPemasangan" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-md">
+  <div class="modal-dialog modal-lg">
 
     <!-- Modal content-->
     <div class="modal-content">
@@ -67,9 +66,14 @@
 				
 				<input class="form-control"  type="hidden" name='pemasangan_id' id='pemasangan_id' readonly=""> 
 				
-				<div class="form-group">
+
+				<table width="100%">
+				  <tr>
+					
+					<td width="50%">
+					<div class="form-group">
 					<label class="control-label col-lg-4">No. Pendaftaran</label>
-					<div class="col-lg-8">
+					<div class="col-lg-6">
 				<?php
                 echo form_dropdown('no_pendaftaran',$pilihan_pendaftaran,set_value('no_pendaftaran',(isset($content->no_pendaftaran) ? $content->no_pendaftaran: '')),'class="form-control selectpicker validate[required]" data-show-subtext="true" data-live-search="true" ');
                 ?>
@@ -101,6 +105,70 @@
                 ?>
 					</div>
 				</div>
+					
+					
+					</td>
+					
+					
+					<td width="50%">
+						<div class="form-group">
+							<label class="control-label col-lg-4">Nopol Kendaraan</label>
+							<div class="col-lg-6">
+									<input class="validate[required] form-control"  type="text" name='nopol' id='nopol'> 
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-lg-4">Merk Kendaraan</label>
+							<div class="col-lg-6">
+									<input class="validate[required] form-control"  type="text" name='merk_kendaraan' id='merk_kendaraan'> 
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-lg-4">No. Rangka Kendaraan</label>
+							<div class="col-lg-6">
+									<input class="validate[required] form-control"  type="text" name='no_rangka_kendaraan' id='no_rangka_kendaraan'> 
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-lg-4">No. Mesin Kendaraan</label>
+							<div class="col-lg-6">
+									<input class="validate[required] form-control"  type="text" name='no_mesin_kendaraan' id='no_mesin_kendaraan'> 
+							</div>
+						</div>
+
+						<input class="form-control"  type="hidden" name='data_penanggung_jawab' id='data_penanggung_jawab' readonly="">
+					
+					</td>
+					</tr>
+				</table>
+
+				<div><h5><b>Detail Penanggung Jawab</b></h5></div>
+
+				<div class="form-group">
+				<div class="col-lg-10">
+				 <table id="table_penanggung_jawab"
+					   data-toggle="table"
+					   data-editable-emptytext="Klik untuk isi.."
+					   data-url="<?php echo site_url('assets/json/data1.json');?>">
+					<thead>
+					<tr>
+					
+						<th data-field="id" ></th>
+						<th data-field="ktp" data-editable="true">No. KTP</th>
+						<th data-field="nama" data-editable="true">Nama</th>
+						<th data-field="alamat" data-editable="true">Alamat</th>
+						<th data-field="telp" data-editable="true">Telpon</th>
+					</tr>
+					</thead>
+				</table>
+				</div>
+				</div>
+
+
+				
 
 
 
@@ -121,8 +189,9 @@
 <script>
         var $modal = $('#formTambahPemasangan').modal({show: false});
         var $alert = $('.alert').hide();
+		var $table_tanggung_jawab = $('#table_penanggung_jawab');
 
-    var $table = $('#table'),
+        var $table = $('#table'),
         $remove = $('#remove'),
         selections = [];
 		$alert = $('.alert').hide();
@@ -135,71 +204,54 @@
                 [	{
                         field: 'state',
                         checkbox: true,
-                        align: 'center',
                         align: 'center'
                     },
 					{
                         field: 'no_pendaftaran',
                         title: 'No. Pendaftaran',
-						width: 150,
-                        sortable: true,
-                        footerFormatter: totalNameFormatter,
+						sortable: true,
                         align: 'left'
                     },
 						{
                         field: 'nama',
                         title: 'Nama',
-						width: 100,
-                        sortable: true,
-                        footerFormatter: totalNameFormatter,
+						sortable: true,
                         align: 'right'
                     },
 						{
                         field: 'nomor_seri',
                         title: 'GPS',
-						width: 100,
-                        sortable: true,
-                        footerFormatter: totalNameFormatter,
+						sortable: true,
                         align: 'left'
                     },
 						{
                         field: 'nama_petugas',
                         title: 'Petugas',
-						width: 100,
-                        sortable: true,
-                        footerFormatter: totalNameFormatter,
-                        align: 'left'
+						sortable: true,
+                         align: 'left'
                     },
 						{
                         field: 'nopol',
                         title: 'No.Pol',
-						width: 80,
-                        sortable: true,
-                        footerFormatter: totalNameFormatter,
+						sortable: true,
                         align: 'left'
                     },
 						{
                         field: 'merk_kendaraan',
                         title: 'Merk',
-						width: 100,
-                        sortable: true,
-                        footerFormatter: totalNameFormatter,
+						sortable: true,
                         align: 'left'
                     },
 						{
                         field: 'no_rangka_kendaraan',
                         title: 'No. Rangka',
-						width: 100,
-                        sortable: true,
-                        footerFormatter: totalNameFormatter,
+						sortable: true,
                         align: 'left'
                     },
 						{
                         field: 'no_mesin_kendaraan',
                         title: 'No. Mesin',
-						width: 100,
-                        sortable: true,
-                        footerFormatter: totalNameFormatter,
+						sortable: true,
                         align: 'left'
                     },
 						{
@@ -465,11 +517,12 @@
 		   
 			 var $table = $('#table').bootstrapTable({url: '<?php echo site_url('admin/pemasangan/get_data_pemasangan');?>' });
 			 var values = $(this).serialize();
+			 var tanggung_jawab = JSON.stringify($table_tanggung_jawab.bootstrapTable('getData'));
 
 			 $.ajax({ //Process the form using $.ajax()
 				type      : 'POST', //Method type
 				url       : $modal.data('pemasangan_id') ? '<?php echo site_url('admin/pemasangan/update');?>' : '<?php echo site_url('admin/pemasangan/create');?>' , 
-				data      : values, //Forms name
+				data      : values+''+tanggung_jawab, //Forms name
 				dataType  : 'json',
 				success   : function(data) {
 							if (!data.success) { //If fails

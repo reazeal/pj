@@ -27,8 +27,7 @@
 		<link rel="stylesheet" href="<?php echo site_url('assets/plugins/switch/static/stylesheets/bootstrap-switch.css');?>" />
 		<link rel="stylesheet" href="<?php echo site_url('assets/css/uploadfile.css');?>" />
 		<link rel="stylesheet" href="<?php echo site_url('assets/css/bootstrap-select-min.css');?>" />
-
-
+		
 		<link href="<?php echo site_url('assets/css/layout2.css');?>" rel="stylesheet" />
         <link rel="stylesheet" href="<?php echo site_url('assets/plugins/timeline/timeline.css');?>" />
 		<script src="<?php echo site_url('assets/plugins/jquery-2.0.3.min.js');?>"></script>
@@ -56,6 +55,14 @@
 		<script src="<?php echo site_url('assets/plugins/jquery.dualListbox-1.3/jquery.dualListBox-1.3.min.js');?>"></script>
 		<script src="<?php echo site_url('assets/plugins/jasny/js/bootstrap-inputmask.js');?>"></script>
 		<script src="<?php echo site_url('assets/js/bootstrap-select.min.js');?>"></script>
+		
+		<script src="<?php echo site_url('assets/plugins/bootstrap-table/src/bootstrap-table.js');?>"></script>
+		<script src="<?php echo site_url('assets/plugins/bootstrap-table/bootstrap-editable.js');?>"></script>
+		<script src="<?php echo site_url('assets/plugins/bootstrap-table/src/extensions/editable/bootstrap-table-editable.js');?>"></script>
+		
+		
+
+
 		<script>
 
 				var MsgBox = (function() {
