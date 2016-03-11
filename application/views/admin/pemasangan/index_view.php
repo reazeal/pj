@@ -319,6 +319,7 @@
 		$("#no_pendaftaran").val('').change();
 		$("#id").val('').change();
 		$("#petugas_id").val('').change();
+		$("#pemasangan_id").val('').change();
 		$table_tanggung_jawab.bootstrapTable('refresh');
         $modal.modal('show');
     }
