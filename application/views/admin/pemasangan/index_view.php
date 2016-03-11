@@ -65,9 +65,7 @@
 			<form class="form-horizontal" id="popup-validation">
 				
 				<input class="form-control"  type="hidden" name='pemasangan_id' id='pemasangan_id' readonly=""> 
-				
-
-				<table width="100%">
+			    <table width="100%">
 				  <tr>
 					
 					<td width="50%">
@@ -75,7 +73,7 @@
 					<label class="control-label col-lg-4">No. Pendaftaran</label>
 					<div class="col-lg-6">
 				<?php
-                echo form_dropdown('no_pendaftaran',$pilihan_pendaftaran,set_value('no_pendaftaran',(isset($content->no_pendaftaran) ? $content->no_pendaftaran: '')),'class="form-control selectpicker validate[required]" data-show-subtext="true" data-live-search="true" ');
+                echo form_dropdown('no_pendaftaran',$pilihan_pendaftaran,set_value('no_pendaftaran',(isset($pilihan_pendaftaran->no_pendaftaran) ? $pilihan_pendaftaran->no_pendaftaran: '')),'class="form-control selectpicker validate[required]" data-show-subtext="true" data-live-search="true" id="no_pendaftaran" ');
                 ?>
 					</div>
 				</div>
@@ -92,7 +90,7 @@
 					<label class="control-label col-lg-4">GPS</label>
 					<div class="col-lg-6">
 				<?php
-                echo form_dropdown('id',$pilihan_gps,set_value('nomor_seri',(isset($content->gps_id) ? $content->gps_id: '')),'class="form-control selectpicker validate[required]" data-show-subtext="true" data-live-search="true" ');
+                echo form_dropdown('id',$pilihan_gps,set_value('nomor_seri',(isset($content->gps_id) ? $content->gps_id: '')),'class="form-control selectpicker validate[required]" data-show-subtext="true" data-live-search="true" id="id"');
                 ?>
 					</div>
 				</div>
@@ -101,7 +99,7 @@
 					<label class="control-label col-lg-4">Petugas</label>
 					<div class="col-lg-6">
 				<?php
-                echo form_dropdown('petugas_id',$pilihan_petugas,set_value('nama_petugas',(isset($content->petugas_id) ? $content->petugas_id: '')),'class="form-control selectpicker validate[required]" data-show-subtext="true" data-live-search="true" ');
+                echo form_dropdown('petugas_id',$pilihan_petugas,set_value('nama_petugas',(isset($content->petugas_id) ? $content->petugas_id: '')),'class="form-control selectpicker validate[required]" data-show-subtext="true" data-live-search="true" id="petugas_id"');
                 ?>
 					</div>
 				</div>
@@ -318,6 +316,10 @@
 
 	function TambahData() {
 		$("form").trigger("reset");
+		$("#no_pendaftaran").val('').change();
+		$("#id").val('').change();
+		$("#petugas_id").val('').change();
+		$table_tanggung_jawab.bootstrapTable('refresh');
         $modal.modal('show');
     }
 
@@ -334,6 +336,37 @@
         return res;
     }
 
+	function getJawabannya(pemasangan_id) {
+		var rowsx = [];
+
+				$.ajax({
+					type: 'POST',
+					async: false,
+					dataType: "json",
+					url: "<?php echo site_url('admin/pemasangan/get_jawaban/');?>",
+					data: "id="+pemasangan_id,
+					success: function(data) {
+						
+						
+						for (var i = 0; i < data.total; i++) {
+							var c = data.rows[i];
+							rowsx.push({
+								id: c.penanggung_jawab_id,
+								ktp: c.ktp,
+								nama: c.nama,
+								alamat: c.alamat,
+								telp: c.telp
+							});
+							//console.log(c.penanggung_jawab_id); 
+						}
+						
+					}
+				});
+
+		return rowsx;
+	}
+
+
 	function showModal(title, row) {
         row = row || {
             name: '',
@@ -347,7 +380,12 @@
         for (var name in row) {
             $modal.find('input[name="' + name + '"], textarea[name="' + name + '"], select[name="' + name + '"]').val(row[name]);
         }
-        $modal.modal('show');
+		
+		$("#no_pendaftaran").val(row.no_pendaftaran).change();
+		$("#id").val(row.gps_id).change();
+		$("#petugas_id").val(row.petugas_id).change();
+		$table_tanggung_jawab.bootstrapTable('load', getJawabannya(row.pemasangan_id));
+		$modal.modal('show');
     }
 
     function showAlert(title, type) {

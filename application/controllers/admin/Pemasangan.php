@@ -45,6 +45,12 @@ class Pemasangan extends Admin_Controller
 			echo $no_bukti;
 	}
 
+	public function get_jawaban(){
+			$pemasangan_id = $this->input->post('id');
+			$datanya = $this->penanggungjawab_model->get_jawaban($pemasangan_id);
+			echo json_encode($datanya,JSON_PRETTY_PRINT);
+	}
+
 	public function get_data_pemasangan(){
 
 		 $search = $this->input->get('search');
