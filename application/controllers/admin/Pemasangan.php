@@ -157,6 +157,7 @@ class Pemasangan extends Admin_Controller
 		
 		foreach ($json as $ax) :
 			$deleted_pages = $this->pemasangan_model->where(array('pemasangan_id'=>$ax))->delete();
+			$deleted_pages2 = $this->penanggungjawab_model->where(array('pemasangan_id'=>$ax))->delete();
 		endforeach;
 		
 		
@@ -172,6 +173,7 @@ class Pemasangan extends Admin_Controller
 
 		$datanya = $this->input->post('datanya');
 		$deleted_pages = $this->pemasangan_model->where(array('pemasangan_id'=>$datanya))->delete();
+		$deleted_pages2 = $this->penanggungjawab_model->where(array('pemasangan_id'=>$datanya))->delete();
 		
 		$message = array(
 			   'success' => true,

@@ -123,6 +123,7 @@
 <script>
         var $modal = $('#formTambahAlat').modal({show: false});
         var $alert = $('.alert').hide();
+		$('#menuAlat').removeClass('').addClass('active');
 
     var $table = $('#table'),
         $remove = $('#remove'),

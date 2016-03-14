@@ -156,6 +156,7 @@
         var $modal = $('#formTambahPetugas').modal({show: false});
 		var $modalFoto = $('#formGantiFoto').modal({show: false});
         var $alert = $('.alert').hide();
+		$('#menuPetugas').removeClass('').addClass('active');
 
     var $table = $('#table'),
         $remove = $('#remove'),

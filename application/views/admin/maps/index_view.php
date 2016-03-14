@@ -1,7 +1,8 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCeCAhmBV1aJRpEyTpQzwZV-NS_zIfGdSE&sensor=false&language=id"></script>
 <script type="text/javascript">
-	
+	$('#menuMaps').removeClass('').addClass('active');
+
 	<?php
 	$i=0;
 	foreach($truck_data as $data_content)

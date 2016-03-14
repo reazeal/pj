@@ -99,6 +99,7 @@
 <script>
         var $modal = $('#formTambahLayanan').modal({show: false});
         var $alert = $('.alert').hide();
+		$('#menuLayanan').removeClass('').addClass('active');
 
     var $table = $('#table'),
         $remove = $('#remove'),

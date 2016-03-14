@@ -272,6 +272,8 @@
         selections = [];
 		$alert = $('.alert').hide();
 
+   		$('#menuPemasangan').removeClass('').addClass('active');
+
     function initTable() {
         $table.bootstrapTable({
             height: 527,

@@ -157,6 +157,7 @@
 <script>
         var $modal = $('#formTambahPendaftaran').modal({show: false});
         var $alert = $('.alert').hide();
+		$('#menuPendaftaran').removeClass('').addClass('active');
 
     var $table = $('#table'),
         $remove = $('#remove'),

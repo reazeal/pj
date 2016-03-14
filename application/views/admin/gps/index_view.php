@@ -118,6 +118,7 @@
         $remove = $('#remove'),
         selections = [];
 		$alert = $('.alert').hide();
+		$('#menuGps').removeClass('').addClass('active');
 
     function initTable() {
         $table.bootstrapTable({

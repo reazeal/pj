@@ -140,6 +140,8 @@
 		var $table = $('#table'),
         $remove = $('#remove'),
         selections = [];
+
+		$('#menuPaket').removeClass('').addClass('active');
 		
 
 		var $table_layanan = $('#table_layanan');

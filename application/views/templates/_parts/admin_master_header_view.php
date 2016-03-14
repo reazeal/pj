@@ -158,7 +158,7 @@ if($this->ion_auth->logged_in()) {
 
                         <ul class="dropdown-menu dropdown-user">
                             <li><a href="<?php echo site_url('admin/user/profile');?>"><i class="icon-user"></i> User Profile </a>
-                            </li>
+							</li>
                             <li><a href="<?php echo site_url('admin/groups');?>"><i class="icon-group"></i> Groups </a>
                             </li>
                             <li><a href="<?php echo site_url('admin/users');?>"><i class="icon-user-md"></i> Users </a>
@@ -195,13 +195,13 @@ if($this->ion_auth->logged_in()) {
                     </a>
                     <ul class="<?php echo (($menu_data['class_master']=='in')? 'in':'collapse') ?>" id="component-nav">
                        
-                        <li class=""><a href="<?php echo site_url('admin/gps');?>"><i class="icon-double-angle-right "></i> Gps Device</a></li>
-						<li class=""><a href="<?php echo site_url('admin/layanan');?>"><i class="icon-double-angle-right "></i> Layanan</a></li>
-						<li class=""><a href="<?php echo site_url('admin/paket');?>"><i class="icon-double-angle-right "></i> Paket </a></li>
-						<li class=""><a href="<?php echo site_url('admin/pendaftaran');?>"><i class="icon-double-angle-right "></i> Pendaftaran</a></li>
-						<li class=""><a href="<?php echo site_url('admin/alat');?>"><i class="icon-double-angle-right "></i> Alat</a></li>
-						<li class=""><a href="<?php echo site_url('admin/petugas');?>"><i class="icon-double-angle-right "></i> Petugas</a></li>
-						<li class=""><a href="<?php echo site_url('admin/maps');?>"><i class="icon-double-angle-right "></i> Maps</a></li>
+                        <li class="" id="menuGps" ><a href="<?php echo site_url('admin/gps');?>"><i class="icon-double-angle-right "></i> Gps Device</a> </li>
+						<li class="" id="menuLayanan" ><a href="<?php echo site_url('admin/layanan');?>"><i class="icon-double-angle-right "></i> Layanan</a> </li>
+						<li class="" id="menuPaket"><a href="<?php echo site_url('admin/paket');?>"><i class="icon-double-angle-right "></i> Paket </a> </li>
+						<li class="" id="menuPendaftaran"><a href="<?php echo site_url('admin/pendaftaran');?>"><i class="icon-double-angle-right "></i> Pendaftaran</a> </li>
+						<li class="" id="menuAlat"><a href="<?php echo site_url('admin/alat');?>"><i class="icon-double-angle-right "></i> Alat</a></li>
+						<li class="" id="menuPetugas"><a href="<?php echo site_url('admin/petugas');?>"><i class="icon-double-angle-right "></i> Petugas</a></li>
+						<li class="" id="menuMaps"><a href="<?php echo site_url('admin/maps');?>"><i class="icon-double-angle-right "></i> Maps</a></span></li>
 					</ul>
                 </li>
 
@@ -215,7 +215,7 @@ if($this->ion_auth->logged_in()) {
                           &nbsp; <!-- <span class="label label-info">6</span> --> &nbsp;
                     </a>
                     <ul class="<?php echo (($menu_data['class_transaksi']=='in')? 'in':'collapse') ?>" id="pagesr-nav">
-                       	<li class=""><a href="<?php echo site_url('admin/pemasangan');?>"><i class="icon-double-angle-right "></i> Pemasangan</a></li>
+                       	<li class="" id="menuPemasangan"><a href="<?php echo site_url('admin/pemasangan');?>"><i class="icon-double-angle-right "></i> Pemasangan</a></li>
                     </ul>
                 </li>
             
