@@ -156,7 +156,7 @@ class Pemasangan extends Admin_Controller
 		$json = json_decode($datanya);
 		
 		foreach ($json as $ax) :
-			$deleted_pages = $this->pemasangan_model->where(array('petugas_id'=>$ax))->delete();
+			$deleted_pages = $this->pemasangan_model->where(array('pemasangan_id'=>$ax))->delete();
 		endforeach;
 		
 		
@@ -171,7 +171,7 @@ class Pemasangan extends Admin_Controller
     {
 
 		$datanya = $this->input->post('datanya');
-		$deleted_pages = $this->pemasangan_model->where(array('petugas_id'=>$datanya))->delete();
+		$deleted_pages = $this->pemasangan_model->where(array('pemasangan_id'=>$datanya))->delete();
 		
 		$message = array(
 			   'success' => true,
@@ -184,27 +184,79 @@ class Pemasangan extends Admin_Controller
 	public function update()
     {
 		
-		$alamat = $this->input->post('alamat');
-		$kode = $this->input->post('kode');
+		$gps_id = $this->input->post('id');
+		$merk_kendaraan = $this->input->post('merk_kendaraan');
 		$nama = $this->input->post('nama');
-		$tgl_lahir = $this->input->post('tgl_lahir');
-		$no_ktp = $this->input->post('no_ktp');
+		$no_mesin_kendaraan = $this->input->post('no_mesin_kendaraan');
+		$no_pendaftaran = $this->input->post('no_pendaftaran');
+		$no_rangka_kendaraan = $this->input->post('no_rangka_kendaraan');
+		$nopol = $this->input->post('nopol');
 		$petugas_id = $this->input->post('petugas_id');
+		$data_penanggung_jawab = $this->input->post('data_penanggung_jawab');
+		$pemasangan_id = $this->input->post('pemasangan_id');
 		
 		$message = array();
 
 		
 		
-		if(!empty($alamat) && !empty($kode) && !empty($nama) && !empty($tgl_lahir) && !empty($no_ktp)){
-			$update_content = array('alamat' => $alamat, 'kode' => $kode, 'nama' => $nama, 'tgl_lahir' => $this->tanggaldb($tgl_lahir), 'no_ktp' => $no_ktp);
-			$this->pemasangan_model->update($update_content, array('petugas_id'=>$petugas_id));
-			//$this->pendaftaran_model->update($update_content, $no_pendaftaran);
-			//$this->pendaftaran_model->where(array('no_pendaftaran'=>$no_pendaftaran))->update($update_content,'no_pendaftaran');
+		if(!empty($gps_id) && !empty($merk_kendaraan) && !empty($nama) && !empty($no_mesin_kendaraan) && !empty($no_pendaftaran) && !empty($no_rangka_kendaraan)  && !empty($nopol) && !empty($petugas_id) && !empty($pemasangan_id))
+			{
+			
+			$gps_content = $this->gps_model->where(array('id'=>$gps_id))->get();
+			$nomer_seri = $gps_content->nomer_seri;
+			$petugas_content = $this->petugas_model->where(array('petugas_id'=>$petugas_id))->get();
+			$nama_petugas = $petugas_content->nama;
+
+
+			$update_content = array(
+				'no_pendaftaran' => $no_pendaftaran,
+				'nama' => $nama,
+				'gps_id' => $gps_id,
+				'nomor_seri' => $nomer_seri,
+				'petugas_id' => $petugas_id,
+				'nama_petugas' => $nama_petugas,
+				'nopol' => $nopol,
+				'merk_kendaraan' => $merk_kendaraan,
+				'no_rangka_kendaraan' => $no_rangka_kendaraan,
+				'no_mesin_kendaraan' => $no_mesin_kendaraan
+
+			);
+			$this->pemasangan_model->update($update_content, array('pemasangan_id'=>$pemasangan_id));
+
+			$json_tanggung = json_decode($data_penanggung_jawab);
+
+			foreach ($json_tanggung as $ax) :
+				$id= $ax->id;
+				$ktp= $ax->ktp;
+				$nama= $ax->nama;
+				$alamat= $ax->alamat;
+				$telp= $ax->telp;
+				
+				if(!empty($ktp) && !empty($nama) && !empty($alamat) && !empty($telp)){
+					
+					$update_content = array(
+						'ktp' => $ktp,
+						'nama' => $nama,
+						'telp' => $telp,
+						'alamat' => $alamat
+					);
+
+					$this->penanggungjawab_model->update($update_content, array('penanggung_jawab_id'=>$id,'pemasangan_id'=> $pemasangan_id));
+					
+				}
+				
+			endforeach;
+
+
+
+
+			
+			
 			$message = array(
 			   'success' => true,
 			   'info' => 'Berhasil disimpan'
 			);
-       
+		 
 		}else{
 			$message = array(
 			   'success' => false,

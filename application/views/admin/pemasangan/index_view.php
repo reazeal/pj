@@ -184,10 +184,56 @@
   </div>
 </div>
 
+
+<div id="formLihatJawab" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Detail Penanggung Jawab</h4>
+      </div>
+      <div class="modal-body">
+        <div class="body collapse in">
+			<div class="form-group">
+				 <div  class="row" >
+				 <div class="col-lg-10">
+				 <table id="table_penanggung_jawab_view"
+					   data-toggle="table"
+					   data-editable-emptytext="Klik untuk isi.."
+					   data-url="<?php echo site_url('assets/json/data1.json');?>">
+					<thead>
+					<tr>
+					
+						<th data-field="id" ></th>
+						<th data-field="ktp" data-editable="false">No. KTP</th>
+						<th data-field="nama" data-editable="false">Nama</th>
+						<th data-field="alamat" data-editable="false">Alamat</th>
+						<th data-field="telp" data-editable="false">Telpon</th>
+					</tr>
+					</thead>
+				</table>
+				</div>
+				</div>
+				</div>
+
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <script>
         var $modal = $('#formTambahPemasangan').modal({show: false});
-        var $alert = $('.alert').hide();
+		var $modalJawabOnly = $('#formLihatJawab').modal({show: false});
+		var $alert = $('.alert').hide();
 		var $table_tanggung_jawab = $('#table_penanggung_jawab');
+		var $table_penanggung_jawab_view = $('#table_penanggung_jawab_view');
 
         var $table = $('#table'),
         $remove = $('#remove'),
@@ -389,6 +435,18 @@
 		$modal.modal('show');
     }
 
+	function showModalJawab(title, row) {
+        row = row || {
+            name: '',
+            stargazers_count: 0,
+            forks_count: 0,
+            description: ''
+        }; // default row value
+
+       	$table_penanggung_jawab_view.bootstrapTable('load', getJawabannya(row.pemasangan_id));
+		$modalJawabOnly.modal('show');
+    }
+
     function showAlert(title, type) {
         $alert.attr('class', 'alert alert-' + type || 'success')
               .html('<i class="glyphicon glyphicon-check"></i> ' + title).show();
@@ -417,6 +475,9 @@
 
     function operateFormatter(value, row, index) {
         return [
+			'<a class="lihat_data_jawab" href="javascript:void(0)" title="Lihat data Penanggung Jawab">',
+            '<i class="icon-table"></i>',
+            '</a>  ',
             '<a class="edit" href="javascript:void(0)" title="Edit Data">',
             '<i class="glyphicon glyphicon-edit"></i>',
             '</a>  ',
@@ -429,14 +490,16 @@
 
 
     window.operateEvents = {
+		 'click .lihat_data_jawab': function (e, value, row, index) {
+           // alert('You click like action, row: ' + JSON.stringify(row));
+		   showModalJawab($(this).attr('title'), row);
+        },
         'click .edit': function (e, value, row, index) {
            // alert('You click like action, row: ' + JSON.stringify(row));
-		    var $modal = $('#formTambahPemasangan').modal({show: false});
-			showModal($(this).attr('title'), row);
+		   showModal($(this).attr('title'), row);
         },
         'click .remove': function (e, value, row, index) {
-			var $modal = $('#formTambahPemasangan').modal({show: false});
-		    if (confirm('Anda yakin untuk menghapus data ini ?')) {
+			 if (confirm('Anda yakin untuk menghapus data ini ?')) {
                 $.ajax({
                     url: '<?php echo site_url('admin/pemasangan/delete_id/');?>/',
 					data :  { datanya : row.pemasangan_id },
@@ -557,10 +620,12 @@
 			 var $table = $('#table').bootstrapTable({url: '<?php echo site_url('admin/pemasangan/get_data_pemasangan');?>' });
 			 var values = $(this).serialize();
 			 var tanggung_jawab = JSON.stringify($table_tanggung_jawab.bootstrapTable('getData'));
+			 //console.log(values);
+			  var selectedItem = $("#pemasangan_id").val();
 
 			 $.ajax({ //Process the form using $.ajax()
 				type      : 'POST', //Method type
-				url       : $modal.data('pemasangan_id') ? '<?php echo site_url('admin/pemasangan/update');?>' : '<?php echo site_url('admin/pemasangan/create');?>' , 
+				url       : selectedItem ? '<?php echo site_url('admin/pemasangan/update');?>' : '<?php echo site_url('admin/pemasangan/create');?>' , 
 				data      : values+''+tanggung_jawab, //Forms name
 				dataType  : 'json',
 				success   : function(data) {

@@ -33,7 +33,7 @@ class Petugas_model extends MY_Model
         {
             foreach($query->result() as $row)
             {
-                $parents[$row->petugas_id] = $row->nama." , No.KTP : ".$row->no_ktp;
+                $parents[$row->petugas_id] = $row->nama." [".$row->kode."]";
             }
         }
         return $parents;
