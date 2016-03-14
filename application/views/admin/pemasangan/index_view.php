@@ -207,6 +207,26 @@
 					</div>
 					</div>
 				</div>
+
+				<div  class="row" >
+				<div class="col-sm-10">
+				<div class="form-group">
+						<label class="control-label col-sm-4">Nama Kustomer</label>
+						<div class="col-sm-4">
+								<input class="form-control"  type="text" name='namax' id='namax' readonly="readonly"> 
+						</div>
+					</div>
+					</div>
+				</div>
+
+				<div  class="row" >
+				<div class="col-sm-10">
+				<div class="form-group">
+						<div class="col-sm-4">
+						</div>
+					</div>
+					</div>
+				</div>
 				
 				<div  class="row" >
 				<div class="form-group">
@@ -457,6 +477,7 @@
 
        	$table_penanggung_jawab_view.bootstrapTable('load', getJawabannya(row.pemasangan_id));
 		$("#no_pendx").val(row.no_pendaftaran).change();
+		$("#namax").val(row.nama).change();
 		$modalJawabOnly.modal('show');
     }
 
@@ -644,10 +665,10 @@
 				success   : function(data) {
 							if (!data.success) { //If fails
 								//$modal.modal('hide');
-								MsgBox.show(($modal.data('pemasangan_id') ? 'Update Data' : 'Tambah Data') + ' Gagal disimpan, cek kembali data yang akan dientrykan!');
+								MsgBox.show((selectedItem ? 'Update Data' : 'Tambah Data') + ' Gagal disimpan, cek kembali data yang akan dientrykan!');
 							}
 							else {
-								MsgBox.show(($modal.data('pemasangan_id') ? 'Update Data' : 'Tambah Data') + ' Berhasil disimpan!');									
+								MsgBox.show((selectedItem ? 'Update Data' : 'Tambah Data') + ' Berhasil disimpan!');									
 								$modal.modal('hide');
 								$table.bootstrapTable('refresh');
 								$("form").trigger("reset");
