@@ -62,7 +62,7 @@
       </div>
       <div class="modal-body">
         <div id="collapse2" class="body collapse in">
-			<form class="form-horizontal" id="popup-validation">
+			<form class="form-horizontal" id="formTambahPemasanganX">
 				
 				<input class="form-control"  type="hidden" name='pemasangan_id' id='pemasangan_id' readonly=""> 
 			    <table width="100%">
@@ -73,7 +73,7 @@
 					<label class="control-label col-lg-4">No. Pendaftaran</label>
 					<div class="col-lg-6">
 				<?php
-                echo form_dropdown('no_pendaftaran',$pilihan_pendaftaran,set_value('no_pendaftaran',(isset($pilihan_pendaftaran->no_pendaftaran) ? $pilihan_pendaftaran->no_pendaftaran: '')),'class="form-control selectpicker validate[required]" data-show-subtext="true" data-live-search="true" id="no_pendaftaran" ');
+                echo form_dropdown('no_pendaftaran',$pilihan_pendaftaran,set_value('no_pendaftaran',(isset($pilihan_pendaftaran->no_pendaftaran) ? $pilihan_pendaftaran->no_pendaftaran: '')),'class="validate[required] form-control selectpicker " data-show-subtext="true" data-live-search="true" id="no_pendaftaran" ');
                 ?>
 					</div>
 				</div>
@@ -645,12 +645,13 @@
             };
 
         eachSeries(scripts, getScript, initTable);
-		
-		$('#formTambahPemasangan').validationEngine();
-    	formValidation();
 		formInit(); 
 
-		$('form').submit(function(event) { //Trigger on form submit
+
+
+
+
+		$('#formTambahPemasanganX').submit(function(event) { //Trigger on form submit
 		  
 		   
 			 var $table = $('#table').bootstrapTable({url: '<?php echo site_url('admin/pemasangan/get_data_pemasangan');?>' });
@@ -659,27 +660,66 @@
 			 //console.log(values);
 			  var selectedItem = $("#pemasangan_id").val();
 
-			 $.ajax({ //Process the form using $.ajax()
-				type      : 'POST', //Method type
-				url       : selectedItem ? '<?php echo site_url('admin/pemasangan/update');?>' : '<?php echo site_url('admin/pemasangan/create');?>' , 
-				data      : values+''+tanggung_jawab, //Forms name
-				dataType  : 'json',
-				success   : function(data) {
-							if (!data.success) { //If fails
-								//$modal.modal('hide');
-								MsgBox.show((selectedItem ? 'Update Data' : 'Tambah Data') + ' Gagal disimpan, cek kembali data yang akan dientrykan!');
-							}
-							else {
-								MsgBox.show((selectedItem ? 'Update Data' : 'Tambah Data') + ' Berhasil disimpan!');									
-								$modal.modal('hide');
-								$table.bootstrapTable('refresh');
-								$("form").trigger("reset");
-								}
-							}
-			});
+
+			    
+
+				$("#no_pendaftaran").validationEngine({
+					prettySelect : true,
+					useSuffix: "_chzn",
+					promptPosition : "bottomLeft"
+				});
+				$("#no_pendaftaran").chosen({
+					allow_single_deselect : true
+				});
+
+				$("#petugas_id").validationEngine({
+					prettySelect : true,
+					useSuffix: "_chzn",
+					promptPosition : "bottomLeft"
+				});
+				$("#petugas_id").chosen({
+					allow_single_deselect : true
+				});
+
+				$("#id").validationEngine({
+					prettySelect : true,
+					useSuffix: "_chzn",
+					promptPosition : "bottomLeft"
+				});
+				$("#id").chosen({
+					allow_single_deselect : true
+				});
+
+
+				if(!$("#formTambahPemasanganX").validationEngine('validate')){
+				 return false;
+				}
+
+				
+					 $.ajax({ //Process the form using $.ajax()
+								type      : 'POST', //Method type
+								url       : selectedItem ? '<?php echo site_url('admin/pemasangan/update');?>' : '<?php echo site_url('admin/pemasangan/create');?>' , 
+								data      : values+''+tanggung_jawab, //Forms name
+								dataType  : 'json',
+								success   : function(data) {
+											if (!data.success) { //If fails
+												//$modal.modal('hide');
+												MsgBox.show((selectedItem ? 'Update Data' : 'Tambah Data') + ' Gagal disimpan, cek kembali data yang akan dientrykan!');
+											}
+											else {
+												MsgBox.show((selectedItem ? 'Update Data' : 'Tambah Data') + ' Berhasil disimpan!');							
+												$modal.modal('hide');
+												$table.bootstrapTable('refresh');
+												$("form").trigger("reset");
+												}
+											}
+							});
+			
 			event.preventDefault(); //Prevent the default submit
 		});
-});
+
+	});
+
 
     function rowStyle(row, index) {
         var classes = [ 'success'];

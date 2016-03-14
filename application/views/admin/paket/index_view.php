@@ -455,34 +455,39 @@
 
         eachSeries(scripts, getScript, initTable);
 		
-		$('#formTambahPaketX').validationEngine();
-    	formValidation();
-		formInit(); 
+	    formInit(); 
 
-		$('form').submit(function(event) { //Trigger on form submit
+		$('#formTambahPaketX').submit(function(event) { //Trigger on form submit
 		  
 		   
 			 var $table = $('#table').bootstrapTable({url: '<?php echo site_url('admin/paket/get_data_paket');?>' });
 			 var values = $(this).serialize();
 
-			 $.ajax({ //Process the form using $.ajax()
-				type      : 'POST', //Method type
-				url       : $modal.data('paket_id') ? '<?php echo site_url('admin/paket/update');?>' : '<?php echo site_url('admin/paket/create');?>' , 
-				data      : values, //Forms name
-				dataType  : 'json',
-				success   : function(data) {
-							if (!data.success) { //If fails
-								//$modal.modal('hide');
-								MsgBox.show(($modal.data('paket_id') ? 'Update Data' : 'Tambah Data') + ' Gagal disimpan, cek kembali data yang akan dientrykan!');
-							}
-							else {
-									MsgBox.show(($modal.data('paket_id') ? 'Update Data' : 'Tambah Data') + ' Berhasil disimpan!');
-									$modal.modal('hide');
-									$table.bootstrapTable('refresh');
-									$("form").trigger("reset");
-								}
-							}
-			});
+
+			if(!$("#formTambahPaketX").validationEngine('validate')){
+				return false;
+			}
+						$.ajax({ //Process the form using $.ajax()
+							type      : 'POST', //Method type
+							url       : $modal.data('paket_id') ? '<?php echo site_url('admin/paket/update');?>' : '<?php echo site_url('admin/paket/create');?>' , 
+							data      : values, //Forms name
+							dataType  : 'json',
+							success   : function(data) {
+										if (!data.success) { //If fails
+											//$modal.modal('hide');
+											MsgBox.show(($modal.data('paket_id') ? 'Update Data' : 'Tambah Data') + ' Gagal disimpan, cek kembali data yang akan dientrykan!');
+										}
+										else {
+												MsgBox.show(($modal.data('paket_id') ? 'Update Data' : 'Tambah Data') + ' Berhasil disimpan!');
+												$modal.modal('hide');
+												$table.bootstrapTable('refresh');
+												$("form").trigger("reset");
+											}
+										}
+						});
+						
+				
+			 
 			event.preventDefault(); //Prevent the default submit
 		});
 });

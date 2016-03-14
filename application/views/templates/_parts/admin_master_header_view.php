@@ -40,7 +40,6 @@
 		<script src="<?php echo site_url('assets/plugins/validationengine/js/jquery.validationEngine.js');?>"></script>
 		<script src="<?php echo site_url('assets/plugins/validationengine/js/languages/jquery.validationEngine-en.js');?>"></script>
 		<script src="<?php echo site_url('assets/plugins/jquery-validation-1.11.1/dist/jquery.validate.min.js');?>"></script>
-		<script src="<?php echo site_url('assets/js/validationInit.js');?>"></script>
 		<script src="<?php echo site_url('assets/js/jquery-ui.min.js');?>"></script>
 		<script src="<?php echo site_url('assets/plugins/uniform/jquery.uniform.min.js');?>"></script>
 		<script src="<?php echo site_url('assets/plugins/inputlimiter/jquery.inputlimiter.1.3.1.min.js');?>"></script>

@@ -63,7 +63,7 @@
       </div>
       <div class="modal-body">
         <div id="collapse2" class="body collapse in">
-			<form class="form-horizontal" id="popup-validation">
+			<form class="form-horizontal" id="formTambahAlatX">
 				
 				<input class="form-control"  type="hidden" name='alat_id' id='alat_id' readonly=""> 
 				
@@ -434,37 +434,40 @@
             };
 
         eachSeries(scripts, getScript, initTable);
-		
-		$('#formTambahAlat').validationEngine();
-    	formValidation();
 		formInit(); 
 
-		$('form').submit(function(event) { //Trigger on form submit
-		  
-		   
-			 var $table = $('#table').bootstrapTable({url: '<?php echo site_url('admin/alat/get_data_alat');?>' });
+		$('#formTambahAlatX').submit(function(event) { //Trigger on form submit
+		    var $table = $('#table').bootstrapTable({url: '<?php echo site_url('admin/alat/get_data_alat');?>' });
 			 var values = $(this).serialize();
 
+			if(!$("#formTambahAlatX").validationEngine('validate')){
+				return false;
+			}
+
 			 $.ajax({ //Process the form using $.ajax()
-				type      : 'POST', //Method type
-				url       : $modal.data('alat_id') ? '<?php echo site_url('admin/alat/update');?>' : '<?php echo site_url('admin/alat/create');?>' , 
-				data      : values, //Forms name
-				dataType  : 'json',
-				success   : function(data) {
-							if (!data.success) { //If fails
-								//$modal.modal('hide');
-								MsgBox.show(($modal.data('alat_id') ? 'Update Data' : 'Tambah Data') + ' Gagal disimpan, cek kembali data yang akan dientrykan!');
-							}
-							else {
-								MsgBox.show(($modal.data('alat_id') ? 'Update Data' : 'Tambah Data') + ' Berhasil disimpan!');									
-								$modal.modal('hide');
-								$table.bootstrapTable('refresh');
-								$("form").trigger("reset");
-								}
-							}
-			});
+							type      : 'POST', //Method type
+							url       : $modal.data('alat_id') ? '<?php echo site_url('admin/alat/update');?>' : '<?php echo site_url('admin/alat/create');?>' , 
+							data      : values, //Forms name
+							dataType  : 'json',
+							success   : function(data) {
+										if (!data.success) { //If fails
+											//$modal.modal('hide');
+											MsgBox.show(($modal.data('alat_id') ? 'Update Data' : 'Tambah Data') + ' Gagal disimpan, cek kembali data yang akan dientrykan!');
+										}
+										else {
+											MsgBox.show(($modal.data('alat_id') ? 'Update Data' : 'Tambah Data') + ' Berhasil disimpan!');									
+											$modal.modal('hide');
+											$table.bootstrapTable('refresh');
+											$("form").trigger("reset");
+											}
+										}
+						});
+
 			event.preventDefault(); //Prevent the default submit
 		});
+
+
+
 });
 
     function rowStyle(row, index) {
