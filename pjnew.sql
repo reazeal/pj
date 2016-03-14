@@ -166,12 +166,14 @@ CREATE TABLE `detail_penanggung_jawab` (
   `deleted_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL,
-  `deleted_by` int(11) DEFAULT NULL
+  `deleted_by` int(11) DEFAULT NULL,
+  KEY `pemasangan_id` (`pemasangan_id`),
+  KEY `penanggung_jawab_id` (`penanggung_jawab_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `detail_penanggung_jawab` */
 
-insert  into `detail_penanggung_jawab`(`penanggung_jawab_id`,`pemasangan_id`,`ktp`,`nama`,`alamat`,`telp`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values (1,'024109a0422c9071234410bbdaa2dddf','213213213','sadasdasdas','dsfdsfdsfsd','213213213213','2016-03-11 13:54:34',NULL,NULL,NULL,NULL,NULL),(2,'024109a0422c9071234410bbdaa2dddf','213213213','dsfsdfsdfsd','zxfsdf er','34324324324324','2016-03-11 13:54:34',NULL,NULL,NULL,NULL,NULL);
+insert  into `detail_penanggung_jawab`(`penanggung_jawab_id`,`pemasangan_id`,`ktp`,`nama`,`alamat`,`telp`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values (1,'6f41f74a6fc8fa0ae4bab3aa7d124fa9','456657868786','TANAMA','GRESIK','008888888','2016-03-11 13:54:34','2016-03-14 09:00:30',NULL,NULL,NULL,NULL),(2,'6f41f74a6fc8fa0ae4bab3aa7d124fa9','569865365656','SANTI','SURABAYA','5144564656','2016-03-11 13:54:34','2016-03-14 09:00:30',NULL,NULL,NULL,NULL),(1,'6f41f74a6fc8fa0ae4bab3aa7d124fa9','456657868786','TANAMA','GRESIK','008888888','2016-03-14 09:00:09','2016-03-14 09:00:30',NULL,NULL,NULL,NULL),(2,'6f41f74a6fc8fa0ae4bab3aa7d124fa9','569865365656','SANTI','SURABAYA','5144564656','2016-03-14 09:00:09','2016-03-14 09:00:30',NULL,NULL,NULL,NULL),(1,'a1a5f0b3c6ebc0c90749215ddc6e36f5','584846546546','PANAMA','GRESIK','55555555555','2016-03-14 09:05:18','2016-03-14 09:05:33',NULL,NULL,NULL,NULL),(2,'a1a5f0b3c6ebc0c90749215ddc6e36f5','56476854654','TANAM','SURABAYA','87786456456','2016-03-14 09:05:19','2016-03-14 09:05:33',NULL,NULL,NULL,NULL),(1,'94a07d8cf21c72ce1bb6bb65fe6bcd03','342234234','yytuytu','dsfsdf','55555555','2016-03-14 09:14:48','2016-03-14 09:20:53',NULL,NULL,NULL,NULL),(1,'5985c90c03e1581dbe75cbdc8c335a75','324324324','SITI','SURABAYA','6554565646556','2016-03-14 09:42:26',NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `dictionary` */
 
@@ -569,7 +571,7 @@ CREATE TABLE `pemasangan` (
 
 /*Data for the table `pemasangan` */
 
-insert  into `pemasangan`(`pemasangan_id`,`no_pendaftaran`,`nama`,`gps_id`,`nomor_seri`,`petugas_id`,`nama_petugas`,`nopol`,`merk_kendaraan`,`no_rangka_kendaraan`,`no_mesin_kendaraan`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('024109a0422c9071234410bbdaa2dddf','000001/DAFTAR/III/16','SANDI','0561721ce4be3918e4c277a0c14ab88d','AGU-GPS-7Y761','69d3f9a73b6ba82510acdd0eb187e250','BUDI','fdgfd','gfd','sad','fdgdf','2016-03-11 13:54:33',NULL,NULL,NULL,NULL,NULL),('4a0ccc569cbf06ee2534031e87d2f7fe','000002/DAFTAR/III/16','TIA','62345fd413ca4dfee70a3904322eaaaf','AGU-GPS-XXXXX','69d3f9a73b6ba82510acdd0eb187e250','BUDI','W 1234 ER','TOYOTA','1228888222','3992048032','2016-03-11 17:00:45',NULL,NULL,NULL,NULL,NULL);
+insert  into `pemasangan`(`pemasangan_id`,`no_pendaftaran`,`nama`,`gps_id`,`nomor_seri`,`petugas_id`,`nama_petugas`,`nopol`,`merk_kendaraan`,`no_rangka_kendaraan`,`no_mesin_kendaraan`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('5985c90c03e1581dbe75cbdc8c335a75','000003/DAFTAR/III/16','CINDY','12221cba521fcdc9b3ca9f1f9f44ac54','AGU-GPS-A1209','69d3f9a73b6ba82510acdd0eb187e250','BUDI','W 1234 HY','GRAND MAX','2131231231','2213213213','2016-03-14 09:42:26',NULL,NULL,NULL,NULL,NULL),('94a07d8cf21c72ce1bb6bb65fe6bcd03','000002/DAFTAR/III/16','TIA','63ec97fb54c1b951d952e29d35912f5a','AGU-GPS-4DF7Y','69d3f9a73b6ba82510acdd0eb187e250','BUDI','W 1234 ER','TOYOTA','1228888222','3992048032','2016-03-14 09:14:48','2016-03-14 09:20:53',NULL,NULL,NULL,NULL),('a1a5f0b3c6ebc0c90749215ddc6e36f5','000001/DAFTAR/III/16','SANDI','62345fd413ca4dfee70a3904322eaaaf','AGU-GPS-XXXXX','69d3f9a73b6ba82510acdd0eb187e250','BUDI','W 1234 ER','TOYOTA','1228888222','3992048032','2016-03-14 09:05:18','2016-03-14 09:05:33',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `petugas` */
 
@@ -739,7 +741,7 @@ CREATE TABLE `users` (
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`ip_address`,`username`,`password`,`salt`,`email`,`activation_code`,`forgotten_password_code`,`forgotten_password_time`,`remember_code`,`created_on`,`last_login`,`active`,`first_name`,`last_name`,`company`,`phone`) values (1,'127.0.0.1','administrator','$2y$08$G0h47xFzvBDD3DjwWD13XeCfwGuZgqtSodh5ARhDJLLWPRv0jSgfG','','info@behaestex.co.id','',NULL,NULL,NULL,1268889823,1457678433,1,'Admin','istrator','ADMIN','0'),(2,'::1','btx','$2y$08$YagivZvJ/rC/3iq5.B6Y1O1QyB7tw2TMxKvSAhUnTWY0xM9CS5xrK',NULL,'btx@behaestex.co.id',NULL,NULL,NULL,NULL,1448265757,1457318531,1,'BTX','','','');
+insert  into `users`(`id`,`ip_address`,`username`,`password`,`salt`,`email`,`activation_code`,`forgotten_password_code`,`forgotten_password_time`,`remember_code`,`created_on`,`last_login`,`active`,`first_name`,`last_name`,`company`,`phone`) values (1,'127.0.0.1','administrator','$2y$08$G0h47xFzvBDD3DjwWD13XeCfwGuZgqtSodh5ARhDJLLWPRv0jSgfG','','info@behaestex.co.id','',NULL,NULL,NULL,1268889823,1457919967,1,'Admin','istrator','ADMIN','0'),(2,'::1','btx','$2y$08$YagivZvJ/rC/3iq5.B6Y1O1QyB7tw2TMxKvSAhUnTWY0xM9CS5xrK',NULL,'btx@behaestex.co.id',NULL,NULL,NULL,NULL,1448265757,1457318531,1,'BTX','','','');
 
 /*Table structure for table `users_groups` */
 

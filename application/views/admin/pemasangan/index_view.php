@@ -196,8 +196,20 @@
       </div>
       <div class="modal-body">
         <div class="body collapse in">
-			<div class="form-group">
-				 <div  class="row" >
+				
+				<div  class="row" >
+				<div class="col-sm-10">
+				<div class="form-group">
+						<label class="control-label col-sm-4">No. Pendaftaran</label>
+						<div class="col-sm-4">
+								<input class="form-control"  type="text" name='no_pendx' id='no_pendx' readonly="readonly"> 
+						</div>
+					</div>
+					</div>
+				</div>
+				
+				<div  class="row" >
+				<div class="form-group">
 				 <div class="col-lg-10">
 				 <table id="table_penanggung_jawab_view"
 					   data-toggle="table"
@@ -444,6 +456,7 @@
         }; // default row value
 
        	$table_penanggung_jawab_view.bootstrapTable('load', getJawabannya(row.pemasangan_id));
+		$("#no_pendx").val(row.no_pendaftaran).change();
 		$modalJawabOnly.modal('show');
     }
 

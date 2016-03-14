@@ -2,6 +2,10 @@
     <!DOCTYPE html>
 <html>
     <head>
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Encoding" content="gzip" />
+		<meta http-equiv="Accept-Encoding" content="gzip, deflate" />  
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,9 +31,9 @@
 		<link rel="stylesheet" href="<?php echo site_url('assets/plugins/switch/static/stylesheets/bootstrap-switch.css');?>" />
 		<link rel="stylesheet" href="<?php echo site_url('assets/css/uploadfile.css');?>" />
 		<link rel="stylesheet" href="<?php echo site_url('assets/css/bootstrap-select-min.css');?>" />
+		<link rel="stylesheet" href="<?php echo site_url('assets/plugins/timeline/timeline.css');?>" />
 		
-		<link href="<?php echo site_url('assets/css/layout2.css');?>" rel="stylesheet" />
-        <link rel="stylesheet" href="<?php echo site_url('assets/plugins/timeline/timeline.css');?>" />
+		
 		<script src="<?php echo site_url('assets/plugins/jquery-2.0.3.min.js');?>"></script>
 		<script src="<?php echo site_url('assets/plugins/bootstrap/js/bootstrap.min.js');?>"></script>
 		<script src="<?php echo site_url('assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js');?>"></script>
