@@ -154,10 +154,136 @@
   </div>
 </div>
 
+
+
+<div id="WindowCetakan" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cetakan Preview</h4>
+      </div>
+      <div class="modal-body">
+        <div class="body collapse in">
+
+		<h3>
+            <button id="TombolCetak" class="btn btn-info">Cetak</button>
+        </h3>
+
+				<div id="TampilanCetakan">
+						
+						 <div class="modal-title">
+							<center><b><h2>FORM PENDAFTARAN</h2></b></center>
+						</div>
+
+				<table>
+					<tr>
+						
+						<td>
+								<table width="100%">
+									<tr>
+										<td> No. Pendaftaran </td>
+										<td width="10px"> : </td>
+										<td> <input class="form-control"  type="text" name='no_pendy' id='no_pendy' readonly="readonly"> </td>
+										<td width="10px"></td>
+									</tr>
+
+									<tr>
+										<td>Tgl. Pendaftaran</td>
+										<td> : </td>
+										<td><input class="form-control"  type="text" name='tanggaly' id='tanggaly' readonly="readonly"> </td>
+										<td width="10px"></td>
+									</tr>
+
+									<tr>
+										<td>Nama</td>
+										<td> : </td>
+										<td><input class="form-control"  type="text" name='namay' id='namay' readonly="readonly"> 
+										</td>
+										<td width="10px"></td>
+									</tr>
+
+									<tr>
+										<td>Alamat</td>
+										<td> : </td>
+										<td><input class="form-control"  type="text" name='alamaty' id='alamaty' readonly="readonly">  </td>
+										<td width="10px"></td>
+									</tr>
+
+									<tr>
+										<td>No. Telpon.</td>
+										<td> : </td>
+										<td><input class="form-control"  type="text" name='no_telpy' id='no_telpy' readonly="readonly">  </td>
+										<td width="10px"></td>
+									</tr>
+								
+								</table>
+						</td>
+
+						<td>
+								<table width="100%">
+									<tr>
+										<td>No. HP.</td>
+										<td> : </td>
+										<td><input class="form-control"  type="text" name='no_hpy' id='no_hpy' readonly="readonly">  </td>
+										<td width="10px"></td>
+									</tr>
+
+									<tr>
+										<td>Jenis</td>
+										<td> : </td>
+										<td><input class="form-control"  type="text" name='jenisy' id='jenisy' readonly="readonly">  </td>
+										<td width="10px"></td>
+									</tr>
+
+									<tr>
+										<td>No. SIUP.</td>
+										<td> : </td>
+										<td><input class="form-control"  type="text" name='no_siupy' id='no_siupy' readonly="readonly">  </td>
+										<td width="10px"></td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td width="10px">&nbsp;</td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td width="10px">&nbsp;</td>
+									</tr>
+
+								</table>
+						</td>
+
+
+
+					</tr>
+				</table>
+						
+
+					
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
 <script>
         var $modal = $('#formTambahPendaftaran').modal({show: false});
         var $alert = $('.alert').hide();
 		$('#menuPendaftaran').removeClass('').addClass('active');
+		var $modalCetakan = $('#WindowCetakan').modal({show: false});
 
     var $table = $('#table'),
         $remove = $('#remove'),
@@ -328,6 +454,26 @@
         $modal.modal('show');
     }
 
+
+	function showModalCetakan(title, row) {
+        row = row || {
+            name: '',
+            stargazers_count: 0,
+            forks_count: 0,
+            description: ''
+        }; // default row value
+
+		$("#no_pendy").val(row.no_pendaftaran).change();
+		$("#namay").val(row.nama).change();
+		$("#alamaty").val(row.alamat).change();
+		$("#no_telpy").val(row.no_telp).change();
+		$("#no_hpy").val(row.no_hp).change();
+		$("#no_siupy").val(row.no_siup).change();
+		$("#tanggaly").val(row.tanggal).change();
+		$("#jenisy").val(row.jenis).change();
+		$modalCetakan.modal('show');
+    }
+
     function showAlert(title, type) {
         $alert.attr('class', 'alert alert-' + type || 'success')
               .html('<i class="glyphicon glyphicon-check"></i> ' + title).show();
@@ -356,6 +502,9 @@
 
     function operateFormatter(value, row, index) {
         return [
+			'<a class="cetak_data" href="javascript:void(0)" title="Cetak">',
+            '<i class="icon-print"></i>',
+            '</a>  ',
             '<a class="edit" href="javascript:void(0)" title="Edit Data">',
             '<i class="glyphicon glyphicon-edit"></i>',
             '</a>  ',
@@ -368,6 +517,10 @@
 
 
     window.operateEvents = {
+		'click .cetak_data': function (e, value, row, index) {
+           // alert('You click like action, row: ' + JSON.stringify(row));
+		   showModalCetakan($(this).attr('title'), row);
+        },
         'click .edit': function (e, value, row, index) {
            // alert('You click like action, row: ' + JSON.stringify(row));
 		    var $modal = $('#formTambahPendaftaran').modal({show: false});
