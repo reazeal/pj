@@ -20,7 +20,7 @@
 		<link rel="stylesheet" href="<?php echo site_url('assets/css/MoneAdmin.css');?> " />
 		<link rel="stylesheet" href="<?php echo site_url('assets/plugins/validationengine/css/validationEngine.jquery.css');?> " />
 		<link rel="stylesheet" href="<?php echo site_url('assets/plugins/Font-Awesome/css/font-awesome.css');?> " />
-		<link href="<?php echo site_url('assets/css/jquery-ui.css');?>" rel="stylesheet" />
+		<link rel="stylesheet" href="<?php echo site_url('assets/css/jquery-ui.css');?>"  />
 		<link rel="stylesheet" href="<?php echo site_url('assets/plugins/uniform/themes/default/css/uniform.default.css');?>" />
 		<link rel="stylesheet" href="<?php echo site_url('assets/plugins/inputlimiter/jquery.inputlimiter.1.0.css');?>" />
 		<link rel="stylesheet" href="<?php echo site_url('assets/plugins/chosen/chosen.min.css');?>" />
@@ -32,8 +32,7 @@
 		<link rel="stylesheet" href="<?php echo site_url('assets/css/uploadfile.css');?>" />
 		<link rel="stylesheet" href="<?php echo site_url('assets/css/bootstrap-select-min.css');?>" />
 		<link rel="stylesheet" href="<?php echo site_url('assets/plugins/timeline/timeline.css');?>" />
-		
-		
+		<link rel="stylesheet" href="<?php echo site_url('assets/css/jquery.printarea.css');?>" />
 		<script src="<?php echo site_url('assets/plugins/jquery-2.0.3.min.js');?>"></script>
 		<script src="<?php echo site_url('assets/plugins/bootstrap/js/bootstrap.min.js');?>"></script>
 		<script src="<?php echo site_url('assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js');?>"></script>
@@ -61,10 +60,7 @@
 		<script src="<?php echo site_url('assets/plugins/bootstrap-table/src/bootstrap-table.js');?>"></script>
 		<script src="<?php echo site_url('assets/plugins/bootstrap-table/bootstrap-editable.js');?>"></script>
 		<script src="<?php echo site_url('assets/plugins/bootstrap-table/src/extensions/editable/bootstrap-table-editable.js');?>"></script>
-		
-		
-
-
+		<script src="<?php echo site_url('assets/js/jquery.printarea.js');?>"></script>
 		<script>
 
 				var MsgBox = (function() {

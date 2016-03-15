@@ -260,12 +260,164 @@
   </div>
 </div>
 
+
+<div id="WindowCetakan" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cetakan Preview</h4>
+      </div>
+      <div class="modal-body">
+        <div class="body collapse in">
+
+		<h3>
+            <button id="TombolCetak" class="btn btn-info">Cetak</button>
+        </h3>
+
+				<div id="TampilanCetakan">
+						
+						 <div class="modal-title">
+							<center><b><h2>FORM PEMASANGAN</h2></b></center>
+						</div>
+
+				<table>
+					<tr>
+						
+						<td>
+								<table width="100%">
+									<tr>
+										<td> No. Pendaftaran </td>
+										<td width="10px"> : </td>
+										<td> <input class="form-control"  type="text" name='no_pendy' id='no_pendy' readonly="readonly"> </td>
+										<td width="10px"></td>
+									</tr>
+
+									<tr>
+										<td>Nama Kustomer</td>
+										<td> : </td>
+										<td><input class="form-control"  type="text" name='namay' id='namay' readonly="readonly"> </td>
+										<td width="10px"></td>
+									</tr>
+
+									<tr>
+										<td>Seri Mesin GPS</td>
+										<td> : </td>
+										<td><input class="form-control"  type="text" name='nomor_seriy' id='nomor_seriy' readonly="readonly"> 
+										</td>
+										<td width="10px"></td>
+									</tr>
+
+									<tr>
+										<td>Petugas</td>
+										<td> : </td>
+										<td><input class="form-control"  type="text" name='nama_petugasy' id='nama_petugasy' readonly="readonly">  </td>
+										<td width="10px"></td>
+									</tr>
+								
+								</table>
+						</td>
+
+						<td>
+								<table width="100%">
+									<tr>
+										<td>No. Polisi</td>
+										<td> : </td>
+										<td><input class="form-control"  type="text" name='nopoly' id='nopoly' readonly="readonly">  </td>
+										<td width="10px"></td>
+									</tr>
+
+									<tr>
+										<td>Merk Kendaraan</td>
+										<td> : </td>
+										<td><input class="form-control"  type="text" name='merk_kendaraany' id='merk_kendaraany' readonly="readonly">  </td>
+										<td width="10px"></td>
+									</tr>
+
+									<tr>
+										<td>No. Rangka Kend.</td>
+										<td> : </td>
+										<td><input class="form-control"  type="text" name='no_rangka_kendaraany' id='no_rangka_kendaraany' readonly="readonly">  </td>
+										<td width="10px"></td>
+									</tr>
+
+									<tr>
+										<td>No. Mesin Kend.</td>
+										<td> : </td>
+										<td><input class="form-control"  type="text" name='no_mesin_kendaraany' id='no_mesin_kendaraany' readonly="readonly"> </td>
+										<td width="10px"></td>
+									</tr>
+
+								</table>
+						</td>
+
+
+
+					</tr>
+				</table>
+						
+
+						
+						<div  class="row">
+						<div class="modal-title"><h5><b>&nbsp;&nbsp;&nbsp;&nbsp;Detail Penanggung Jawab</b></h5></div>
+
+						<div class="col-lg-10">
+
+						<table height="100px" width="600px">
+							<tr>
+									<td>
+
+										 <table id="table_penanggung_jawab_cetakan"
+											   data-toggle="table"
+											   data-editable-emptytext="Klik untuk isi.."
+											   data-url="<?php echo site_url('assets/json/data1.json');?>">
+											<thead>
+											<tr>
+											
+												<th data-field="id" ></th>
+												<th data-field="ktp" data-editable="false">No. KTP</th>
+												<th data-field="nama" data-editable="false">Nama</th>
+												<th data-field="alamat" data-editable="false">Alamat</th>
+												<th data-field="telp" data-editable="false">Telpon</th>
+											</tr>
+											</thead>
+										</table>
+									
+									</td>
+							</tr>
+						</table>
+
+
+						
+
+
+						</div>
+						</div>
+
+						    
+				
+				</div>
+				
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <script>
         var $modal = $('#formTambahPemasangan').modal({show: false});
 		var $modalJawabOnly = $('#formLihatJawab').modal({show: false});
+		var $modalCetakan = $('#WindowCetakan').modal({show: false});
 		var $alert = $('.alert').hide();
 		var $table_tanggung_jawab = $('#table_penanggung_jawab');
 		var $table_penanggung_jawab_view = $('#table_penanggung_jawab_view');
+		var $table_penanggung_jawab_cetakan = $('#table_penanggung_jawab_cetakan');
 
         var $table = $('#table'),
         $remove = $('#remove'),
@@ -483,6 +635,27 @@
 		$modalJawabOnly.modal('show');
     }
 
+	function showModalCetakan(title, row) {
+        row = row || {
+            name: '',
+            stargazers_count: 0,
+            forks_count: 0,
+            description: ''
+        }; // default row value
+
+		//$table_penanggung_jawab_cetakan.bootstrapTable('resetView', { height: getHeight()});
+       	$table_penanggung_jawab_cetakan.bootstrapTable('load', getJawabannya(row.pemasangan_id));
+		$("#no_pendy").val(row.no_pendaftaran).change();
+		$("#namay").val(row.nama).change();
+		$("#nomor_seriy").val(row.nomor_seri).change();
+		$("#nama_petugasy").val(row.nama_petugas).change();
+		$("#merk_kendaraany").val(row.merk_kendaraan).change();
+		$("#no_rangka_kendaraany").val(row.no_rangka_kendaraan).change();
+		$("#no_mesin_kendaraany").val(row.no_mesin_kendaraan).change();
+		$("#nopoly").val(row.nopol).change();
+		$modalCetakan.modal('show');
+    }
+
     function showAlert(title, type) {
         $alert.attr('class', 'alert alert-' + type || 'success')
               .html('<i class="glyphicon glyphicon-check"></i> ' + title).show();
@@ -511,6 +684,9 @@
 
     function operateFormatter(value, row, index) {
         return [
+			'<a class="cetak_data" href="javascript:void(0)" title="Lihat data Penanggung Jawab">',
+            '<i class="icon-print"></i>',
+            '</a>  ',
 			'<a class="lihat_data_jawab" href="javascript:void(0)" title="Lihat data Penanggung Jawab">',
             '<i class="icon-table"></i>',
             '</a>  ',
@@ -526,6 +702,10 @@
 
 
     window.operateEvents = {
+		 'click .cetak_data': function (e, value, row, index) {
+           // alert('You click like action, row: ' + JSON.stringify(row));
+		   showModalCetakan($(this).attr('title'), row);
+        },
 		 'click .lihat_data_jawab': function (e, value, row, index) {
            // alert('You click like action, row: ' + JSON.stringify(row));
 		   showModalJawab($(this).attr('title'), row);
@@ -569,7 +749,7 @@
     }
 
     function getHeight() {
-        return $(window).height() - $('h1').outerHeight(true);
+        return $(window).height() - $('h1').outerHeight(false);
     }
 
 	function checkHELLO(field, rules, i, options){
@@ -647,7 +827,10 @@
         eachSeries(scripts, getScript, initTable);
 		formInit(); 
 
-
+		$("#TombolCetak").bind("click", function(event) {
+			// cetak data pada area <div id="#data-mahasiswa"></div>
+			$('#TampilanCetakan').printArea();
+		});
 
 
 

@@ -3027,5 +3027,53 @@ body
     background-color:#54949B;
 }
 
+#loader {
+    background-color: white;
+    color: #fff;
+    height: auto;
+    overflow: hidden;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: absolute;
+    right: 35px;
+    text-align: center;
+    bottom: 35px;
+    width: auto;
+    z-index: 9999; 
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow:0 0 5px #888;
+    box-shadow: 0 0 5px #888;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	border:1px solid #fff
+}
+
+#loader2 {
+    background-color: white;
+    color: #fff;
+    height: auto;
+    overflow: hidden;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: fixed;
+    right: 35px;
+    text-align: center;
+    bottom: 35px;
+    width: auto;
+    z-index: 9999; 
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow:0 0 5px #888;
+    box-shadow: 0 0 5px #888;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	border:1px solid #fff
+}
+
 
 /* END Pricing Table */
