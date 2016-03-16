@@ -662,6 +662,11 @@
         event.preventDefault(); //Prevent the default submit
     });
 
+	$("#TombolCetak").bind("click", function(event) {
+			// cetak data pada area <div id="#data-mahasiswa"></div>
+			$('#TampilanCetakan').printArea();
+		});
+
 
 });
 
