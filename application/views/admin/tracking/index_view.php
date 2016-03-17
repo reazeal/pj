@@ -12,12 +12,13 @@
 						
 							<div class="col-lg-12">
 							 <div id="toolbar">
-								<button class="btn btn-primary" data-toggle="modal" onclick="TambahData();">
+								<!-- <button class="btn btn-primary" data-toggle="modal" onclick="TambahData();">
 									<i class="icon-plus"></i> Tambah
 								</button>
 								<button id="remove" class="btn btn-danger" disabled>
 									<i class="glyphicon glyphicon-remove"></i> Hapus
 								</button>
+								-->
 							 </div>
 							 </div>
 							 <div class="col-lg-12" style="margin-top: 20px;width:100%;">
@@ -235,7 +236,7 @@
 
 
 		</script>
-
+							<h3><button id="TombolPanik" class="btn btn-info">Tombol Panik</button></h3>
 							<div class="col-lg-12">
 							<div class="box">
 							<div class="body">
