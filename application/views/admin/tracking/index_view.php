@@ -9,10 +9,10 @@
                         <div class="panel-body">
 
 
-							<!--
+						
 							<div class="col-lg-12">
 							 <div id="toolbar">
-								<button class="btn btn-primary" data-toggle="modal" disabled onclick="TambahData();">
+								<button class="btn btn-primary" data-toggle="modal" onclick="TambahData();">
 									<i class="icon-plus"></i> Tambah
 								</button>
 								<button id="remove" class="btn btn-danger" disabled>
@@ -20,7 +20,6 @@
 								</button>
 							 </div>
 							 </div>
-							 -->
 							 <div class="col-lg-12" style="margin-top: 20px;width:100%;">
 								 <table id="table"
 								   data-toolbar="#toolbar"
@@ -33,7 +32,7 @@
 								   data-detail-formatter="detailFormatter"
 								   data-detail-view="true"
 								   data-pagination="true"
-								   data-id-field="layanan_id"
+								   data-id-field="tracking_id"
 								   data-page-list="[10, 25, 50, 100, ALL]"
 								   data-show-footer="false"
 								   data-side-pagination="server"
@@ -53,7 +52,7 @@
 		
 		
 <!-- Form Tambah Data -->
-<div id="formTambahLayanan" class="modal fade" role="dialog">
+<div id="formTambahTracking" class="modal fade" role="dialog">
   <div class="modal-dialog modal-md">
 
     <!-- Modal content-->
@@ -64,23 +63,40 @@
       </div>
       <div class="modal-body">
         <div id="collapse2" class="body collapse in">
-			<form class="form-horizontal" id="popup-validation">
+			<form class="form-horizontal" id="formTambahTrackingx">
 				
-				<input class="form-control"  type="hidden" name='layanan_id' id='layanan_id' readonly=""> 
+				<input class="form-control"  type="hidden" name='tracking_id' id='tracking_id' readonly=""> 
 				
-				<div class="form-group">
-					<label class="control-label col-lg-4">Nama Layanan</label>
+				<!-- <div class="form-group">
+					<label class="control-label col-lg-4">Alat</label>
 					<div class="col-lg-6">
-							<input class="validate[required] form-control"  type="text" name='nama_layanan' id='nama_layanan'> 
+							<input class="validate[required] form-control"  type="text" name='alat_id' id='alat_id'  readonly="readonly"> 
+					</div>
+				</div>-->
+
+
+				<div class="form-group">
+					<label class="control-label col-lg-4">Alat</label>
+					<div class="col-lg-6">
+				<?php
+                echo form_dropdown('alat_id',$pilihan_alat,set_value('alat_id'),'class="validate[required] form-control selectpicker " data-show-subtext="true" data-live-search="true" id="alat_id" ');
+                ?>
 					</div>
 				</div>
 
+				
 				<div class="form-group">
-					<label class="control-label col-lg-4">Harga</label>
+					<label class="control-label col-lg-4">Pemasangan</label>
 					<div class="col-lg-6">
-							<input class="validate[required,custom[number]] form-control"  type="text" name='harga' id='harga'> 
+				<?php
+                echo form_dropdown('pemasangan_id',$pilihan_pemasangan,set_value('pemasangan_id'),'class="validate[required] form-control selectpicker " data-show-subtext="true" data-live-search="true" id="pemasangan_id" ');
+                ?>
 					</div>
 				</div>
+
+				
+				
+				
 
 
                                         <div style="text-align:center" class="form-actions no-margin-bottom">
@@ -97,9 +113,153 @@
   </div>
 </div>
 
+
+<div id="WindowMaps" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Ganti Foto</h4>
+      </div>
+      <div class="modal-body">
+        <div id="collapse2" class="body collapse in">
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCeCAhmBV1aJRpEyTpQzwZV-NS_zIfGdSE&sensor=false&language=id"></script>
+		<script type="text/javascript">
+			var markers=new Array();
+			var infowindows=new Array();
+
+
+			function executeQuery() {
+			  $.ajax({
+				url: '<?php echo site_url('admin/tracking/rangetime');?>',
+				success: function(data) {
+				  // do something with the return value here if you like
+				}
+			  });
+			  setTimeout(executeQuery, 5000); // you could choose not to continue on failure...
+			}
+
+
+			function noLocation() {
+				alert("Sensor GPS tidak ditemukan");
+			}
+
+			
+			function updatedata(tracking_id){
+				var lat=0;
+				var longitude=0;
+
+				$.ajax({
+					type: 'POST',
+					async: false,
+					dataType: "json",
+					url: "<?php echo site_url('admin/tracking/getLatLong');?>",
+					data: "tracking_id="+tracking_id,
+					success: function(data) {
+						//console.log(data);
+						var datax = JSON.parse(JSON.stringify(data));
+	
+						if(datax.success==true){
+							latitude  = datax.latitude;
+							longitude = datax.longitude;
+						}else{
+							latitude  = 0;
+							longitude = 0;
+						}
+					}
+				});
+
+
+				var myLatLng = new google.maps.LatLng(latitude, longitude);				
+				markers[0].setPosition(myLatLng);	
+				infowindows[0].setPosition(myLatLng);
+			}
+
+
+			function initialize(tracking_id){
+				var lat_awal = 0;
+				var long_awal = 0;
+				var myLatLng = new google.maps.LatLng(-6.965364, 109.9128218);
+				var myOptions = {
+					zoom: 15,
+					center:myLatLng,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				}
+				
+				map = new google.maps.Map( document.getElementById('canvas'),myOptions);
+
+				$.ajax({
+					type: 'POST',
+					async: false,
+					dataType: "json",
+					url: "<?php echo site_url('admin/tracking/getLatLongAwal');?>",
+					data: "tracking_id="+tracking_id,
+					success: function(data) {
+						//console.log(data);
+
+						var datax = JSON.parse(JSON.stringify(data));
+
+						if(datax.success==true){
+							lat_awal  = datax.latitude;
+							long_awal = datax.longitude;
+						}else{
+							lat_awal  = 0;
+							long_awal = 0;
+						}
+					}
+				});
+
+
+				var marker = new google.maps.Marker({
+						position:new google.maps.LatLng(lat_awal, long_awal),
+						map:map,
+						title:"Saya disini"
+					});
+
+				marker.setIcon({ url: '<?php echo site_url('assets/img/taxi.png');?>', scaledSize: new google.maps.Size(30, 24) , anchor: new google.maps.Point(15, 12)});
+				markers.push(marker);
+
+				var infowindow = new google.maps.InfoWindow({
+					content:"<img src='<?php echo site_url('assets/img/taxi1.jpg');?>' width='50' align='left' />",
+					size: new google.maps.Size(50,50),
+					position:new google.maps.LatLng(lat_awal, long_awal)
+				});
+
+				infowindow.open(map);
+				infowindows.push(infowindow);
+				
+			}
+
+
+
+		</script>
+
+							<div class="col-lg-12">
+							<div class="box">
+							<div class="body">
+								<div id="canvas" class="google-maps"></div>
+							</div>
+							</div>
+							</div>
+						
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 <script>
-        var $modal = $('#formTambahLayanan').modal({show: false});
+        var $modal = $('#formTambahTracking').modal({show: false});
+		var $modalMaps = $('#WindowMaps').modal({show: false});
         var $alert = $('.alert').hide();
+		$('#menuTracking').removeClass('').addClass('active');
 
     var $table = $('#table'),
         $remove = $('#remove'),
@@ -111,29 +271,55 @@
             height: 527,
 			 columns: [
                 
-                [	
-					/*{
+                [	{
                         field: 'state',
                         checkbox: true,
                         align: 'center',
                         align: 'center'
-                    },*/
+                    },
 					{
-                        field: 'nama',
-                        title: 'Nama',
-						width: 200,
-                        sortable: true,
-                        footerFormatter: totalNameFormatter,
+                        field: 'noseri_alat',
+                        title: 'NoSeri Alat',
+						 sortable: true,
                         align: 'left'
                     },
 						{
-                        field: 'harga',
-                        title: 'Harga',
-						width: 100,
-                        sortable: true,
-                        footerFormatter: totalNameFormatter,
-                        align: 'right'
-                    },{
+                        field: 'no_pendaftaran',
+                        title: 'No Pendaftaran',
+						sortable: true,
+                        align: 'left'
+                    },
+						{
+                        field: 'nomor_seri_gps',
+                        title: 'Seri Gps',
+						sortable: true,
+                        align: 'left'
+                    },
+						{
+                        field: 'nopol',
+                        title: 'No.POL',
+					    sortable: true,
+                        align: 'left'
+                    },
+						{
+                        field: 'nama_konsumen',
+                        title: 'Nama Konsumen',
+						sortable: true,
+                        align: 'left'
+                    },
+						{
+                        field: 'posisi_lat',
+                        title: 'Posisi Latitude',
+						sortable: false,
+						align: 'center'
+                    },
+						{
+                        field: 'posisi_long',
+                        title: 'Posisi Longitude',
+						sortable: false,
+						align: 'center'
+                    },
+					{
                         field: 'aksi',
 						title: 'Aksi',
                         align: 'center',
@@ -160,14 +346,14 @@
             //console.log(name, args);
         });
         $remove.click(function () {
-          var $modal = $('#formTambahLayanan').modal({show: false});
+          var $modal = $('#formTambahTracking').modal({show: false});
 		 
 			if (confirm('Anda yakin untuk menghapus data ini ?')) {
 				 var ids = getIdSelections();
 				
 				$.ajax({ 
 					type      : 'POST', 
-					url       : '<?php echo site_url('admin/layanan/delete/');?>/',
+					url       : '<?php echo site_url('admin/tracking/delete/');?>/',
 					data      :  { datanya : JSON.stringify(ids) },
 					dataType  : 'json',
 					success   : function(data) {
@@ -197,18 +383,18 @@
 
 	function TambahData() {
 		$("form").trigger("reset");
-        $modal.modal('show');
+		$modal.modal('show');
     }
 
     function getIdSelections() {
         return $.map($table.bootstrapTable('getSelections'), function (row) {
-            return row.layanan_id
+            return row.tracking_id
         });
     }
 
     function responseHandler(res) {
         $.each(res.rows, function (i, row) {
-            row.state = $.inArray(row.layanan_id, selections) !== -1;
+            row.state = $.inArray(row.tracking_id, selections) !== -1;
         });
         return res;
     }
@@ -221,7 +407,7 @@
             description: ''
         }; // default row value
 
-        $modal.data('layanan_id', row.layanan_id);
+        $modal.data('tracking_id', row.tracking_id);
         $modal.find('.modal-title').text(title);
         for (var name in row) {
             $modal.find('input[name="' + name + '"], textarea[name="' + name + '"], select[name="' + name + '"]').val(row[name]);
@@ -257,6 +443,9 @@
 
     function operateFormatter(value, row, index) {
         return [
+			'<a class="TrackingMaps" href="javascript:void(0)" title="Ganti Foto">',
+            '<i class="icon-map-marker"></i>',
+            '</a>  ',
             '<a class="edit" href="javascript:void(0)" title="Edit Data">',
             '<i class="glyphicon glyphicon-edit"></i>',
             '</a>  ',
@@ -268,18 +457,31 @@
 
 
 
-    window.operateEvents = {
+	function picFormatter(value, row, index) {
+        return [
+            '<img src="<?php echo site_url('uploads/');?>/'+value+'" width="40px" height="40px"/>'
+        ].join('');
+    }
+
+	window.operateEvents = {
+		'click .TrackingMaps': function (e, value, row, index) {
+			initialize(row.tracking_id);
+			var refreshId = setInterval(function(){updatedata(row.tracking_id);},4000);
+			updatedata(row.tracking_id);
+			setTimeout(executeQuery, 5000);
+			$modalMaps.modal('show');
+		},
         'click .edit': function (e, value, row, index) {
            // alert('You click like action, row: ' + JSON.stringify(row));
-		    var $modal = $('#formTambahLayanan').modal({show: false});
+		    var $modal = $('#formTambahTracking').modal({show: false});
 			showModal($(this).attr('title'), row);
         },
         'click .remove': function (e, value, row, index) {
-			var $modal = $('#formTambahLayanan').modal({show: false});
+			var $modal = $('#formTambahTracking').modal({show: false});
 		    if (confirm('Anda yakin untuk menghapus data ini ?')) {
                 $.ajax({
-                    url: '<?php echo site_url('admin/layanan/delete_id/');?>/',
-					data :  { datanya : row.layanan_id },
+                    url: '<?php echo site_url('admin/tracking/delete_id/');?>/',
+					data :  { datanya : row.tracking_id },
                     type: 'POST',
                     success: function () {
                         $table.bootstrapTable('refresh');
@@ -387,35 +589,66 @@
 
         eachSeries(scripts, getScript, initTable);
 		
-		$('#formTambahLayanan').validationEngine();
-    	formValidation();
 		formInit(); 
 
-		$('form').submit(function(event) { //Trigger on form submit
-		  
-		   
-			 var $table = $('#table').bootstrapTable({url: '<?php echo site_url('admin/layanan/get_data_layanan');?>' });
+		$('#formTambahTrackingx').submit(function(event) { //Trigger on form submit
+			 var $table = $('#table').bootstrapTable({url: '<?php echo site_url('admin/petugas/get_data_petugas');?>' });
 			 var values = $(this).serialize();
 
-			 $.ajax({ //Process the form using $.ajax()
-				type      : 'POST', //Method type
-				url       : $modal.data('layanan_id') ? '<?php echo site_url('admin/layanan/update');?>' : '<?php echo site_url('admin/layanan/create');?>' , 
-				data      : values, //Forms name
-				dataType  : 'json',
-				success   : function(data) {
-							if (!data.success) { //If fails
-								//$modal.modal('hide');
-								MsgBox.show(($modal.data('layanan_id') ? 'Update Data' : 'Tambah Data') + ' Gagal disimpan, cek kembali data yang akan dientrykan!');
-							}
-							else {
-								MsgBox.show(($modal.data('layanan_id') ? 'Update Data' : 'Tambah Data') + ' Berhasil disimpan!');									
-								$modal.modal('hide');
-								$table.bootstrapTable('refresh');
-								$("form").trigger("reset");
-								}
-							}
-			});
+			 if(!$("#formTambahTrackingx").validationEngine('validate')){
+			  return false;
+			 }
+
+
+		   		$.ajax({ //Process the form using $.ajax()
+						type      : 'POST', //Method type
+						url       : $modal.data('tracking_id') ? '<?php echo site_url('admin/tracking/update');?>' : '<?php echo site_url('admin/tracking/create');?>' , 
+						data      : values, //Forms name
+						dataType  : 'json',
+						success   : function(data) {
+									if (!data.success) { //If fails
+										//$modal.modal('hide');
+										MsgBox.show(($modal.data('tracking_id') ? 'Update Data' : 'Tambah Data') + ' Gagal disimpan, cek kembali data yang akan dientrykan!');
+									}
+									else {
+										MsgBox.show(($modal.data('tracking_id') ? 'Update Data' : 'Tambah Data') + ' Berhasil disimpan!');									
+										$modal.modal('hide');
+										$table.bootstrapTable('refresh');
+										$("form").trigger("reset");
+										}
+									}
+					});
+
+		
+			 
 			event.preventDefault(); //Prevent the default submit
+		});
+
+		
+		$("#fileuploader").uploadFile({
+			url:"<?php echo site_url('admin/petugas/add_foto');?>",
+			fileName:"userfile",
+			showStatusAfterSuccess:true,
+			dynamicFormData: function()
+			{
+				//console.log($("#tracking_idx").val());
+				var data ={ tracking_id: $("#tracking_idx").val()}
+				return data;
+			},
+				onSuccess:function(files,data,xhr,pd)
+				{
+					var datax = JSON.parse(data);
+
+					if(datax.success==true){
+						MsgBox.show(datax.info);	
+						$modalMaps.modal('hide');
+						$table.bootstrapTable('refresh');
+					}else{
+						MsgBox.show(datax.info);	
+						$table.bootstrapTable('refresh');
+					}
+					
+				},
 		});
 });
 
@@ -430,7 +663,7 @@
         return {};
     }
 
-	$('#tanggal').datepicker({
+	$('#tgl_lahir').datepicker({
 		 dateFormat: 'dd-mm-yy',
 		 minDate: '+5d',
 		 changeMonth: true,

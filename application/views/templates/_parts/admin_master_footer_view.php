@@ -17,7 +17,7 @@ function initTimer() {
         $("#loader").hide();
         var b = parseInt($("#it").val()),
             d = 0,
-            a = "/logout";
+            a = "<?php echo site_url('admin/user/logout');?>";
         $.ajaxSetup({
             success: function(j, g, c) {
                 try {

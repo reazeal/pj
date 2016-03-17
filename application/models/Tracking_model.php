@@ -2,10 +2,10 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pemasangan_model extends MY_Model
+class Tracking_model extends MY_Model
 {
-    public $table = 'pemasangan';
-    public $primary_key = 'pemasangan_id';    
+    public $table = 'tracking';
+    public $primary_key = 'tracking_id';    
     public function __construct()
     {
         parent::__construct();
@@ -24,103 +24,71 @@ class Pemasangan_model extends MY_Model
 		return $urut;
 	}
 
-	public function get_pemasangan_list()
+	public function get_tracking_list()
     {
        
-        $query = $this->db->get('pemasangan');
+        $query = $this->db->get('tracking');
         $parents = array(''=>'Silahkan Pilih...');
         if($query->num_rows()>0)
         {
             foreach($query->result() as $row)
             {
-                $parents[$row->pemasangan_id] = "Pendaftaran : ".$row->no_pendaftaran." [Nopol : ".$row->nopol.",  Pendaftar : ".$row->nama."]";
-            }
-        }
-        return $parents;
-    }
-
-
-	public function get_pendaftaran_list()
-    {
-       
-        $query = $this->db->get('klien');
-        $parents = array(''=>'Silahkan Pilih...');
-        if($query->num_rows()>0)
-        {
-            foreach($query->result() as $row)
-            {
-                $parents[$row->no_pendaftaran] = $row->no_pendaftaran." , Nama : ".$row->nama;
-            }
-        }
-        return $parents;
-    }
-
-
-	public function get_gps_list()
-    {
-       
-        $query = $this->db->get('gps');
-        $parents = array(''=>'Silahkan Pilih...');
-        if($query->num_rows()>0)
-        {
-            foreach($query->result() as $row)
-            {
-                $parents[$row->id] = $row->nomer_seri;
+                $parents[$row->tracking_id] = $row->noseri_alat." [".$row->nopol."]";
             }
         }
         return $parents;
     }
     
     
-    public function get_data_pemasangan($search, $sort, $order, $limit, $offset)
+    public function get_data_tracking($search, $sort, $order, $limit, $offset)
     {
     				$data = array();
     				$this->db->start_cache();
     				
     				$this->db->select("
-	       				pemasangan_id,
-						no_pendaftaran,
-						nama,
-						gps_id,
-						nomor_seri,
-						petugas_id,
-						nama_petugas,
+	       				tracking_id,
+						alat_id,
+						noseri_alat,
+						pemasangan_id,
+						nomor_seri_gps,
 						nopol,
-						merk_kendaraan,
-						no_rangka_kendaraan,
-						no_mesin_kendaraan
+	       				no_pendaftaran,
+						nama_konsumen,
+						posisi_lat,
+						posisi_long,
+						status
        				");
        				
        				if(!empty($search)){
-						$this->db->like('no_pendaftaran',$search,'both');
-						$this->db->or_like('nama',$search,'both');
-						$this->db->or_like('nomor_seri',$search,'both');
-						$this->db->or_like("nama_petugas",$search,'both');
-						$this->db->or_like("nopol", $search,'both');
-						$this->db->or_like("merk_kendaraan", $search,'both');
-						$this->db->or_like("no_rangka_kendaraan", $search,'both');
-						$this->db->or_like("no_mesin_kendaraan", $search,'both');
+						$this->db->like('noseri_alat',$search,'both');
+						$this->db->or_like('nomor_seri_gps',$search,'both');
+						$this->db->or_like('nopol',$search,'both');
+						$this->db->or_like("no_pendaftaran",$search,'both');
+						$this->db->or_like("nama_konsumen", $search,'both');
+						$this->db->or_like("posisi_lat", $search,'both');
+						$this->db->or_like("posisi_long", $search,'both');
+						$this->db->or_like("status", $search,'both');
 					}
 					
 					if(!empty($sort)){$this->db->order_by($sort, $order);}else{$this->db->order_by('created_at', 'DESC');}
-					$query = $this->db->get('pemasangan', $limit, $offset);
-		        	if(!empty($search)){ $totaly2 = $query->num_rows();}else{ $totaly2 = $this->db->count_all('pemasangan'); }
+					$query = $this->db->get('tracking', $limit, $offset);
+		        	if(!empty($search)){ $totaly2 = $query->num_rows();}else{ $totaly2 = $this->db->count_all('tracking'); }
 			
 					if ($totaly2 > 0) {
 						foreach ($query->result() as $atributy) {
-							
-							$data[] = array(
+								
+								$data[] = array(
+										'tracking_id' => $atributy->tracking_id,
+										'alat_id' => $atributy->alat_id,
+										'noseri_alat' => $atributy->noseri_alat,
 										'pemasangan_id' => $atributy->pemasangan_id,
-										'no_pendaftaran' => $atributy->no_pendaftaran,
-										'nama' => $atributy->nama,
-										'gps_id' => $atributy->gps_id,
-										'nomor_seri' => $atributy->nomor_seri,
+										'nomor_seri_gps' => $atributy->nomor_seri_gps,
 										'nopol' => $atributy->nopol,
-										'merk_kendaraan' => $atributy->merk_kendaraan,
-										'no_rangka_kendaraan' => $atributy->no_rangka_kendaraan,
-										'no_mesin_kendaraan' => $atributy->no_mesin_kendaraan,
-										'petugas_id' => $atributy->petugas_id,
-										'nama_petugas' => $atributy->nama_petugas
+										'nama_konsumen' => $atributy->nama_konsumen,
+										'posisi_lat' => $atributy->posisi_lat,
+										'posisi_long' => $atributy->posisi_long,
+										'status' => $atributy->status,
+										'no_pendaftaran' => $atributy->no_pendaftaran
 									);
 						}
 						

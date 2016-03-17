@@ -211,6 +211,7 @@ if($this->ion_auth->logged_in()) {
                     </a>
                     <ul class="<?php echo (($menu_data['class_transaksi']=='in')? 'in':'collapse') ?>" id="pagesr-nav">
                        	<li class="" id="menuPemasangan"><a href="<?php echo site_url('admin/pemasangan');?>"><i class="icon-double-angle-right "></i> Pemasangan</a></li>
+						<li class="" id="menuTracking"><a href="<?php echo site_url('admin/tracking');?>"><i class="icon-double-angle-right "></i> Tracking</a></li>
                     </ul>
                 </li>
             
