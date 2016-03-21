@@ -53,7 +53,7 @@ class Tracking extends Admin_Controller
 			$xxx_content = $this->outbox_model->get_all();
 			//echo count($xxx_content);
 
-			//if(count($xxx_content)<6){
+			if(count($xxx_content)<6){
 
 				$insert_content = array(
 					'DestinationNumber' => '+6285607733981',
@@ -63,7 +63,7 @@ class Tracking extends Admin_Controller
 				);
 				$this->outbox_model->insert($insert_content);
 			
-			//}
+			}
 
 
 			
