@@ -88,7 +88,8 @@ class Pemasangan_model extends MY_Model
 						nopol,
 						merk_kendaraan,
 						no_rangka_kendaraan,
-						no_mesin_kendaraan
+						no_mesin_kendaraan, 
+						get_activated_tracking(pemasangan_id) AS status_tracking
        				");
        				
        				if(!empty($search)){
@@ -100,6 +101,7 @@ class Pemasangan_model extends MY_Model
 						$this->db->or_like("merk_kendaraan", $search,'both');
 						$this->db->or_like("no_rangka_kendaraan", $search,'both');
 						$this->db->or_like("no_mesin_kendaraan", $search,'both');
+						$this->db->or_like("get_activated_tracking(pemasangan_id)", $search,'both');
 					}
 					
 					if(!empty($sort)){$this->db->order_by($sort, $order);}else{$this->db->order_by('created_at', 'DESC');}
@@ -120,6 +122,7 @@ class Pemasangan_model extends MY_Model
 										'no_rangka_kendaraan' => $atributy->no_rangka_kendaraan,
 										'no_mesin_kendaraan' => $atributy->no_mesin_kendaraan,
 										'petugas_id' => $atributy->petugas_id,
+										'status_tracking' => $atributy->status_tracking,
 										'nama_petugas' => $atributy->nama_petugas
 									);
 						}

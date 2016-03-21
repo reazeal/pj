@@ -87,6 +87,15 @@
 				</div>
 
 				<div class="form-group">
+					<label class="control-label col-lg-4">Alat</label>
+					<div class="col-lg-6">
+				<?php
+                echo form_dropdown('alat_id',$pilihan_alat,set_value('alat_id'),'class="validate[required] form-control selectpicker " data-show-subtext="true" data-live-search="true" id="alat_id" ');
+                ?>
+					</div>
+				</div>
+
+				<div class="form-group">
 					<label class="control-label col-lg-4">GPS</label>
 					<div class="col-lg-6">
 				<?php
@@ -478,9 +487,10 @@
 						sortable: true,
                         align: 'left'
                     },
+						
 						{
-                        field: 'no_mesin_kendaraan',
-                        title: 'No. Mesin',
+                        field: 'status_tracking',
+                        title: 'Sts. Tracking',
 						sortable: true,
                         align: 'left'
                     },

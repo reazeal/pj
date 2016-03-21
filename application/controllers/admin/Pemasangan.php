@@ -16,7 +16,9 @@ class Pemasangan extends Admin_Controller
         }
 
 		$this->load->model('pemasangan_model');
+		$this->load->model('tracking_model');
 		$this->load->model('gps_model');
+		$this->load->model('alat_model');
 		$this->load->model('petugas_model');
 		$this->load->model('penanggungjawab_model');
         $this->load->library('form_validation');
@@ -31,6 +33,7 @@ class Pemasangan extends Admin_Controller
 	{
 		$this->data['menu_data'] = array('master'=>false,'transaksi'=>true,'class_master'=>'collapse','class_transaksi'=>'in');
 		$this->data['pilihan_pendaftaran'] = $this->pemasangan_model->get_pendaftaran_list();
+		$this->data['pilihan_alat'] = $this->alat_model->get_alat_list();
 		$this->data['pilihan_gps'] = $this->pemasangan_model->get_gps_list();
 		$this->data['pilihan_petugas'] = $this->petugas_model->get_petugas_list();
         $this->render('admin/pemasangan/index_view');
@@ -76,9 +79,10 @@ class Pemasangan extends Admin_Controller
 		$nopol = $this->input->post('nopol');
 		$petugas_id = $this->input->post('petugas_id');
 		$data_penanggung_jawab = $this->input->post('data_penanggung_jawab');
+		$alat_id = $this->input->post('alat_id');
 		$pemasangan_id = md5('pemasangan_'.date('Y-m-d H:i:s'));
 			
-		if(!empty($gps_id) && !empty($merk_kendaraan) && !empty($nama) && !empty($no_mesin_kendaraan) && !empty($no_pendaftaran) && !empty($no_rangka_kendaraan)  && !empty($nopol) && !empty($petugas_id)){
+		if(!empty($gps_id) && !empty($merk_kendaraan) && !empty($nama) && !empty($no_mesin_kendaraan) && !empty($no_pendaftaran) && !empty($no_rangka_kendaraan)  && !empty($nopol) && !empty($petugas_id) && !empty($alat_id)){
 
 
 			$gps_content = $this->gps_model->where(array('id'=>$gps_id))->get();
@@ -105,6 +109,25 @@ class Pemasangan extends Admin_Controller
 			);
 
 			$this->pemasangan_model->insert($insert_content);
+
+			$tracking_id = md5('tracking_'.date('Y-m-d H:i:s'));
+			$alat_content = $this->alat_model->where(array('alat_id'=>$alat_id))->get();
+			$noseri_alat = $alat_content->no_seri;
+		
+			$insert_content = array(
+				'pemasangan_id' => $pemasangan_id,
+				'alat_id' => $alat_id,
+				'tracking_id' => $tracking_id,
+				'noseri_alat' => $noseri_alat,
+				'nomor_seri_gps' => $nomer_seri,
+				'no_pendaftaran' => $no_pendaftaran,
+				'nama_konsumen' => $nama,
+				'nopol' => $nopol
+
+			);
+
+			$this->tracking_model->insert($insert_content);
+
 
 			$json_tanggung = json_decode($data_penanggung_jawab);
 
@@ -158,6 +181,7 @@ class Pemasangan extends Admin_Controller
 		foreach ($json as $ax) :
 			$deleted_pages = $this->pemasangan_model->where(array('pemasangan_id'=>$ax))->delete();
 			$deleted_pages2 = $this->penanggungjawab_model->where(array('pemasangan_id'=>$ax))->delete();
+			$deleted_pages3 = $this->tracking_model->where(array('pemasangan_id'=>$ax))->delete();
 		endforeach;
 		
 		
@@ -174,6 +198,7 @@ class Pemasangan extends Admin_Controller
 		$datanya = $this->input->post('datanya');
 		$deleted_pages = $this->pemasangan_model->where(array('pemasangan_id'=>$datanya))->delete();
 		$deleted_pages2 = $this->penanggungjawab_model->where(array('pemasangan_id'=>$datanya))->delete();
+		$deleted_pages3 = $this->tracking_model->where(array('pemasangan_id'=>$datanya))->delete();
 		
 		$message = array(
 			   'success' => true,

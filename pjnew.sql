@@ -132,6 +132,17 @@ CREATE TABLE `contents` (
 
 insert  into `contents`(`id`,`content_type`,`parent_id`,`featured_image`,`order`,`published`,`published_at`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`,`share_fb`) values (25,'category',0,'',0,1,'2015-12-02 04:37:46','2015-05-26 13:42:55','2015-12-02 04:37:58',NULL,1,1,0,0),(27,'page',0,'',0,0,'2015-06-05 13:53:57','2015-06-05 13:54:19','2015-06-05 13:58:35',NULL,1,1,0,0),(31,'category',0,'',0,1,'2015-11-23 03:11:49','2015-11-23 03:08:58','2015-11-24 04:58:37',NULL,1,1,0,0),(32,'post',31,'',0,1,'2015-11-23 03:12:41','2015-11-23 03:29:46','2015-12-07 03:56:07',NULL,1,1,0,0),(33,'post',0,'',0,1,'2015-11-23 04:51:29','2015-11-23 04:52:27','2015-11-23 07:00:21',NULL,1,1,0,0),(34,'post',0,'',0,1,'2015-11-23 08:16:00','2015-11-23 08:16:30','2016-01-05 07:34:35',NULL,1,2,0,0),(35,'post',0,'',0,1,'2015-11-23 08:18:10','2015-11-23 08:18:37','2015-11-23 08:18:54',NULL,1,1,0,0),(36,'post',0,'',0,1,'2015-11-23 08:20:10','2015-11-23 08:20:31','2015-11-23 08:20:53',NULL,1,1,0,0),(37,'post',0,'',0,1,'2015-11-23 08:22:04','2015-11-23 08:22:42','2015-11-23 08:26:34',NULL,1,1,0,0),(38,'category',0,'',0,1,'2015-12-02 02:58:05','2015-12-02 02:57:54','2015-12-02 02:58:27',NULL,1,1,0,0),(39,'post',38,'',0,1,'2015-12-02 03:03:27','2015-12-02 03:05:31','2015-12-02 03:05:39',NULL,1,1,0,0);
 
+/*Table structure for table `daemons` */
+
+DROP TABLE IF EXISTS `daemons`;
+
+CREATE TABLE `daemons` (
+  `Start` text NOT NULL,
+  `Info` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `daemons` */
+
 /*Table structure for table `daftar_produk` */
 
 DROP TABLE IF EXISTS `daftar_produk`;
@@ -173,7 +184,7 @@ CREATE TABLE `detail_penanggung_jawab` (
 
 /*Data for the table `detail_penanggung_jawab` */
 
-insert  into `detail_penanggung_jawab`(`penanggung_jawab_id`,`pemasangan_id`,`ktp`,`nama`,`alamat`,`telp`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values (1,'6f41f74a6fc8fa0ae4bab3aa7d124fa9','456657868786','TANAMA','GRESIK','008888888','2016-03-11 13:54:34','2016-03-14 09:00:30',NULL,NULL,NULL,NULL),(2,'6f41f74a6fc8fa0ae4bab3aa7d124fa9','569865365656','SANTI','SURABAYA','5144564656','2016-03-11 13:54:34','2016-03-14 09:00:30',NULL,NULL,NULL,NULL),(1,'6f41f74a6fc8fa0ae4bab3aa7d124fa9','456657868786','TANAMA','GRESIK','008888888','2016-03-14 09:00:09','2016-03-14 09:00:30',NULL,NULL,NULL,NULL),(2,'6f41f74a6fc8fa0ae4bab3aa7d124fa9','569865365656','SANTI','SURABAYA','5144564656','2016-03-14 09:00:09','2016-03-14 09:00:30',NULL,NULL,NULL,NULL),(1,'a1a5f0b3c6ebc0c90749215ddc6e36f5','584846546546','PANAMA','GRESIK','55555555555','2016-03-14 09:05:18','2016-03-14 09:05:33',NULL,NULL,NULL,NULL),(2,'a1a5f0b3c6ebc0c90749215ddc6e36f5','56476854654','TANAM','SURABAYA','87786456456','2016-03-14 09:05:19','2016-03-14 09:05:33',NULL,NULL,NULL,NULL),(1,'94a07d8cf21c72ce1bb6bb65fe6bcd03','342234234','yytuytu','dsfsdf','55555555','2016-03-14 09:14:48','2016-03-14 09:20:53',NULL,NULL,NULL,NULL),(1,'5985c90c03e1581dbe75cbdc8c335a75','324324324','SITI','SURABAYA','6554565646556','2016-03-14 09:42:26',NULL,NULL,NULL,NULL,NULL);
+insert  into `detail_penanggung_jawab`(`penanggung_jawab_id`,`pemasangan_id`,`ktp`,`nama`,`alamat`,`telp`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values (1,'6f41f74a6fc8fa0ae4bab3aa7d124fa9','456657868786','TANAMA','GRESIK','008888888','2016-03-11 13:54:34','2016-03-14 09:00:30',NULL,NULL,NULL,NULL),(2,'6f41f74a6fc8fa0ae4bab3aa7d124fa9','569865365656','SANTI','SURABAYA','5144564656','2016-03-11 13:54:34','2016-03-14 09:00:30',NULL,NULL,NULL,NULL),(1,'6f41f74a6fc8fa0ae4bab3aa7d124fa9','456657868786','TANAMA','GRESIK','008888888','2016-03-14 09:00:09','2016-03-14 09:00:30',NULL,NULL,NULL,NULL),(2,'6f41f74a6fc8fa0ae4bab3aa7d124fa9','569865365656','SANTI','SURABAYA','5144564656','2016-03-14 09:00:09','2016-03-14 09:00:30',NULL,NULL,NULL,NULL),(1,'94a07d8cf21c72ce1bb6bb65fe6bcd03','342234234','yytuytu','dsfsdf','55555555','2016-03-14 09:14:48','2016-03-14 09:20:53',NULL,NULL,NULL,NULL),(1,'6a322b339616b3fba75770579bd2da2d','546546546456564','malik','Gresik','05655555','2016-03-21 11:25:47',NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `dictionary` */
 
@@ -243,6 +254,18 @@ CREATE TABLE `gambar_produk` (
 
 insert  into `gambar_produk`(`id_gambar_produk`,`file`,`id_galeri_produk`) values (1,'uploads/produk_11.jpg',1),(2,'uploads/produk_12.jpg',1),(3,'uploads/produk_2.jpg',2),(4,'uploads/produk_3.jpg',3),(5,'uploads/produk_4.jpg',4),(6,'uploads/produk_5.jpg',5),(7,'uploads/produk_6.jpg',6),(8,'uploads/produk_7.jpg',7),(9,'uploads/produk_8.jpg',8),(10,'uploads/produk_9.jpg',9),(11,'uploads/produk_10.jpg',10),(12,'uploads/produk_111.jpg',11),(13,'uploads/produk_121.jpg',12),(14,'uploads/produk_14.jpg',13),(15,'uploads/produk_141.jpg',14),(16,'uploads/produk_15.jpg',15),(17,'uploads/produk_16.jpg',16);
 
+/*Table structure for table `gammu` */
+
+DROP TABLE IF EXISTS `gammu`;
+
+CREATE TABLE `gammu` (
+  `Version` int(11) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `gammu` */
+
+insert  into `gammu`(`Version`) values (11),(11),(11),(11);
+
 /*Table structure for table `gps` */
 
 DROP TABLE IF EXISTS `gps`;
@@ -303,6 +326,28 @@ CREATE TABLE `images` (
 /*Data for the table `images` */
 
 insert  into `images`(`id`,`content_type`,`content_id`,`title`,`file`,`width`,`height`,`created_at`,`deleted_at`,`created_by`,`deleted_by`,`updated_at`,`updated_by`) values (3,'',33,'Stand Atlas juga hadir di acara NU Expo','aaa12.jpg',960,720,'2015-11-23 08:13:34',NULL,1,0,NULL,NULL),(4,'',32,'Icmi','aaa13.JPG',320,213,'2015-11-23 08:14:57',NULL,1,0,NULL,NULL),(5,'',34,'Kunjungan siswa Sekolah Alam insan Mulia','kunjungan-siswa-sekolah-alam-insan-mulia.jpg',960,539,'2015-11-23 08:17:10',NULL,1,0,NULL,NULL),(6,'',35,'Kunjungan Ikatan Alumni Wira Usaha Muda Mandiri','kunjungan-ikatan-alumni-wira-usaha-muda-mandiri.jpg',960,539,'2015-11-23 08:19:32',NULL,1,0,NULL,NULL),(7,'',36,'Kunjungan Mahasiswa Ciputra University dan AMA Jatim','kunjungan-mahasiswa-ciputra-university-dan-ama-jatim.jpg',960,539,'2015-11-23 08:21:16',NULL,1,0,NULL,NULL),(8,'',37,'Atlas ketika mensponsori Jalan Semangat Hari Pahlawan bersama ESQ 165','atlas-ketika-mensponsori-jalan-semangat-hari-pahlawan-bersama-esq-165.jpg',960,539,'2015-11-23 08:23:03',NULL,1,0,NULL,NULL),(9,'',39,'Jaquard','jaquard_gb.jpg',550,350,'2015-12-02 03:06:17',NULL,1,0,NULL,NULL),(10,'',40,'Belom Gajian','belom-gajian.jpg',612,612,'2015-12-02 05:06:38',NULL,2,0,NULL,NULL);
+
+/*Table structure for table `inbox` */
+
+DROP TABLE IF EXISTS `inbox`;
+
+CREATE TABLE `inbox` (
+  `UpdatedInDB` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `ReceivingDateTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `Text` text NOT NULL,
+  `SenderNumber` varchar(20) NOT NULL DEFAULT '',
+  `Coding` enum('Default_No_Compression','Unicode_No_Compression','8bit','Default_Compression','Unicode_Compression') NOT NULL DEFAULT 'Default_No_Compression',
+  `UDH` text NOT NULL,
+  `SMSCNumber` varchar(20) NOT NULL DEFAULT '',
+  `Class` int(11) NOT NULL DEFAULT '-1',
+  `TextDecoded` text NOT NULL,
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `RecipientID` text NOT NULL,
+  `Processed` enum('false','true') NOT NULL DEFAULT 'false',
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+/*Data for the table `inbox` */
 
 /*Table structure for table `keyphrases` */
 
@@ -400,7 +445,7 @@ CREATE TABLE `layanan` (
 
 /*Data for the table `layanan` */
 
-insert  into `layanan`(`layanan_id`,`nama_layanan`,`harga`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('382b4bb36c36052f0f7e6aefcd5a8272','Biasa',1400000,'2016-02-29 19:17:28','2016-02-29 19:21:57',NULL,NULL,NULL,NULL),('8dd5cf141ddaee9f8163a90175017bfb','Hemat',2000000,'2016-02-29 19:17:11',NULL,NULL,NULL,NULL,NULL),('b79f37a84988442647e5e8f878c2327f','Reguler',5000000,'2016-02-29 19:16:55',NULL,NULL,NULL,NULL,NULL);
+insert  into `layanan`(`layanan_id`,`nama_layanan`,`harga`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('382b4bb36c36052f0f7e6aefcd5a8272','Biasa',1400000,'2016-02-29 19:17:28','2016-02-29 19:21:57',NULL,NULL,NULL,NULL),('5af3469ecdf849dbbb05e8067906a2c2','Super Wow',1000000,'2016-03-14 15:11:16',NULL,NULL,NULL,NULL,NULL),('8dd5cf141ddaee9f8163a90175017bfb','Hemat',2000000,'2016-02-29 19:17:11',NULL,NULL,NULL,NULL,NULL),('b79f37a84988442647e5e8f878c2327f','Reguler',5000000,'2016-02-29 19:16:55',NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `login_attempts` */
 
@@ -492,8 +537,6 @@ CREATE TABLE `outbox` (
   `UpdatedInDB` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `InsertIntoDB` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `SendingDateTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `SendBefore` time NOT NULL DEFAULT '23:59:59',
-  `SendAfter` time NOT NULL DEFAULT '00:00:00',
   `Text` text,
   `DestinationNumber` varchar(20) NOT NULL DEFAULT '',
   `Coding` enum('Default_No_Compression','Unicode_No_Compression','8bit','Default_Compression','Unicode_Compression') NOT NULL DEFAULT 'Default_No_Compression',
@@ -516,11 +559,26 @@ CREATE TABLE `outbox` (
   PRIMARY KEY (`ID`),
   KEY `outbox_date` (`SendingDateTime`,`SendingTimeOut`),
   KEY `outbox_sender` (`SenderID`)
-) ENGINE=MyISAM AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=79 DEFAULT CHARSET=utf8;
 
 /*Data for the table `outbox` */
 
-insert  into `outbox`(`UpdatedInDB`,`InsertIntoDB`,`SendingDateTime`,`SendBefore`,`SendAfter`,`Text`,`DestinationNumber`,`Coding`,`UDH`,`Class`,`TextDecoded`,`ID`,`MultiPart`,`RelativeValidity`,`SenderID`,`SendingTimeOut`,`DeliveryReport`,`CreatorID`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('2016-03-10 07:58:36','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',1,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-10 07:58:36',NULL,NULL,NULL,NULL,NULL),('2016-03-10 07:58:41','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',2,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-10 07:58:41',NULL,NULL,NULL,NULL,NULL),('2016-03-10 08:04:18','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',3,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-10 08:04:18',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:25:18','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',4,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:25:18',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:25:23','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',5,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:25:23',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:25:29','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',6,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:25:29',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:25:35','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',7,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:25:35',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:25:41','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',8,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:25:41',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:25:47','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',9,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:25:47',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:25:53','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',10,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:25:53',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:25:59','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',11,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:25:59',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:26:05','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',12,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:26:05',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:26:10','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',13,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:26:10',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:26:17','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',14,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:26:17',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:26:23','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',15,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:26:23',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:26:30','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',16,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:26:30',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:26:36','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',17,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:26:36',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:26:42','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',18,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:26:42',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:26:47','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',19,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:26:47',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:26:53','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',20,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:26:53',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:26:58','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',21,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:26:58',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:27:05','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',22,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:27:05',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:27:10','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',23,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:27:10',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:27:16','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',24,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:27:16',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:27:21','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',25,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:27:21',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:27:27','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',26,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:27:27',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:27:33','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',27,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:27:33',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:27:38','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',28,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:27:38',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:27:44','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',29,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:27:44',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:27:49','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',30,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:27:49',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:27:55','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',31,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:27:55',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:28:00','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',32,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:28:00',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:28:05','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',33,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:28:05',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:28:11','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',34,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:28:11',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:28:17','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',35,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:28:17',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:28:22','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',36,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:28:22',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:28:28','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',37,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:28:28',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:28:33','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',38,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:28:33',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:28:39','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',39,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:28:39',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:28:44','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',40,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:28:44',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:28:49','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',41,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:28:49',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:28:55','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',42,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:28:55',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:29:00','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',43,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:29:00',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:29:05','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',44,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:29:05',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:29:11','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',45,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:29:11',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:29:17','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',46,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:29:17',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:29:22','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',47,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:29:22',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:29:28','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',48,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:29:28',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:29:33','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',49,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:29:33',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:29:39','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',50,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:29:39',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:29:44','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',51,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:29:44',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:29:49','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',52,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:29:49',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:29:55','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',53,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:29:55',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:30:00','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',54,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:30:00',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:30:05','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',55,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:30:05',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:30:11','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',56,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:30:11',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:30:16','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',57,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:30:16',NULL,NULL,NULL,NULL,NULL),('2016-03-11 14:30:22','0000-00-00 00:00:00','0000-00-00 00:00:00','23:59:59','00:00:00',NULL,'+6285607733981','Default_No_Compression',NULL,-1,'0000,A00',58,'false',-1,NULL,'0000-00-00 00:00:00','default','Gammu','2016-03-11 14:30:22',NULL,NULL,NULL,NULL,NULL);
+/*Table structure for table `outbox_multipart` */
+
+DROP TABLE IF EXISTS `outbox_multipart`;
+
+CREATE TABLE `outbox_multipart` (
+  `Text` text,
+  `Coding` enum('Default_No_Compression','Unicode_No_Compression','8bit','Default_Compression','Unicode_Compression') NOT NULL DEFAULT 'Default_No_Compression',
+  `UDH` text,
+  `Class` int(11) DEFAULT '-1',
+  `TextDecoded` text,
+  `ID` int(10) unsigned NOT NULL DEFAULT '0',
+  `SequencePosition` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`ID`,`SequencePosition`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `outbox_multipart` */
 
 /*Table structure for table `paket` */
 
@@ -542,6 +600,32 @@ CREATE TABLE `paket` (
 /*Data for the table `paket` */
 
 insert  into `paket`(`paket_id`,`nama_paket`,`harga`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('5407d4b5a3f532c5515f26203fd58f2e','PAKETAN-DATA',1400000,'2016-03-01 11:11:40',NULL,NULL,NULL,NULL,NULL),('54f19041d4b75372c90c8468da70d5ee','PAKET-DUA',8400000,'2016-03-01 11:11:48',NULL,NULL,NULL,NULL,NULL);
+
+/*Table structure for table `pbk` */
+
+DROP TABLE IF EXISTS `pbk`;
+
+CREATE TABLE `pbk` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `GroupID` int(11) NOT NULL DEFAULT '-1',
+  `Name` text NOT NULL,
+  `Number` text NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `pbk` */
+
+/*Table structure for table `pbk_groups` */
+
+DROP TABLE IF EXISTS `pbk_groups`;
+
+CREATE TABLE `pbk_groups` (
+  `Name` text NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `pbk_groups` */
 
 /*Table structure for table `pemasangan` */
 
@@ -571,7 +655,7 @@ CREATE TABLE `pemasangan` (
 
 /*Data for the table `pemasangan` */
 
-insert  into `pemasangan`(`pemasangan_id`,`no_pendaftaran`,`nama`,`gps_id`,`nomor_seri`,`petugas_id`,`nama_petugas`,`nopol`,`merk_kendaraan`,`no_rangka_kendaraan`,`no_mesin_kendaraan`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('5985c90c03e1581dbe75cbdc8c335a75','000003/DAFTAR/III/16','CINDY','12221cba521fcdc9b3ca9f1f9f44ac54','AGU-GPS-A1209','69d3f9a73b6ba82510acdd0eb187e250','BUDI','W 1234 HY','GRAND MAX','2131231231','2213213213','2016-03-14 09:42:26',NULL,NULL,NULL,NULL,NULL),('94a07d8cf21c72ce1bb6bb65fe6bcd03','000002/DAFTAR/III/16','TIA','63ec97fb54c1b951d952e29d35912f5a','AGU-GPS-4DF7Y','69d3f9a73b6ba82510acdd0eb187e250','BUDI','W 1234 ER','TOYOTA','1228888222','3992048032','2016-03-14 09:14:48','2016-03-14 09:20:53',NULL,NULL,NULL,NULL),('a1a5f0b3c6ebc0c90749215ddc6e36f5','000001/DAFTAR/III/16','SANDI','62345fd413ca4dfee70a3904322eaaaf','AGU-GPS-XXXXX','69d3f9a73b6ba82510acdd0eb187e250','BUDI','W 1234 ER','TOYOTA','1228888222','3992048032','2016-03-14 09:05:18','2016-03-14 09:05:33',NULL,NULL,NULL,NULL);
+insert  into `pemasangan`(`pemasangan_id`,`no_pendaftaran`,`nama`,`gps_id`,`nomor_seri`,`petugas_id`,`nama_petugas`,`nopol`,`merk_kendaraan`,`no_rangka_kendaraan`,`no_mesin_kendaraan`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('6a322b339616b3fba75770579bd2da2d','000001/DAFTAR/III/16','CINDY','63ec97fb54c1b951d952e29d35912f5a','AGU-GPS-4DF7Y','69d3f9a73b6ba82510acdd0eb187e250','BUDI','W 1234 HY','GRAND MAX','2131231231','3992048032','2016-03-21 11:25:46',NULL,NULL,NULL,NULL,NULL),('94a07d8cf21c72ce1bb6bb65fe6bcd03','000002/DAFTAR/III/16','TIA','63ec97fb54c1b951d952e29d35912f5a','AGU-GPS-4DF7Y','69d3f9a73b6ba82510acdd0eb187e250','BUDI','W 1234 ER','TOYOTA','1228888222','3992048032','2016-03-14 09:14:48','2016-03-14 09:20:53',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `petugas` */
 
@@ -598,6 +682,30 @@ CREATE TABLE `petugas` (
 
 insert  into `petugas`(`petugas_id`,`kode`,`nama`,`tgl_lahir`,`alamat`,`no_ktp`,`foto`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('69d3f9a73b6ba82510acdd0eb187e250','TRX0001','BUDI','2016-03-10','sadfsaf','554654654654665','20160308_131740-013.jpeg','2016-03-10 11:35:24','2016-03-10 14:56:13',NULL,NULL,NULL,NULL);
 
+/*Table structure for table `phones` */
+
+DROP TABLE IF EXISTS `phones`;
+
+CREATE TABLE `phones` (
+  `ID` text NOT NULL,
+  `UpdatedInDB` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `InsertIntoDB` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `TimeOut` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `Send` enum('yes','no') NOT NULL DEFAULT 'no',
+  `Receive` enum('yes','no') NOT NULL DEFAULT 'no',
+  `IMEI` varchar(35) NOT NULL,
+  `Client` text NOT NULL,
+  `Battery` int(11) NOT NULL DEFAULT '0',
+  `Signal` int(11) NOT NULL DEFAULT '0',
+  `Sent` int(11) NOT NULL DEFAULT '0',
+  `Received` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`IMEI`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `phones` */
+
+insert  into `phones`(`ID`,`UpdatedInDB`,`InsertIntoDB`,`TimeOut`,`Send`,`Receive`,`IMEI`,`Client`,`Battery`,`Signal`,`Sent`,`Received`) values ('ModemWirelessE','2016-03-21 10:40:05','2016-03-21 10:23:13','2016-03-21 10:40:15','yes','yes','353303059557257','Gammu 1.28.90, Windows Server 2007, GCC 4.4, MinGW 3.13',0,-1,19,12);
+
 /*Table structure for table `phrases` */
 
 DROP TABLE IF EXISTS `phrases`;
@@ -611,6 +719,41 @@ CREATE TABLE `phrases` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 /*Data for the table `phrases` */
+
+/*Table structure for table `sentitems` */
+
+DROP TABLE IF EXISTS `sentitems`;
+
+CREATE TABLE `sentitems` (
+  `UpdatedInDB` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `InsertIntoDB` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `SendingDateTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `DeliveryDateTime` timestamp NULL DEFAULT NULL,
+  `Text` text NOT NULL,
+  `DestinationNumber` varchar(20) NOT NULL DEFAULT '',
+  `Coding` enum('Default_No_Compression','Unicode_No_Compression','8bit','Default_Compression','Unicode_Compression') NOT NULL DEFAULT 'Default_No_Compression',
+  `UDH` text NOT NULL,
+  `SMSCNumber` varchar(20) NOT NULL DEFAULT '',
+  `Class` int(11) NOT NULL DEFAULT '-1',
+  `TextDecoded` text NOT NULL,
+  `ID` int(10) unsigned NOT NULL DEFAULT '0',
+  `SenderID` varchar(255) NOT NULL,
+  `SequencePosition` int(11) NOT NULL DEFAULT '1',
+  `Status` enum('SendingOK','SendingOKNoReport','SendingError','DeliveryOK','DeliveryFailed','DeliveryPending','DeliveryUnknown','Error') NOT NULL DEFAULT 'SendingOK',
+  `StatusError` int(11) NOT NULL DEFAULT '-1',
+  `TPMR` int(11) NOT NULL DEFAULT '-1',
+  `RelativeValidity` int(11) NOT NULL DEFAULT '-1',
+  `CreatorID` text NOT NULL,
+  PRIMARY KEY (`ID`,`SequencePosition`),
+  KEY `sentitems_date` (`DeliveryDateTime`),
+  KEY `sentitems_tpmr` (`TPMR`),
+  KEY `sentitems_dest` (`DestinationNumber`),
+  KEY `sentitems_sender` (`SenderID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `sentitems` */
+
+insert  into `sentitems`(`UpdatedInDB`,`InsertIntoDB`,`SendingDateTime`,`DeliveryDateTime`,`Text`,`DestinationNumber`,`Coding`,`UDH`,`SMSCNumber`,`Class`,`TextDecoded`,`ID`,`SenderID`,`SequencePosition`,`Status`,`StatusError`,`TPMR`,`RelativeValidity`,`CreatorID`) values ('2016-03-21 09:37:54','0000-00-00 00:00:00','2016-03-21 09:37:54',NULL,'00740065007300740069006E0067','081335300039','Default_No_Compression','','+62816124',-1,'testing',1,'ModemWirelessE',1,'SendingOKNoReport',-1,8,255,'Gammu 1.28.90'),('2016-03-21 09:37:57','0000-00-00 00:00:00','2016-03-21 09:37:57',NULL,'00540065007300740069006E006700670067006700670067','085732976799','Default_No_Compression','','+62816124',-1,'Testingggggg',2,'ModemWirelessE',1,'SendingOKNoReport',-1,9,255,'Gammu 1.28.90'),('2016-03-21 09:38:00','0000-00-00 00:00:00','2016-03-21 09:38:00',NULL,'006400730061006400730061006400730061','081335300039','Default_No_Compression','','+62816124',-1,'dsadsadsa',3,'ModemWirelessE',1,'SendingOKNoReport',-1,10,255,'Gammu 1.28.90'),('2016-03-21 09:42:04','0000-00-00 00:00:00','2016-03-21 09:42:04',NULL,'0030003000300030002C004100300030','085607733981','Default_No_Compression','','+62816124',-1,'0000,A00',4,'ModemWirelessE',1,'SendingOKNoReport',-1,11,255,'Gammu 1.28.90'),('2016-03-21 09:44:07','0000-00-00 00:00:00','2016-03-21 09:44:07',NULL,'0030003000300030002C004100300030','085607733981','Default_No_Compression','','+62816124',-1,'0000,A00',6,'ModemWirelessE',1,'SendingOKNoReport',-1,12,255,'Gammu 1.28.90'),('2016-03-21 09:44:10','0000-00-00 00:00:00','2016-03-21 09:44:10',NULL,'0030003000300030002C004100300030','085607733981','Default_No_Compression','','+62816124',-1,'0000,A00',5,'ModemWirelessE',1,'SendingOKNoReport',-1,13,255,'Gammu 1.28.90'),('2016-03-21 10:08:24','0000-00-00 00:00:00','2016-03-21 10:08:24',NULL,'0030003000300030002C004100300030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A00',27,'ModemWirelessE',1,'SendingOKNoReport',-1,14,255,'Gammu 1.28.90'),('2016-03-21 10:08:27','0000-00-00 00:00:00','2016-03-21 10:08:27',NULL,'0030003000300030002C004100300030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A00',26,'ModemWirelessE',1,'SendingOKNoReport',-1,15,255,'Gammu 1.28.90'),('2016-03-21 10:08:29','0000-00-00 00:00:00','2016-03-21 10:08:29',NULL,'0030003000300030002C004100300030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A00',25,'ModemWirelessE',1,'SendingOKNoReport',-1,16,255,'Gammu 1.28.90'),('2016-03-21 10:08:32','0000-00-00 00:00:00','2016-03-21 10:08:32',NULL,'0030003000300030002C004100300030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A00',24,'ModemWirelessE',1,'SendingOKNoReport',-1,17,255,'Gammu 1.28.90'),('2016-03-21 10:08:34','0000-00-00 00:00:00','2016-03-21 10:08:34',NULL,'0030003000300030002C004100300030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A00',23,'ModemWirelessE',1,'SendingOKNoReport',-1,18,255,'Gammu 1.28.90'),('2016-03-21 10:13:43','0000-00-00 00:00:00','2016-03-21 10:13:43',NULL,'0030003000300030002C004100300030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A00',28,'ModemWirelessE',1,'SendingOKNoReport',-1,19,255,'Gammu 1.28.90'),('2016-03-21 10:13:46','0000-00-00 00:00:00','2016-03-21 10:13:46',NULL,'0030003000300030002C004100300030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A00',29,'ModemWirelessE',1,'SendingOKNoReport',-1,20,255,'Gammu 1.28.90'),('2016-03-21 10:13:48','0000-00-00 00:00:00','2016-03-21 10:13:48',NULL,'0030003000300030002C004100300030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A00',30,'ModemWirelessE',1,'SendingOKNoReport',-1,21,255,'Gammu 1.28.90'),('2016-03-21 10:23:44','0000-00-00 00:00:00','2016-03-21 10:23:44',NULL,'0030003000300030002C004100310030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A10',34,'ModemWirelessE',1,'SendingOKNoReport',-1,22,255,'Gammu 1.28.90'),('2016-03-21 10:23:46','0000-00-00 00:00:00','2016-03-21 10:23:46',NULL,'0030003000300030002C004100310030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A10',33,'ModemWirelessE',1,'SendingOKNoReport',-1,23,255,'Gammu 1.28.90'),('2016-03-21 10:23:49','0000-00-00 00:00:00','2016-03-21 10:23:49',NULL,'0030003000300030002C004100310030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A10',32,'ModemWirelessE',1,'SendingOKNoReport',-1,24,255,'Gammu 1.28.90'),('2016-03-21 10:23:52','0000-00-00 00:00:00','2016-03-21 10:23:52',NULL,'0030003000300030002C004100310030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A10',31,'ModemWirelessE',1,'SendingOKNoReport',-1,25,255,'Gammu 1.28.90'),('2016-03-21 10:37:27','0000-00-00 00:00:00','2016-03-21 10:37:27',NULL,'0030003000300030002C004100310030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A10',36,'ModemWirelessE',1,'SendingOKNoReport',-1,26,255,'Gammu 1.28.90'),('2016-03-21 10:37:30','0000-00-00 00:00:00','2016-03-21 10:37:30',NULL,'0030003000300030002C004100310030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A10',38,'ModemWirelessE',1,'SendingOKNoReport',-1,27,255,'Gammu 1.28.90'),('2016-03-21 10:37:33','0000-00-00 00:00:00','2016-03-21 10:37:33',NULL,'0030003000300030002C004100310030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A10',39,'ModemWirelessE',1,'SendingOKNoReport',-1,28,255,'Gammu 1.28.90'),('2016-03-21 10:37:35','0000-00-00 00:00:00','2016-03-21 10:37:35',NULL,'0030003000300030002C004100310030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A10',37,'ModemWirelessE',1,'SendingOKNoReport',-1,29,255,'Gammu 1.28.90'),('2016-03-21 10:37:39','0000-00-00 00:00:00','2016-03-21 10:37:39',NULL,'0030003000300030002C004100310030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A10',40,'ModemWirelessE',1,'SendingOKNoReport',-1,30,255,'Gammu 1.28.90'),('2016-03-21 10:37:41','0000-00-00 00:00:00','2016-03-21 10:37:41',NULL,'0030003000300030002C004100310030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A10',35,'ModemWirelessE',1,'SendingOKNoReport',-1,31,255,'Gammu 1.28.90'),('2016-03-21 10:37:44','0000-00-00 00:00:00','2016-03-21 10:37:44',NULL,'0030003000300030002C004100310030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A10',41,'ModemWirelessE',1,'SendingOKNoReport',-1,32,255,'Gammu 1.28.90'),('2016-03-21 10:38:18','0000-00-00 00:00:00','2016-03-21 10:38:18',NULL,'0030003000300030002C004100310030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A10',46,'ModemWirelessE',1,'SendingOKNoReport',-1,33,255,'Gammu 1.28.90'),('2016-03-21 10:38:21','0000-00-00 00:00:00','2016-03-21 10:38:21',NULL,'0030003000300030002C004100310030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A10',45,'ModemWirelessE',1,'SendingOKNoReport',-1,34,255,'Gammu 1.28.90'),('2016-03-21 10:38:23','0000-00-00 00:00:00','2016-03-21 10:38:23',NULL,'0030003000300030002C004100310030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A10',42,'ModemWirelessE',1,'SendingOKNoReport',-1,35,255,'Gammu 1.28.90'),('2016-03-21 10:38:26','0000-00-00 00:00:00','2016-03-21 10:38:26',NULL,'0030003000300030002C004100310030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A10',43,'ModemWirelessE',1,'SendingOKNoReport',-1,36,255,'Gammu 1.28.90'),('2016-03-21 10:38:28','0000-00-00 00:00:00','2016-03-21 10:38:28',NULL,'0030003000300030002C004100310030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A10',44,'ModemWirelessE',1,'SendingOKNoReport',-1,37,255,'Gammu 1.28.90'),('2016-03-21 10:39:35','0000-00-00 00:00:00','2016-03-21 10:39:35',NULL,'0030003000300030002C004100300030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A00',47,'ModemWirelessE',1,'SendingOKNoReport',-1,38,255,'Gammu 1.28.90'),('2016-03-21 10:39:38','0000-00-00 00:00:00','2016-03-21 10:39:38',NULL,'0030003000300030002C004100300030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A00',48,'ModemWirelessE',1,'SendingOKNoReport',-1,39,255,'Gammu 1.28.90'),('2016-03-21 10:39:40','0000-00-00 00:00:00','2016-03-21 10:39:40',NULL,'0030003000300030002C004100300030','+6285607733981','Default_No_Compression','','+62816124',-1,'0000,A00',49,'ModemWirelessE',1,'SendingOKNoReport',-1,40,255,'Gammu 1.28.90');
 
 /*Table structure for table `slider_banner` */
 
@@ -677,42 +820,32 @@ DROP TABLE IF EXISTS `tracking`;
 
 CREATE TABLE `tracking` (
   `tracking_id` varchar(255) NOT NULL,
-  `nopol` char(50) NOT NULL,
-  `noseri_alat` varchar(255) NOT NULL,
-  `alamat` varchar(255) DEFAULT NULL,
-  `status` text,
+  `alat_id` varchar(255) DEFAULT NULL COMMENT '# dari Table Alat alat_id',
+  `noseri_alat` varchar(255) DEFAULT NULL COMMENT '# dari Table Alat no_seri',
+  `pemasangan_id` varchar(255) DEFAULT NULL COMMENT '# dari Table Pemasangan pemasangan_id',
+  `nomor_seri_gps` varchar(255) DEFAULT NULL COMMENT '# dari Table Pemasangan nomor_seri',
+  `nopol` char(50) DEFAULT NULL COMMENT '# dari Table Pemasangan nopol',
+  `no_pendaftaran` varchar(50) DEFAULT NULL COMMENT '# dari Table Pemasangan no_pendaftaran',
+  `nama_konsumen` varchar(255) DEFAULT NULL COMMENT '# dari Table Pemasangan nama',
   `posisi_lat` varchar(255) DEFAULT NULL,
   `posisi_long` varchar(255) DEFAULT NULL,
+  `status` int(11) DEFAULT '0',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL,
   `deleted_by` int(11) DEFAULT NULL,
-  PRIMARY KEY (`tracking_id`)
+  PRIMARY KEY (`tracking_id`),
+  KEY `alat_id` (`alat_id`),
+  KEY `nopol` (`nopol`),
+  KEY `no_pendaftaran` (`no_pendaftaran`),
+  KEY `nama_konsumen` (`nama_konsumen`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tracking` */
 
-/*Table structure for table `truck_gps` */
-
-DROP TABLE IF EXISTS `truck_gps`;
-
-CREATE TABLE `truck_gps` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(255) NOT NULL,
-  `status` text NOT NULL,
-  `foto` varchar(255) NOT NULL,
-  `lat` double NOT NULL,
-  `lon` double NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
-/*Data for the table `truck_gps` */
-
-insert  into `truck_gps`(`id`,`nama`,`status`,`foto`,`lat`,`lon`,`username`,`password`) values (1,'Taxi 1','Saya lagi tidur','taxi1.jpg',-7.180370499999999,112.6387326,'ronald','*6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9'),(2,'Taxi 2','Lagi Antar penumpang','taxi2.jpg',-1.38518,102.33806,'hendri','*6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9');
+insert  into `tracking`(`tracking_id`,`alat_id`,`noseri_alat`,`pemasangan_id`,`nomor_seri_gps`,`nopol`,`no_pendaftaran`,`nama_konsumen`,`posisi_lat`,`posisi_long`,`status`,`created_at`,`updated_at`,`deleted_at`,`created_by`,`updated_by`,`deleted_by`) values ('5299bff06e89331dc7bb196955c4a531','a44cb3752bd9e6ff35981272132d67d0','ASCDXZ','94a07d8cf21c72ce1bb6bb65fe6bcd03','AGU-GPS-4DF7Y','W 1234 ER','000002/DAFTAR/III/16','TIA','AKTIF IMEI','AKTIF IMEI',1,'2016-03-17 10:12:34',NULL,NULL,NULL,NULL,NULL),('8327a795488536999de3f8303796e63d','a44cb3752bd9e6ff35981272132d67d0','ASCDXZ','6a322b339616b3fba75770579bd2da2d','AGU-GPS-4DF7Y','W 1234 HY','000001/DAFTAR/III/16','CINDY','AKTIF IMEI','AKTIF IMEI',0,'2016-03-21 11:25:46',NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `users` */
 
@@ -741,7 +874,7 @@ CREATE TABLE `users` (
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`ip_address`,`username`,`password`,`salt`,`email`,`activation_code`,`forgotten_password_code`,`forgotten_password_time`,`remember_code`,`created_on`,`last_login`,`active`,`first_name`,`last_name`,`company`,`phone`) values (1,'127.0.0.1','administrator','$2y$08$G0h47xFzvBDD3DjwWD13XeCfwGuZgqtSodh5ARhDJLLWPRv0jSgfG','','info@behaestex.co.id','',NULL,NULL,NULL,1268889823,1457919967,1,'Admin','istrator','ADMIN','0'),(2,'::1','btx','$2y$08$YagivZvJ/rC/3iq5.B6Y1O1QyB7tw2TMxKvSAhUnTWY0xM9CS5xrK',NULL,'btx@behaestex.co.id',NULL,NULL,NULL,NULL,1448265757,1457318531,1,'BTX','','','');
+insert  into `users`(`id`,`ip_address`,`username`,`password`,`salt`,`email`,`activation_code`,`forgotten_password_code`,`forgotten_password_time`,`remember_code`,`created_on`,`last_login`,`active`,`first_name`,`last_name`,`company`,`phone`) values (1,'127.0.0.1','administrator','$2y$08$G0h47xFzvBDD3DjwWD13XeCfwGuZgqtSodh5ARhDJLLWPRv0jSgfG','','info@behaestex.co.id','',NULL,NULL,NULL,1268889823,1458528988,1,'Admin','istrator','ADMIN','0'),(2,'::1','btx','$2y$08$YagivZvJ/rC/3iq5.B6Y1O1QyB7tw2TMxKvSAhUnTWY0xM9CS5xrK',NULL,'btx@behaestex.co.id',NULL,NULL,NULL,NULL,1448265757,1457318531,1,'BTX','','','');
 
 /*Table structure for table `users_groups` */
 
@@ -778,7 +911,49 @@ CREATE TABLE `website` (
 
 /*Data for the table `website` */
 
-insert  into `website`(`title`,`page_title`,`status`,`admin_email`,`contact_email`,`modified_by`) values ('PT. Coba coba','coba coba',1,'info@xxx.com','info@xxx.com','1'),('PT. Coba coba','coba coba',1,'info@xxx.com','info@xxx.com','1');
+insert  into `website`(`title`,`page_title`,`status`,`admin_email`,`contact_email`,`modified_by`) values ('PT. Coba coba','coba cobax',1,'info@xxx.com','info@xxx.com','1'),('PT. Coba coba','coba cobax',1,'info@xxx.com','info@xxx.com','1');
+
+/* Trigger structure for table `inbox` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `update` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `update` AFTER INSERT ON `inbox` FOR EACH ROW BEGIN
+	
+	IF SUBSTRING_INDEX(new.TextDecoded,' ',1) ='AKTIF' THEN 
+	  
+	 update tracking  SET `status`=1 where nomor_seri_gps=SUBSTRING_INDEX(new.TextDecoded,' ',-1) AND `status`=0 ; 
+	 INSERT INTO outbox(DestinationNumber,TextDecoded,SenderID,CreatorID) 
+	 VALUES(new.SenderNumber,CONCAT(SUBSTRING_INDEX(new.TextDecoded,' ',-1),' ','Berhasil Diaktifkan'),'ModemWirelessE','Gammu 1.28.90');
+		
+	ELSE
+	
+	UPDATE tracking SET posisi_lat = SUBSTRING_INDEX(SUBSTRING_INDEX(new.TextDecoded,',',7),'=','-1'),
+	posisi_long = SUBSTRING_INDEX(SUBSTRING_INDEX(new.TextDecoded,',',-1),'&','1');
+		
+	end if;
+	
+	
+    END */$$
+
+
+DELIMITER ;
+
+/* Function  structure for function  `get_activated_tracking` */
+
+/*!50003 DROP FUNCTION IF EXISTS `get_activated_tracking` */;
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` FUNCTION `get_activated_tracking`(`p_id` VARCHAR(100)) RETURNS varchar(100) CHARSET latin1
+    DETERMINISTIC
+BEGIN
+	DECLARE a VARCHAR(100);
+	SET a = (SELECT IF(`status`=0,'NOT ACTIVATED','ACTIVATED') as stat FROM tracking WHERE pemasangan_id=p_id );
+	RETURN a;
+	
+    END */$$
+DELIMITER ;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

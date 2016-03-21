@@ -46,11 +46,14 @@ class Tracking extends Admin_Controller
 
 	public function rangetime()
 	{
+		//$query = "INSERT INTO outbox (DestinationNumber, SenderID, TextDecoded, CreatorID) VALUES ('$nohp', '$modem', '$pesan', 'Gammu 1.28.90')";
+			
 			$message = array();
 			$insert_content = array(
 				'DestinationNumber' => '+6285607733981',
 				'TextDecoded' => '0000,A00',
-				'CreatorID'=> 'Gammu'
+				'SenderID' => 'ModemWirelessE',
+				'CreatorID'=> 'Gammu 1.28.90'
 			);
 			$this->outbox_model->insert($insert_content);
 			$message = array(
