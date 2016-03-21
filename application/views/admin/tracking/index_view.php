@@ -121,8 +121,8 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Ganti Foto</h4>
+        <button type="button" class="close" data-dismiss="modal" id="TutupWinAndInterval" >&times;</button>
+        <h4 class="modal-title">Tracking View Maps</h4>
       </div>
       <div class="modal-body">
         <div id="collapse2" class="body collapse in">
@@ -139,7 +139,7 @@
 				  // do something with the return value here if you like
 				}
 			  });
-			  setTimeout(executeQuery, 5000); // you could choose not to continue on failure...
+			  //setTimeout(executeQuery, 5000); // you could choose not to continue on failure...
 			}
 
 
@@ -241,6 +241,7 @@
 							<div class="box">
 							<div class="body">
 								<div id="canvas" class="google-maps"></div>
+								<div id="counter">&nbsp;</div>
 							</div>
 							</div>
 							</div>
@@ -248,7 +249,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="close btn btn-default" data-dismiss="modal" id="TutupWinAndInterval2" >Close</button>
       </div>
     </div>
 
@@ -257,7 +258,7 @@
 
 
 <script>
-        var $modal = $('#formTambahTracking').modal({show: false});
+		var $modal = $('#formTambahTracking').modal({show: false});
 		var $modalMaps = $('#WindowMaps').modal({show: false});
         var $alert = $('.alert').hide();
 		$('#menuTracking').removeClass('').addClass('active');
@@ -267,6 +268,19 @@
         selections = [];
 		$alert = $('.alert').hide();
 
+
+	
+
+
+	$('#TutupWinAndInterval').click(function() {
+		$('#counter').toggleClass('pauseInterval');
+	});
+
+	$('#TutupWinAndInterval2').click(function() {
+		$('#counter').toggleClass('pauseInterval');
+	});
+
+	
     function initTable() {
         $table.bootstrapTable({
             height: 527,
@@ -444,7 +458,7 @@
 
     function operateFormatter(value, row, index) {
         return [
-			'<a class="TrackingMaps" href="javascript:void(0)" title="Ganti Foto">',
+			'<a class="TrackingMaps" href="javascript:void(0)" title="TrackingMaps">',
             '<i class="icon-map-marker"></i>',
             '</a>  ',
             '<a class="edit" href="javascript:void(0)" title="Edit Data">',
@@ -467,9 +481,30 @@
 	window.operateEvents = {
 		'click .TrackingMaps': function (e, value, row, index) {
 			initialize(row.tracking_id);
-			var refreshId = setInterval(function(){updatedata(row.tracking_id);},4000);
-			updatedata(row.tracking_id);
-			setTimeout(executeQuery, 5000);
+			$('#counter').removeClass('pauseInterval');
+			
+			var refreshId = setInterval( function(){
+				 if(!$('#counter').hasClass('pauseInterval')) { //only run if it hasn't got this class 'pauseInterval'
+				    console.log('Counting...');
+				    updatedata(row.tracking_id);
+				  } else {
+					console.log('Stopped counting');
+				  }
+				},4000);
+
+			var refreshIdxx = setInterval(function(){
+					if(!$('#counter').hasClass('pauseInterval')) { //only run if it hasn't got this class 'pauseInterval'
+						console.log('Counting...');
+						executeQuery();
+					  } else {
+						console.log('Stopped counting');
+					 }
+				
+				},5000);
+
+			//updatedata(row.tracking_id);
+			//setTimeout(executeQuery, 5000);
+			//var refreshIdxx = setInterval(function(){executeQuery();},5000);
 			$modalMaps.modal('show');
 		},
         'click .edit': function (e, value, row, index) {
