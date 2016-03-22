@@ -236,12 +236,14 @@
 
 
 		</script>
-							<h3><button id="TombolPanik" class="btn btn-info">Tombol Panik</button></h3>
+							<!-- <h3><button id="TombolPanik" class="btn btn-info">Tombol Panik</button></h3> -->
+							<div  class="row">
 							<div class="col-lg-12">
 							<div class="box">
 							<div class="body">
 								<div id="canvas" class="google-maps"></div>
 								<div id="counter">&nbsp;</div>
+							</div>
 							</div>
 							</div>
 							</div>
@@ -703,12 +705,19 @@
 });
 
     function rowStyle(row, index) {
-        var classes = [ 'success'];
+		var classes = [ 'success'];
 
         if (index % 2 === 0) {
-            return {
-                classes: classes[0]
-            };
+
+			if(row.status==='0'){
+				return {
+					classes: 'danger'
+				};
+			}else{
+				 return {
+					classes: classes[0]
+				};
+			}
         }
         return {};
     }
