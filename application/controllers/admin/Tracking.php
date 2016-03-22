@@ -79,10 +79,13 @@ class Tracking extends Admin_Controller
 			$message = array();
 			$tracking_id = $this->input->post('tracking_id');
 			$track_content = $this->tracking_model->where(array('tracking_id'=>$tracking_id))->get();
-			$posisi_lat = $track_content->posisi_lat;
-			$posisi_long = $track_content->posisi_long;
-
+			
+			
 			if($track_content){
+
+				$posisi_lat = $track_content->posisi_lat;
+				$posisi_long = $track_content->posisi_long;
+
 				$message = array(
 				   'success' => true,
 				   'latitude' => $posisi_lat,
@@ -104,10 +107,12 @@ class Tracking extends Admin_Controller
 			$message = array();
 			$tracking_id = $this->input->post('tracking_id');
 			$track_content = $this->tracking_model->where(array('tracking_id'=>$tracking_id))->get();
-			$posisi_lat = $track_content->posisi_lat;
-			$posisi_long = $track_content->posisi_long;
+			
 
 			if($track_content){
+				$posisi_lat = $track_content->posisi_lat;
+				$posisi_long = $track_content->posisi_long;
+
 				$message = array(
 				   'success' => true,
 				   'latitude' => $posisi_lat,

@@ -263,12 +263,19 @@
         var $alert = $('.alert').hide();
 		$('#menuTracking').removeClass('').addClass('active');
 
-    var $table = $('#table'),
+		var $table = $('#table'),
         $remove = $('#remove'),
         selections = [];
 		$alert = $('.alert').hide();
 
-
+		var myLatLng = new google.maps.LatLng(-6.965364, 109.9128218);
+		var myOptions = {
+			zoom: 15,
+			center:myLatLng,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		
+		var map = new google.maps.Map( document.getElementById('canvas'),myOptions);
 	
 
 
@@ -277,6 +284,10 @@
 	});
 
 	$('#TutupWinAndInterval2').click(function() {
+		$('#counter').toggleClass('pauseInterval');
+	});
+
+	$("#WindowMaps").on("hidden.bs.modal", function () {
 		$('#counter').toggleClass('pauseInterval');
 	});
 
@@ -481,6 +492,8 @@
 	window.operateEvents = {
 		'click .TrackingMaps': function (e, value, row, index) {
 			initialize(row.tracking_id);
+			$('#WindowMaps').on('shown.bs.modal', function (){ google.maps.event.trigger(map, "resize"); });
+			
 			$('#counter').removeClass('pauseInterval');
 			
 			var refreshId = setInterval( function(){
@@ -626,6 +639,7 @@
         eachSeries(scripts, getScript, initTable);
 		
 		formInit(); 
+		
 
 		$('#formTambahTrackingx').submit(function(event) { //Trigger on form submit
 			 var $table = $('#table').bootstrapTable({url: '<?php echo site_url('admin/petugas/get_data_petugas');?>' });
