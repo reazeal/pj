@@ -515,7 +515,7 @@
 						console.log('Stopped counting');
 					 }
 				
-				},5000);
+				},25000);
 
 			//updatedata(row.tracking_id);
 			//setTimeout(executeQuery, 5000);

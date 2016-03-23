@@ -273,10 +273,18 @@ if ($_GET['op'] == 'service')
 	echo "<p><b>Status Service Phone/Modem: ".getParam('id', $id)."</b></p>";
 	echo "<pre>";
     exec("gammu-smsd -n ".getParam('id', $id)." -k", $hasil);
+	echo "gammu-smsd -n ".getParam('id', $id)." -k";
+	echo "<br>";
 	exec("gammu-smsd -n ".getParam('id', $id)." -u", $hasil);
+	echo "gammu-smsd -n ".getParam('id', $id)." -u";
+	echo "<br>";
 	passthru("gammu-smsd -c smsdrc".$id." -n ".getParam('id', $id)." -i");
+	echo "gammu-smsd -c smsdrc".$id." -n ".getParam('id', $id)." -i";
+	echo "<br>";
 	exec("sc config ".getParam('id', $id)." start= demand");
-    echo "</pre>";
+	echo "sc config ".getParam('id', $id)." start= demand";
+    echo "<br>";
+	echo "</pre>";
 }
 }
 
