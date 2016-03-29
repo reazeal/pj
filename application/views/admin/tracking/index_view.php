@@ -507,7 +507,7 @@
 				  }
 				},4000);
 
-			var refreshIdxx = setInterval(function(){
+			/*var refreshIdxx = setInterval(function(){
 					if(!$('#counter').hasClass('pauseInterval')) { //only run if it hasn't got this class 'pauseInterval'
 						console.log('Counting...');
 						executeQuery();
@@ -515,8 +515,8 @@
 						console.log('Stopped counting');
 					 }
 				
-				},25000);
-
+				},25000);*/
+			executeQuery();
 			//updatedata(row.tracking_id);
 			//setTimeout(executeQuery, 5000);
 			//var refreshIdxx = setInterval(function(){executeQuery();},5000);

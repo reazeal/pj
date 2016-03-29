@@ -1,5 +1,15 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * @property  ion_auth $ion_auth
+ * @property  postal $postal
+ * @property  alat_model $alat_model
+ * @property  pemasangan_model $pemasangan_model
+ * @property  outbox_model $outbox_model
+ * @property  tracking_model $tracking_model
+ * @property  penanggungjawab_model $penanggungjawab_model
+ *
+ */
 class Tracking extends Admin_Controller
 {
 
@@ -62,6 +72,14 @@ class Tracking extends Admin_Controller
 					'CreatorID'=> 'Gammu 1.28.90'
 				);
 				$this->outbox_model->insert($insert_content);
+
+                $insert_content = array(
+                    'DestinationNumber' => '+6285607733981',
+                    'TextDecoded' => '0000,A00',
+                    'SenderID' => 'ModemWirelessE2',
+                    'CreatorID'=> 'Gammu 1.28.90'
+                );
+                $this->outbox_model->insert($insert_content);
 			
 			}
 
