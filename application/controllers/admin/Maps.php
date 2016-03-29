@@ -1,5 +1,9 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * @property  ion_auth $ion_auth
+ * @property  postal $postal
+ */
 class Maps extends Admin_Controller
 {
 
@@ -25,8 +29,7 @@ class Maps extends Admin_Controller
 	public function index()
 	{
 		$this->data['menu_data'] = array('master'=>true,'transaksi'=>false,'class_master'=>'in','class_transaksi'=>'collapse');
-		$this->data['truck_data'] = $this->truckgps_model->get_truck_list();
-        $this->render('admin/maps/index_view');
+		$this->render('admin/maps/index_view');
 	}
 
 

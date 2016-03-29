@@ -1,5 +1,14 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * @property  ion_auth $ion_auth
+ * @property  postal $postal
+ * @property  content_model $content_model
+ * @property  content_translation_model $content_translation_model
+ * @property  slug_model $slug_model
+ * @property  facebook $facebook
+ * @property  image_model $image_model
+ */
 class Contents extends Admin_Controller
 {
 

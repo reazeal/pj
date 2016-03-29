@@ -1,5 +1,11 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * @property  ion_auth $ion_auth
+ * @property  postal $postal
+ * @property  gps_model $gps_model
+ * @property  outbox_model $outbox_model
+ */
 class Gps extends Admin_Controller
 {
 

@@ -1,5 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * @property  ion_auth $ion_auth
+ * @property  postal $postal
+ * @property  alat_model $alat_model
+ */
 class Alat extends Admin_Controller
 {
 

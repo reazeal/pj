@@ -1,5 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * @property  ion_auth $ion_auth
+ * @property  postal $postal
+ * @property  petugas_model $petugas_model
+ */
 class Petugas extends Admin_Controller
 {
 

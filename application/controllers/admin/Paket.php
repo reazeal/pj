@@ -1,5 +1,11 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * @property  ion_auth $ion_auth
+ * @property  postal $postal
+ * @property  layanan_model $layanan_model
+ * @property  paket_model $paket_model
+ */
 class Paket extends Admin_Controller
 {
 

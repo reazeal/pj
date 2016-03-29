@@ -66,6 +66,11 @@
  * 		}
  * 	}
  *
+ * @property CI_Model $CI_Model
+ * @property CI_DB_query_builder $db   Database
+ * @property CI_DB_forge $dbforge     Database
+ * @property CI_DB_result $result                 Database
+ * @property 
  **/
 
 class MY_Model extends CI_Model

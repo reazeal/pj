@@ -1,5 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * @property  ion_auth $ion_auth
+ * @property  postal $postal
+ * @property  pendaftaran_model $pendaftaran_model
+ */
 class Pendaftaran extends Admin_Controller
 {
 
@@ -28,7 +33,7 @@ class Pendaftaran extends Admin_Controller
 	}
 
 	public function get_gen_no_pendaftaran(){
-
+			$no_mut2 = "";
 			$bulan=date('m');
 			$tahun=substr(date('Y'), -2);
 

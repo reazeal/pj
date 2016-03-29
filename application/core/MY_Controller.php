@@ -96,6 +96,98 @@ class MY_Controller extends CI_Controller
 			$this->load->view('templates/' . $template . '_view', $this->data);
 		}
 	}
+
+	//Mengubah format tanggal dari database ke format tgl-bln-thn
+	protected function tanggal($tgl){
+		if(!empty($tgl)){
+			$tgl=explode(" ",$tgl);
+			$tgl=explode("-",$tgl[0]);
+
+			return $tgl[2]."-".$tgl[1]."-".$tgl[0];
+		}else {
+			return "-";
+		}
+	}
+
+	//Mengubah format tanggal dari format tgl-bln-thn ke database
+	protected function tanggaldb($tgl){
+		if(!empty($tgl)){
+
+			$tgl=explode("-",$tgl);
+			return $tgl[2]."-".$tgl[1]."-".$tgl[0];
+
+		}else{
+			return "0000-00-00";
+		}
+
+	}
+
+	protected function get_nm_hr($a) {
+		if ($a == 'Wed')
+			$b = 'RB';
+		elseif ($a == 'Thu')
+			$b = 'KM';
+		elseif ($a == 'Fri')
+			$b = 'JM';
+		elseif ($a == 'Sat')
+			$b = 'SB';
+		elseif ($a == 'Sun')
+			$b = 'MG';
+		elseif ($a == 'Mon')
+			$b = 'SN';
+		elseif ($a == 'Tue')
+			$b = 'SL';
+		return $b;
+	}
+
+	protected function get_nama_bulan_id($a) {
+		if ($a == 1)
+			$b = 'Januari';
+		elseif ($a == 2)
+			$b = 'Pebruari';
+		elseif ($a == 3)
+			$b = 'Maret';
+		elseif ($a == 4)
+			$b = 'April';
+		elseif ($a == 5)
+			$b = 'Mei';
+		elseif ($a == 6)
+			$b = 'Juni';
+		elseif ($a == 7)
+			$b = 'Juli';
+		elseif ($a == 8)
+			$b = 'Agustus';
+		elseif ($a == 9)
+			$b = 'September';
+		elseif ($a == 10)
+			$b = 'Oktober';
+		elseif ($a == 11)
+			$b = 'Nopember';
+		else
+			$b = 'Desember';
+		return $b;
+	}
+
+	protected function terbilang($x)
+	{
+		$bil = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
+		if ($x < 12)
+			return " " . $bil[$x];
+		elseif ($x < 20)
+			return $this->terbilang($x - 10) . " belas";
+		elseif ($x < 100)
+			return $this->terbilang($x / 10) . " puluh" . $this->terbilang($x % 10);
+		elseif ($x < 200)
+			return " seratus" . $this->terbilang($x - 100);
+		elseif ($x < 1000)
+			return $this->terbilang($x / 100) . " ratus" . $this->terbilang($x % 100);
+		elseif ($x < 2000)
+			return " seribu" . $this->terbilang($x - 1000);
+		elseif ($x < 1000000)
+			return $this->terbilang($x / 1000) . " ribu" . $this->terbilang($x % 1000);
+		elseif ($x < 1000000000)
+			return $this->terbilang($x / 1000000) . " juta" . $this->terbilang($x % 1000000);
+	}
 }
 
 class Admin_Controller extends MY_Controller
@@ -169,6 +261,8 @@ class Public_Controller extends MY_Controller
         $this->data['top_menu'] = $this->menus->get_menu('top-menu',$this->current_lang,'bootstrap_menu');
         parent::render($the_view, $template);
     }
+
+
 
 
 }

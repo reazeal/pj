@@ -1,5 +1,15 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * @property  ion_auth $ion_auth
+ * @property  postal $postal
+ * @property  pemasangan_model $pemasangan_model
+ * @property  alat_model $alat_model
+ * @property  petugas_model $petugas_model
+ * @property  penanggungjawab_model $penanggungjawab_model
+ * @property  gps_model $gps_model
+ * @property  tracking_model $tracking_model
+ */
 class Pemasangan extends Admin_Controller
 {
 

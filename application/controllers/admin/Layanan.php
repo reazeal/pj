@@ -1,5 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * @property  ion_auth  $ion_auth
+ * @property  postal $postal
+ * @property  layanan_model $layanan_model
+ */
 class Layanan extends Admin_Controller
 {
 
