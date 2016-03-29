@@ -10,7 +10,6 @@ class Welcome extends Public_Controller
         parent::__construct();
         $this->load->model('slug_model');
         $this->load->model('content_model');
-        $this->load->model('Galeri_produk_model');
     }
 
     public function index()

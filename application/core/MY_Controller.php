@@ -98,7 +98,7 @@ class MY_Controller extends CI_Controller
 	}
 
 	//Mengubah format tanggal dari database ke format tgl-bln-thn
-	protected function tanggal($tgl){
+	function tanggal($tgl){
 		if(!empty($tgl)){
 			$tgl=explode(" ",$tgl);
 			$tgl=explode("-",$tgl[0]);
@@ -110,7 +110,7 @@ class MY_Controller extends CI_Controller
 	}
 
 	//Mengubah format tanggal dari format tgl-bln-thn ke database
-	protected function tanggaldb($tgl){
+	function tanggaldb($tgl){
 		if(!empty($tgl)){
 
 			$tgl=explode("-",$tgl);
@@ -122,7 +122,7 @@ class MY_Controller extends CI_Controller
 
 	}
 
-	protected function get_nm_hr($a) {
+	function get_nm_hr($a) {
 		if ($a == 'Wed')
 			$b = 'RB';
 		elseif ($a == 'Thu')
@@ -140,7 +140,7 @@ class MY_Controller extends CI_Controller
 		return $b;
 	}
 
-	protected function get_nama_bulan_id($a) {
+	function get_nama_bulan_id($a) {
 		if ($a == 1)
 			$b = 'Januari';
 		elseif ($a == 2)
@@ -168,7 +168,7 @@ class MY_Controller extends CI_Controller
 		return $b;
 	}
 
-	protected function terbilang($x)
+	 function terbilang($x)
 	{
 		$bil = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
 		if ($x < 12)
