@@ -31,7 +31,6 @@ class Alat_model extends MY_Model
     public function get_data_alat($search, $sort, $order, $limit, $offset)
     {
     				$data = array();
-    				$this->db->start_cache();
     				
     				$this->db->select("
 	       				alat_id,
@@ -70,7 +69,7 @@ class Alat_model extends MY_Model
 					} 
 					
 			return array('total'=>$totaly2,'rows' => $data);
-			$this->db->stop_cache();
+
     }
     
     

@@ -14,6 +14,7 @@ class Tracking_model extends MY_Model
 
 	public function get_nomor()
     {
+		$urut = "";
 		$this->db->select("max(right(kode,4)) as urut");
 		$this->db->like("kode","TRX",'after');
 		$query = $this->db->get('petugas');
